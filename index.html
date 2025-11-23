@@ -11,7 +11,6 @@
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="assets/images/favicon.ico">
-
     <!-- jsvectormap css -->
     <link href="assets/libs/jsvectormap/jsvectormap.min.css" rel="stylesheet" type="text/css" />
 
@@ -964,9 +963,9 @@
                     <ul class="navbar-nav" id="navbar-nav">
                         <li class="menu-title"><span data-key="t-menu">Menu</span></li>
 
-                        <!-- Side-Bar DashBoard Menu
+                        <!-- Side-Bar DashBoard Menu -->
 
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link menu-link" href="#sidebarDashboards" data-bs-toggle="collapse"
                                 role="button" aria-expanded="false" aria-controls="sidebarDashboards">
                                 <i class="mdi mdi-speedometer"></i> <span data-key="t-dashboards">Dashboards</span>
@@ -976,12 +975,13 @@
                                     <li class="nav-item">
                                         <a href="dashboard.html" class="nav-link" data-key="t-dashboards">Dashboard </a>
                                     </li>
+
                                 </ul>
                             </div>
                         </li> -->
 
 
-                         <!-- Settings -->
+                        <!-- Settings -->
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="#sidebarSettings" data-bs-toggle="collapse"
                                 role="button" aria-expanded="false" aria-controls="sidebarSettings">
@@ -1008,8 +1008,8 @@
 
                         <!-- CRM -->
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="#sidebarCRM" data-bs-toggle="collapse"
-                                role="button" aria-expanded="false" aria-controls="sidebarCRM">
+                            <a class="nav-link menu-link" href="#sidebarCRM" data-bs-toggle="collapse" role="button"
+                                aria-expanded="false" aria-controls="sidebarCRM">
                                 <i class="ri-team-fill"></i>
                                 <span data-key="t-Settings">CRM</span>
                             </a>
@@ -1030,7 +1030,7 @@
                                 </ul>
                             </div>
                         </li>
-
+                          
                         <!-- Booking -->
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="#sidebarBooking" data-bs-toggle="collapse" role="button"
@@ -1056,6 +1056,7 @@
                             </div>
                         </li>
 
+
                     </ul>
                 </div>
             </div>
@@ -1071,107 +1072,129 @@
         <!-- Start right Content here -->
         <!-- ============================================================== -->
 
+        <div class="main-content">
+            <div class="page-content">
+                <div class="container-fluid">
 
-        <div class="page-content">
-            <div class="container py-4">
-                <div class="row g-4">
+                    <!-- Start page title -->
 
-                    <!-- New Booking -->
-                    <div class="col-12 col-sm-6 col-xl-3">
-                        <div class="card shadow-sm h-100">
-                            <div class="card-body d-flex justify-content-between align-items-center">
-                                <div>
-                                    <h5 class="card-title">New Booking</h5>
-                                    <p class="text-muted mb-0">More Info</p>
-                                </div>
-                                <div class="text-primary fs-3">&#9733;</div>
-                            </div>
+                    <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                        <h4 class="mb-sm-0">Teams</h4>
+
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Settings</a></li>
+                                <li class="breadcrumb-item active">Teams</li>
+                            </ol>
                         </div>
+
                     </div>
 
-                    <!-- View Pricing -->
-                    <div class="col-12 col-sm-6 col-xl-3">
-                        <div class="card shadow-sm h-100">
-                            <div class="card-body d-flex justify-content-between align-items-center">
-                                <div>
-                                    <h5 class="card-title">View Pricing</h5>
-                                    <p class="text-muted mb-0">More Info</p>
-                                </div>
-                                <div class="text-primary fs-3">&#128100;</div>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">
+                        Add Team
+                    </button>
+                    <!-- Miiddle Part... -->
 
-                    <!-- View Query -->
-                    <div class="col-12 col-sm-6 col-xl-3">
-                        <div class="card shadow-sm h-100">
-                            <div class="card-body d-flex justify-content-between align-items-center">
-                                <div>
-                                    <h5 class="card-title">View Query</h5>
-                                    <p class="text-muted mb-0">More Info</p>
-                                </div>
-                                <div class="text-primary fs-3">&#x1F5C2;</div>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="card mt-3">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table align-middle table-list">
+                <thead class="table-light">
+                    <tr>
+                        <th>S.No.</th>
+                        <th>Name</th>
+                        <th>Department</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Studio</th>
+                        <th>Location</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
 
-                    <!-- New Query -->
-                    <div class="col-12 col-sm-6 col-xl-3">
-                        <div class="card shadow-sm h-100">
-                            <div class="card-body d-flex justify-content-between align-items-center">
-                                <div>
-                                    <h5 class="card-title">New Query</h5>
-                                    <p class="text-muted mb-0">More Info</p>
-                                </div>
-                                <div class="text-primary fs-3">&#128172;</div>
+                <tbody>
+                    <tr>
+                        <td>1.</td>
+                        <td>Arun Kumar</td>
+                        <td>
+                            <span class="badge bg-success">Sales</span>
+                        </td>
+                        <td>89374932749</td>
+                        <td>sngkdsnkdsf@gmail.com</td>
+                        <td>Crystal Studio</td>
+                        <td>New Delhi</td>
+                        <td>
+                            <div class="hstack gap-3 flex-wrap">
+                                <button class="btn btn-sm btn-outline-secondary edit-btn" data-id="1">
+                                    <i class="ri-edit-line"></i>
+                                </button>
+                                <li class="list-inline-item" data-bs-toggle="tooltip"
+                                    data-bs-trigger="hover" data-bs-placement="top" title="Remove">
+                                    <div class="form-check form-switch m-0">
+                                        <input type="checkbox" class="form-check-input"
+                                            id="customSwitchsizemd">
+                                    </div>
+                                </li>
                             </div>
-                        </div>
-                    </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>2.</td>
+                        <td>Neha Sharma</td>
+                        <td>
+                            <span class="badge bg-secondary">Operations</span>
+                        </td>
+                        <td>9876543210</td>
+                        <td>neha@example.com</td>
+                        <td>Blue Lens Studio</td>
+                        <td>Mumbai</td>
+                        <td>
+                            <div class="hstack gap-3 flex-wrap">
+                                <button class="btn btn-sm btn-outline-secondary edit-btn" data-id="2">
+                                    <i class="ri-edit-line"></i>
+                                </button>
+                                <li class="list-inline-item" data-bs-toggle="tooltip"
+                                    data-bs-trigger="hover" data-bs-placement="top" title="Remove">
+                                    <div class="form-check form-switch m-0">
+                                        <input type="checkbox" class="form-check-input"
+                                            id="customSwitchsizemd2">
+                                    </div>
+                                </li>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+
+
 
                 </div>
             </div>
+            <!-- container-fluid -->
         </div>
+        <!-- End Page-content -->
 
-
-
-
-    </div>
-    <!-- container-fluid -->
-    </div>
-    <!-- End Page-content -->
-
-    <footer class="footer">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-6">
-                    <script>document.write(new Date().getFullYear())</script> © Velzon.
-                </div>
-                <div class="col-sm-6">
-                    <div class="text-sm-end d-none d-sm-block">
-                        Design & Develop by Themesbrand
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <script>document.write(new Date().getFullYear())</script> © Velzon.
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="text-sm-end d-none d-sm-block">
+                            Design & Develop by Themesbrand
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </footer>
-    </div>
-    </div>
-    <!-- End Page-content -->
-
-    <footer class="footer">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-6">
-                    <script>document.write(new Date().getFullYear())</script> © Velzon.
-                </div>
-                <div class="col-sm-6">
-                    <div class="text-sm-end d-none d-sm-block">
-                        Design & Develop by Themesbrand
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+        </footer>
     </div>
     <!-- end main content-->
 
@@ -1202,6 +1225,71 @@
         </div>
     </div>
 
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-header border-bottom bg-light">
+                    <h1 class="modal-title fs-4 mb-3 " id="exampleModalLabel">Add Team</h1>
+                    <button type="button" class="btn-close mb-3 me-2 mt-1" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <form>
+
+                        <div class="mb-3">
+                            <label class="form-label">Title</label>
+                            <select class="form-select" required>
+                                <option value="">Select</option>
+                                <option>Mr.</option>
+                                <option>Mrs.</option>
+                                <option>Miss.</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Name</label>
+                            <input type="text" class="form-control" placeholder="Enter your name" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Phone</label>
+                            <input type="text" class="form-control" placeholder="9876543210" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Email ID</label>
+                            <input type="email" class="form-control" placeholder="example@gmail.com" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Department</label>
+                            <select class="form-select" required>
+                                <option value="">Select</option>
+                                <option>Sales</option>
+                                <option>Operations</option>
+                                <option>Manager</option>
+                            </select>
+                        </div>
+
+                        <div class="col-12 d-flex justify-content-end gap-2">
+                                    <button type="button" id="svcCancelBtn" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Cancel</button>
+                                    <button type="submit" id="svcSaveBtn" class="btn btn-primary">Save</button>
+                                </div>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    </div>
 
     <!-- JAVASCRIPT -->
     <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
