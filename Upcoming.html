@@ -28,6 +28,69 @@
     <!-- custom Css-->
     <link href="assets/css/custom.min.css" rel="stylesheet" type="text/css" />
 
+    <style>
+        /* Custom Styles to match the original structure and improve print */
+        body {
+            background-color: #f8f9fa;
+            /* Light background for the page */
+        }
+
+        .card {
+            border: 1px solid #e9ecef;
+            border-radius: 0.5rem;
+        }
+
+        .card-header {
+            background-color: #fff;
+        }
+
+        .border-bottom-dashed {
+            border-bottom: 1px dashed #ced4da !important;
+        }
+
+        .border-top-dashed {
+            border-top: 1px dashed #ced4da !important;
+        }
+
+        .table-active th {
+            background-color: #f7f7f7 !important;
+        }
+
+        /* Style for the tax input area */
+        .tax-input-group {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .tax-input-group input {
+            width: 60px;
+            /* Small width for percentage input */
+            text-align: right;
+            margin-right: 5px;
+        }
+
+        .form-control-sm {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.875rem;
+            border-radius: 0.2rem;
+        }
+
+        /* Print styles to ensure clean output */
+        @media print {
+            body {
+                background-color: #fff !important;
+            }
+
+            .d-print-none {
+                display: none !important;
+            }
+
+            .col-xxl-9 {
+                width: 100% !important;
+            }
+        }
+    </style>
 
 </head>
 
@@ -1006,7 +1069,6 @@
                             </div>
                         </li>
 
-
                         <!-- CRM -->
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="#sidebarCRM" data-bs-toggle="collapse" role="button"
@@ -1045,7 +1107,8 @@
 
                                     <!-- CreateBooking -->
                                     <li class="nav-item">
-                                        <a href="CreateBooking.html" class="nav-link" data-key="CreateBooking">Create Booking</a>
+                                        <a href="CreateBooking.html" class="nav-link" data-key="CreateBooking">Create
+                                            Booking</a>
                                     </li>
 
                                     <!-- Services under Settings -->
@@ -1059,8 +1122,8 @@
 
                         <!-- MAINTENANCE -->
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="#sidebarMaintenance" data-bs-toggle="collapse" role="button"
-                                aria-expanded="false" aria-controls="sidebarMaintenance">
+                            <a class="nav-link menu-link" href="#sidebarMaintenance" data-bs-toggle="collapse"
+                                role="button" aria-expanded="false" aria-controls="sidebarMaintenance">
                                 <i class="ri-tools-fill"></i>
                                 <span data-key="t-Maintenance">Maintenance</span>
                             </a>
@@ -1084,7 +1147,6 @@
 
 
 
-
                     </ul>
                 </div>
             </div>
@@ -1105,275 +1167,270 @@
                 <div class="container-fluid">
 
                     <!-- Start page title -->
-
-                    <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0">Services</h4>
-
-                        <div class="page-title-right">
-                            <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Services</a></li>
-                                <li class="breadcrumb-item active">Add Service</li>
-                            </ol>
-                        </div>
-
-                    </div>
-
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary waves-effect waves-light mb-4" data-bs-toggle="modal"
-                        data-bs-target="#exampleModal">
-                        Add Services
-                    </button>
-
-
-                    <!-- Miiddle Part... -->
-                    <div class="row">
-                        <!-- first -->
-                        <div class="col-xxl-3 col-sm-6">
-                            <div class="card card-animate">
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between">
-                                        <div>
-                                            <p class="fw-medium text-muted mb-0">Treatment Type</p>
-                                            <h2 class="mt-4 ff-secondary fw-semibold"><span class="counter-value"
-                                                    data-target="4">4</span></h2>
-                                        </div>
-                                        <div>
-                                            <div class="avatar-sm flex-shrink-0">
-                                                <span class="avatar-title bg-primary rounded-circle fs-4">
-                                                    <i class="ri-bubble-chart-line"></i>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- second -->
-                        <div class="col-xxl-3 col-sm-6">
-                            <div class="card card-animate">
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between">
-                                        <div>
-                                            <p class="fw-medium text-muted mb-0">Total Treatment</p>
-                                            <h2 class="mt-4 ff-secondary fw-semibold"><span class="counter-value"
-                                                    data-target="4">4</span></h2>
-                                        </div>
-                                        <div>
-                                            <div class="avatar-sm flex-shrink-0">
-                                                <span class="avatar-title bg-info rounded-circle fs-4">
-                                                    <i class="ri-checkbox-multiple-blank-line"></i>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- third -->
-
-                        <div class="col-xxl-3 col-sm-6">
-                            <div class="card card-animate">
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between">
-                                        <div>
-                                            <p class="fw-medium text-muted mb-0">Active</p>
-                                            <h2 class="mt-4 ff-secondary fw-semibold"><span class="counter-value"
-                                                    data-target="3">3</span></h2>
-                                        </div>
-                                        <div>
-                                            <div class="avatar-sm flex-shrink-0">
-                                                <span class="avatar-title bg-success rounded-circle fs-4">
-                                                    <i class="ri-chat-check-fill"></i>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Fourth -->
-                        <div class="col-xxl-3 col-sm-6">
-                            <div class="card card-animate">
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between">
-                                        <div>
-                                            <p class="fw-medium text-muted mb-0">Inactive</p>
-                                            <h2 class="mt-4 ff-secondary fw-semibold"><span class="counter-value"
-                                                    data-target="1">1</span></h2>
-                                        </div>
-                                        <div>
-                                            <div class="avatar-sm flex-shrink-0">
-                                                <span class="avatar-title bg-danger rounded-circle fs-4">
-                                                    <i class="ri-chat-delete-fill"></i>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Table -->
-                    <div class="card mt-1">
+                    <div class="card mt-2">
                         <div class="card-body">
 
-                            <div class="table-responsive">
-                                <table class="table align-middle table-list">
-                                    <thead class="table-light">
-                                        <tr>
-                                            <th>S.No.</th>
-                                            <th>Treatment Type</th>
-                                            <th>Treatment</th>
-                                            <th>Free Maintenance</th>
-                                            <th>Fee</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
+                            <ul class="nav nav-tabs nav-justified mb-3" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link active" data-bs-toggle="tab" href="#leadTableContent" role="tab" aria-selected="true" data-filter="All">
+                                        Upcoming (All)
+                                    <span class="badge ms-1 lead-count bg-dark">60</span></a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link align-middle" data-bs-toggle="tab" href="#leadTableContent" role="tab" aria-selected="false" data-filter="Today" tabindex="-1">
+                                        Today
+                                    <span class="badge ms-1 lead-count bg-primary">2</span></a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link align-middle" data-bs-toggle="tab" href="#leadTableContent" role="tab" aria-selected="false" data-filter="Tomorrow" tabindex="-1">
+                                        Tomorrow
+                                    <span class="badge ms-1 lead-count bg-primary">2</span></a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#leadTableContent" role="tab" aria-selected="false" data-filter="Next10" tabindex="-1">
+                                        Next 10 Days
+                                    <span class="badge ms-1 lead-count bg-warning">15</span></a>
+                                </li>
+                            </ul>
 
-                                    <tbody>
-
-                                        <tr>
-                                            <td>1.</td>
-                                            <td>PPF</td>
-                                            <td>
-                                                ABC PPF <br>
-                                                <small class="text-muted">(5 Year Warranty)</small>
-                                            </td>
-                                            <td>
-                                                4 <br>
-                                                <small class="text-muted">(every 6 Months)</small>
-                                            </td>
-                                            <td>₹ 90,000/-</td>
-                                            <td>
-                                                <div class="d-flex align-items-center gap-2">
-
-                                                    <!-- Edit icon -->
-                                                    <button class="btn btn-sm btn-outline-secondary"
-                                                        data-bs-toggle="modal" data-bs-target="#leadFormModal"><i
-                                                            class="ri-edit-line"></i></button>
-                                                    <!-- Switch -->
-                                                    <div class="form-check form-switch m-0">
-                                                        <input type="checkbox" class="form-check-input"
-                                                            id="customSwitchsizemd">
-                                                    </div>
-
-                                                </div>
-                                            </td>
-
-
-                                        </tr>
-
-                                        <tr>
-                                            <td>2.</td>
-                                            <td>Ceramic Coating</td>
-                                            <td>
-                                                XYZ Ceramic Coating <br>
-                                                <small class="text-muted">(3 Year Warranty)</small>
-                                            </td>
-                                            <td>
-                                                6 <br>
-                                                <small class="text-muted">(every 6 Months)</small>
-                                            </td>
-                                            <td>₹ 80,000/-</td>
-                                            <td>
-                                                <div class="d-flex align-items-center gap-2">
-
-                                                    <!-- Edit icon -->
-                                                    <button class="btn btn-sm btn-outline-secondary"
-                                                        data-bs-toggle="modal" data-bs-target="#leadFormModal"><i
-                                                            class="ri-edit-line"></i></button>
-                                                    <!-- Switch -->
-                                                    <div class="form-check form-switch m-0">
-                                                        <input type="checkbox" class="form-check-input"
-                                                            id="customSwitchsizemd">
-                                                    </div>
-
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>3.</td>
-                                            <td>Detailing</td>
-                                            <td>
-                                                VIP Pro Detail <br>
-                                                <small class="text-muted">(2 Year Warranty)</small>
-                                            </td>
-                                            <td>
-                                                2 <br>
-                                                <small class="text-muted">(every 12 Months)</small>
-                                            </td>
-                                            <td>₹ 50,000/-</td>
-                                            <td>
-                                                <div class="d-flex align-items-center gap-2">
-
-                                                    <!-- Edit icon -->
-                                                    <button class="btn btn-sm btn-outline-secondary"
-                                                        data-bs-toggle="modal" data-bs-target="#leadFormModal"><i
-                                                            class="ri-edit-line"></i></button>
-                                                    <!-- Switch -->
-                                                    <div class="form-check form-switch m-0">
-                                                        <input type="checkbox" class="form-check-input"
-                                                            id="customSwitchsizemd">
-                                                    </div>
-
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>4.</td>
-                                            <td>Wash & Care</td>
-                                            <td>
-                                                FYK Shine Pack <br>
-                                                <small class="text-muted">(1 Year Warranty)</small>
-                                            </td>
-                                            <td>
-                                                3 <br>
-                                                <small class="text-muted">(every 4 Months)</small>
-                                            </td>
-                                            <td>₹ 20,000/-</td>
-                                            <td>
-                                                <div class="d-flex align-items-center gap-2">
-
-                                                    <!-- Edit icon -->
-                                                    <button class="btn btn-sm btn-outline-secondary"
-                                                        data-bs-toggle="modal" data-bs-target="#leadFormModal"><i
-                                                            class="ri-edit-line"></i></button>
-                                                    <!-- Switch -->
-                                                    <div class="form-check form-switch m-0">
-                                                        <input type="checkbox" class="form-check-input"
-                                                            id="customSwitchsizemd">
-                                                    </div>
-
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
+                            <div class="tab-content text-muted">
+                                <div class="tab-pane active show" id="leadTableContent" role="tabpanel">
+                                    <div class="table-responsive">
+                                        <table class="table align-middle table-list text-center">
+                                            <thead class="table-light">
+                                                <tr data-services='[{"schedule":"2025-11-21","maintenance":"2025-11-22","invoice":"Invoice 1"},{"schedule":"2026-02-21","maintenance":"2026-02-22","invoice":"Invoice 2"},{"schedule":"2026-05-21","maintenance":null,"invoice":null},{"schedule":"2026-08-21","maintenance":null,"invoice":null},{"schedule":"2026-11-21","maintenance":null,"invoice":null},{"schedule":"2027-02-21","maintenance":null,"invoice":null}]'>
+                                                    <th>S.No.</th>
+                                                    <th>Booking Details</th>
+                                                    <th>Treatment Details</th>
+                                                    <th>Vehicle Details</th>
+                                                    <th>Maintenance Pending</th>
+                                                    <th>Last Maintenance Date</th>
+                                                    <th>Upcoming Scheduled Maintenance</th>
+                                                    <th>Studio</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="leadsBody">
+                                                <!-- Sample row inserted per user request -->
+                                                <tr data-services='[{"schedule":"2025-11-21","maintenance":"2025-11-22","invoice":"Invoice 1"},{"schedule":"2026-02-21","maintenance":"2026-02-22","invoice":"Invoice 2"},{"schedule":"2026-05-21","maintenance":null,"invoice":null},{"schedule":"2026-08-21","maintenance":null,"invoice":null},{"schedule":"2026-11-21","maintenance":null,"invoice":null},{"schedule":"2027-02-21","maintenance":null,"invoice":null}]'>
+                                                    <td>1.</td>
+                                                    <td class="text-start">
+                                                        <div>ID450033</div>
+                                                        <div class="text-muted">21-Aug-25</div>
+                                                        <div class="fw-semibold mt-1">Mohit</div>
+                                                        <div class="text-muted">9711844676</div>
+                                                    </td>
+                                                    <td class="text-start">
+                                                        <div class="fw-medium">PPF - ABC PPF</div>
+                                                        <div class="text-muted">(5 Year Warranty)</div>
+                                                        <div class="text-muted">(6 Fee Maintenance)</div>
+                                                    </td>
+                                                    <td class="text-start">
+                                                        <div>Car — Mini SUV</div>
+                                                        <div class="text-muted">DL4C83221</div>
+                                                        <div class="fw-medium">Tata Harrier (Black)</div>
+                                                    </td>
+                                                    <td class="text-center">6</td>
+                                                    <td class="text-center">-</td>
+                                                    <td class="text-center">21-Nov-25</td>
+                                                    <td class="text-start">Crystal Studio<br/><small class="text-muted">New Delhi</small></td>
+                                                    <td>
+                                                        <div class="d-flex gap-2 align-items-center justify-content-center">
+                                                            <button class="btn btn-sm btn-outline-primary btn-view">View</button>
+                                                            <button class="btn btn-sm btn-primary btn-schedule">Schedule</button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
 
+                        <!-- Per-lead static follow-up modals (no JS required) -->
+                        <div class="modal fade" id="followupVishal" tabindex="-1">
+                            <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Follow-up History — Vishal <span class="ms-2 badge bg-secondary" id="statusBadge-followupVishal">Fresh</span></h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="mb-3 d-flex">
+                                            <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addFollowModal" data-target-modal="#followupVishal"> <i class="ri-add-line me-1"></i> Add Follow Up</button>
+                                        </div>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered text-center">
+                                                <thead class="table-light">
+                                                    <tr><th>#</th><th>Date</th><th>Remark</th><th>Status</th><th>Next Follow Up</th></tr>
+                                                </thead>
+                                                <tbody class="followup-body">
+                                                    <tr><td>1</td><td>01-Nov-2025</td><td>Lead Added</td><td>Fresh</td><td>-</td></tr>
+                                                    <tr><td>2</td><td>02-Nov-2025</td><td>He will think and discuss</td><td>Open</td><td>20-Nov-2025</td></tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Schedule Modal -->
+                        <div class="modal fade" id="scheduleModal" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header bg-light">
+                                        <h5 class="modal-title mb-2">Schedule Service</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="scheduleForm">
+                                            <div class="mb-3">
+                                                <label class="form-label">Select Date & Time</label>
+                                                <input type="datetime-local" id="scheduleDateTime" class="form-control" required />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">Notes (optional)</label>
+                                                <textarea id="scheduleNotes" class="form-control" rows="2"></textarea>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                        <button class="btn btn-primary" id="saveScheduleBtn">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- View Services Modal -->
+                        <div class="modal fade" id="viewServicesModal" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog modal-lg modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">All Services</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead class="table-light"><tr><th>#</th><th>Schedule</th><th>Maintenance Date</th><th>Invoice</th></tr></thead>
+                                                <tbody id="servicesTableBody"></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal fade" id="followupPriya" tabindex="-1">
+                            <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Follow-up History — Priya Sharma <span class="ms-2 badge bg-warning" id="statusBadge-followupPriya">Open</span></h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="mb-3 d-flex">
+                                            <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addFollowModal" data-target-modal="#followupPriya"> <i class="ri-add-line me-1"></i> Add Follow Up</button>
+                                        </div>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered text-center">
+                                                <thead class="table-light">
+                                                    <tr><th>#</th><th>Date</th><th>Remark</th><th>Status</th><th>Next Follow Up</th></tr>
+                                                </thead>
+                                                <tbody class="followup-body">
+                                                    <tr><td>1</td><td>15-Nov-2025</td><td>Lead Added</td><td>Open</td><td>25-Nov-2025</td></tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal fade" id="followupRavi" tabindex="-1">
+                            <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Follow-up History — Ravi Verma <span class="ms-2 badge bg-success" id="statusBadge-followupRavi">Booked</span></h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="mb-3 d-flex">
+                                            <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addFollowModal" data-target-modal="#followupRavi"> <i class="ri-add-line me-1"></i> Add Follow Up</button>
+                                        </div>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered text-center">
+                                                <thead class="table-light">
+                                                    <tr><th>#</th><th>Date</th><th>Remark</th><th>Status</th><th>Next Follow Up</th></tr>
+                                                </thead>
+                                                <tbody class="followup-body">
+                                                    <tr><td>1</td><td>18-Nov-2025</td><td>Directly Booked</td><td>Booked</td><td>-</td></tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Single Add Follow Up modal (static form, no JS processing) -->
+                        <div class="modal fade" id="addFollowModal" tabindex="-1">
+                            <div class="modal-dialog modal-sm modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header bg-light">
+                                        <h5 class="modal-title mb-2">Add Follow Up</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <label class="form-label">Remark</label>
+                                        <textarea id="fuRemark" class="form-control" rows="2"></textarea>
+                                        <label class="form-label mt-2">Next Follow Up Date</label>
+                                        <input id="fuDate" type="date" class="form-control">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+                                        <button class="btn btn-primary btn-sm" data-bs-dismiss="modal">Save</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    
                 </div>
-
-
-
             </div>
         </div>
-    </div>
-    <!-- End Page-content -->
 
+
+
+
+        <!-- end main content-->
+    </div>
+    <!-- END layout-wrapper -->
+
+
+    <!-- footer -->
     <footer class="footer">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-6">
-                    <script>document.write(new Date().getFullYear())</script> © Velzon.
+                    <div class="text-muted">
+                        <script>document.write(new Date().getFullYear())</script> © Velzon.
+                    </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="text-sm-end d-none d-sm-block">
@@ -1383,12 +1440,6 @@
             </div>
         </div>
     </footer>
-    </div>
-    <!-- end main content-->
-
-
-    <!-- END layout-wrapper -->
-
 
 
     <!--start back-to-top-->
@@ -1411,211 +1462,175 @@
             data-bs-target="#theme-settings-offcanvas" aria-controls="theme-settings-offcanvas">
             <i class='mdi mdi-spin mdi-cog-outline fs-22'></i>
         </div>
+
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered ">
-            <div class="modal-content">
 
-                <div class="modal-header border-bottom bg-light">
-                    <h1 class="modal-title fs-4 mb-3 " id="exampleModalLabel">Add Services</h1>
-                    <button type="button" class="btn-close mb-3 me-2 mt-1" data-bs-dismiss="modal"></button>
-                </div>
-
-                <div class="modal-body p-4">
-
-                    <div id="svcFormContainer">
-                        <form id="svcForm" class="needs-validation" novalidate>
-                            <div class="row g-3">
-                                <!-- Treatment Type -->
-                                <div class="col-md-6">
-                                    <label for="svcTreatmentType" class="form-label">Treatment Type</label>
-                                    <select id="svcTreatmentType" class="form-select" required>
-                                        <option selected disabled value="">Select</option>
-                                        <option>Basic</option>
-                                        <option>Premium</option>
-                                        <option>Advanced</option>
-                                        <option>Custom</option>
-                                    </select>
-                                </div>
-
-                                <!-- Treatment Name -->
-                                <div class="col-md-6">
-                                    <label for="svcTreatmentName" class="form-label">Treatment Name</label>
-                                    <input type="text" id="svcTreatmentName" class="form-control" required />
-                                </div>
-
-                                <!-- Warranty -->
-                                <div class="col-md-4">
-                                    <label for="svcWarranty" class="form-label">Warranty (Years)</label>
-                                    <input type="number" id="svcWarranty" class="form-control" min="0" value="0" />
-                                </div>
-
-                                <!-- Free Maintenance -->
-                                <div class="col-md-4">
-                                    <label for="svcFreeMaintenance" class="form-label">Free Maintenance (count)</label>
-                                    <input type="number" id="svcFreeMaintenance" class="form-control" min="0"
-                                        value="0" />
-                                </div>
-
-                                <!-- Frequency -->
-                                <div class="col-md-4">
-                                    <label for="svcFrequency" class="form-label">Frequency (Months)</label>
-                                    <input type="number" id="svcFrequency" class="form-control" min="0" value="0" />
-                                </div>
-
-                                <!-- Fee input -->
-                                <div class="col-md-6">
-                                    <label for="svcFee" class="form-label">Fee (without discount & without GST)</label>
-                                    <div class="input-group">
-                                        <span class="input-group-text">₹</span>
-                                        <input type="number" id="svcFee" class="form-control" value="10000" min="0"
-                                            step="0.01" required />
-                                    </div>
-                                </div>
-
-                                <!-- GST static -->
-                                <div class="col-md-3">
-                                    <label class="form-label">GST</label>
-                                    <input class="form-control" value="18%" readonly />
-                                </div>
-
-                                <!-- GST Fee -->
-                                <div class="col-md-3">
-                                    <label for="svcGstFee" class="form-label">GST Fee</label>
-                                    <div class="input-group">
-                                        <span class="input-group-text">₹</span>
-                                        <input type="text" id="svcGstFee" class="form-control" readonly />
-                                    </div>
-                                </div>
-
-                                <!-- Total Fee -->
-                                <div class="col-12">
-                                    <label for="svcTotalFee" class="form-label">Total Fee (Fee + GST)</label>
-                                    <div class="input-group">
-                                        <span class="input-group-text">₹</span>
-                                        <input type="text" id="svcTotalFee" class="form-control fw-bold" readonly />
-                                    </div>
-                                </div>
-
-                                <!-- Buttons (use modal footer too if you want) -->
-                                <div class="col-12 d-flex justify-content-end gap-2">
-                                    <button type="button" id="svcCancelBtn" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Cancel</button>
-                                    <button type="submit" id="svcSaveBtn" class="btn btn-primary">Save</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
+    </div>
     </div>
 
-    <!-- Java script for modal GST CAL -->
+    </div>
+
+    </div>
+
+    </div>
+
+
+    <!-- Minimal JS: keep local Bootstrap bundle and app bootstrapper only -->
+    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/app.js"></script>
+
     <script>
-            (function () {
-                const GST_RATE = 0.18;
-                const container = document.getElementById('svcFormContainer');
-                if (!container) return; // agar modal mein nahi hai toh kuch na kare
+    // Minimal combined JS for Upcoming page: filtering + view/schedule wiring
+    (function () {
+        // --- helper date utilities ---
+        function parseDate(cellText) {
+            if (!cellText || cellText.trim() === '-') return null;
+            const parts = cellText.trim().split('-');
+            if (parts.length < 3) return null;
+            let day = parseInt(parts[0], 10);
+            let mon = parts[1];
+            let year = parts[2];
+            if (year.length === 2) year = '20' + year;
+            const months = { Jan:0, Feb:1, Mar:2, Apr:3, May:4, Jun:5, Jul:6, Aug:7, Sep:8, Oct:9, Nov:10, Dec:11 };
+            const mShort = mon.substring(0,3);
+            const mIdx = months[mShort] !== undefined ? months[mShort] : parseInt(mon,10)-1;
+            const d = new Date(year, mIdx, day);
+            return isNaN(d) ? null : d;
+        }
 
-                const form = container.querySelector('#svcForm');
-                const feeEl = container.querySelector('#svcFee');
-                const gstFeeEl = container.querySelector('#svcGstFee');
-                const totalFeeEl = container.querySelector('#svcTotalFee');
+        function startOfDay(d) { const x = new Date(d); x.setHours(0,0,0,0); return x; }
 
-                function fmt(n) {
-                    if (isNaN(n) || n === null) return '0.00';
-                    return Number(n).toFixed(2);
+        function formatDisplayDate(dt) {
+            if (!dt) return '-';
+            const d = new Date(dt);
+            const dd = String(d.getDate()).padStart(2,'0');
+            const mNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+            const mon = mNames[d.getMonth()];
+            const yy = String(d.getFullYear()).slice(2);
+            return `${dd}-${mon}-${yy}`;
+        }
+
+        // --- filtering (tabs) ---
+        function categorizeRow(row) {
+            const cells = row.querySelectorAll('td');
+            if (!cells || cells.length < 7) return null;
+            const upcomingText = cells[6].textContent || '';
+            return parseDate(upcomingText);
+        }
+
+        function applyFilter(key) {
+            const tbody = document.getElementById('leadsBody');
+            const rows = Array.from(tbody.querySelectorAll('tr'));
+            const today = startOfDay(new Date());
+            const tomorrow = startOfDay(new Date(today.getTime() + 24 * 3600 * 1000));
+            const next10End = startOfDay(new Date(today.getTime() + 10 * 24 * 3600 * 1000));
+            let counts = { all:0, today:0, tomorrow:0, next10:0 };
+
+            rows.forEach(r => {
+                const d = categorizeRow(r);
+                let show = true;
+                if (!d) show = (key === 'All');
+                else {
+                    const sd = startOfDay(d);
+                    counts.all += 1;
+                    if (sd.getTime() === today.getTime()) counts.today += 1;
+                    if (sd.getTime() === tomorrow.getTime()) counts.tomorrow += 1;
+                    if (sd.getTime() >= tomorrow.getTime() && sd.getTime() <= next10End.getTime()) counts.next10 += 1;
+                    if (key === 'All') show = true;
+                    else if (key === 'Today') show = (sd.getTime() === today.getTime());
+                    else if (key === 'Tomorrow') show = (sd.getTime() === tomorrow.getTime());
+                    else if (key === 'Next10') show = (sd.getTime() >= tomorrow.getTime() && sd.getTime() <= next10End.getTime());
                 }
+                r.style.display = show ? '' : 'none';
+            });
 
-                function updateFees() {
-                    const base = parseFloat(feeEl.value || 0);
-                    const gst = base * GST_RATE;
-                    const total = base + gst;
-                    gstFeeEl.value = fmt(gst);
-                    totalFeeEl.value = fmt(total);
-                }
+            document.querySelectorAll('.lead-count').forEach(el => {
+                const txt = el.parentElement.textContent.trim().toLowerCase();
+                if (txt.includes('upcoming')) el.textContent = counts.all || 0;
+                if (txt.includes('today')) el.textContent = counts.today || 0;
+                if (txt.includes('tomorrow')) el.textContent = counts.tomorrow || 0;
+                if (txt.includes('next 10')) el.textContent = counts.next10 || 0;
+            });
+            window.__applyUpcomingFilter = applyFilter;
+        }
 
-                // Live updates
-                feeEl.addEventListener('input', updateFees);
+        document.querySelectorAll('ul.nav-tabs a').forEach(a => {
+            a.addEventListener('click', function () {
+                const text = a.textContent.trim();
+                if (text.startsWith('Upcoming')) applyFilter('All');
+                else if (text.startsWith('Today')) applyFilter('Today');
+                else if (text.startsWith('Tomorrow')) applyFilter('Tomorrow');
+                else if (text.startsWith('Next 10')) applyFilter('Next10');
+            });
+        });
 
-                // initial calc (in case default value present)
-                updateFees();
+        window.addEventListener('load', function () { applyFilter('All'); });
 
-                // Bootstrap-style validation + submit handler
-                form.addEventListener('submit', function (e) {
-                    e.preventDefault();
-                    e.stopPropagation();
+        // --- view & schedule wiring ---
+        const tbody = document.getElementById('leadsBody');
+        let activeRow = null;
 
-                    // simple validity check
-                    if (!form.checkValidity()) {
-                        form.classList.add('was-validated');
-                        // focus first invalid element inside this container
-                        const firstInvalid = form.querySelector(':invalid');
-                        if (firstInvalid) firstInvalid.focus();
-                        return;
-                    }
+        if (tbody) {
+            tbody.addEventListener('click', function (e) {
+                const btnView = e.target.closest('.btn-view');
+                const btnSchedule = e.target.closest('.btn-schedule');
+                if (btnView) { activeRow = btnView.closest('tr'); openViewModal(activeRow); }
+                else if (btnSchedule) { activeRow = btnSchedule.closest('tr'); openScheduleModal(activeRow); }
+            });
+        }
 
-                    // collect form data
-                    const data = {
-                        treatmentType: container.querySelector('#svcTreatmentType').value,
-                        treatmentName: container.querySelector('#svcTreatmentName').value,
-                        warrantyYears: Number(container.querySelector('#svcWarranty').value || 0),
-                        freeMaintenanceCount: Number(container.querySelector('#svcFreeMaintenance').value || 0),
-                        frequencyMonths: Number(container.querySelector('#svcFrequency').value || 0),
-                        feeWithoutGST: Number(feeEl.value || 0),
-                        gstAmount: Number(gstFeeEl.value || 0),
-                        totalFee: Number(totalFeeEl.value || 0),
-                    };
+        function openViewModal(row) {
+            const headerData = document.querySelector('thead tr[data-services]')?.getAttribute('data-services') || '[]';
+            const data = row?.getAttribute('data-services') || headerData;
+            let services = [];
+            try { services = JSON.parse(data); } catch (e) { services = []; }
+            const body = document.getElementById('servicesTableBody');
+            if (!body) return;
+            body.innerHTML = '';
+            services.forEach((s, idx) => {
+                const tr = document.createElement('tr');
+                const schedule = s.schedule ? formatDisplayDate(s.schedule) : '-';
+                const maint = s.maintenance ? formatDisplayDate(s.maintenance) : '-';
+                const invo = s.invoice ? `"${s.invoice}"` : '-';
+                tr.innerHTML = `<td>${idx+1}.</td><td>${schedule}</td><td>${maint}</td><td>${invo}</td>`;
+                body.appendChild(tr);
+            });
+            const modalEl = document.getElementById('viewServicesModal');
+            if (modalEl) new bootstrap.Modal(modalEl).show();
+        }
 
-                    // Replace this with your own save logic (fetch to API etc.)
-                    // For now, close modal if inside bootstrap modal and show console log
-                    console.log('Service data to save:', data);
+        function openScheduleModal(row) {
+            const now = new Date();
+            const localISO = new Date(now.getTime() - (now.getTimezoneOffset() * 60000)).toISOString().slice(0,16);
+            const dtEl = document.getElementById('scheduleDateTime');
+            if (dtEl) dtEl.value = localISO;
+            const notesEl = document.getElementById('scheduleNotes');
+            if (notesEl) notesEl.value = '';
+            const modalEl = document.getElementById('scheduleModal');
+            if (modalEl) new bootstrap.Modal(modalEl).show();
+        }
 
-                    // If this form is inside a Bootstrap modal, try to hide it gracefully:
-                    // (find nearest .modal element)
-                    const modalEl = container.closest('.modal');
-                    if (modalEl && typeof bootstrap !== 'undefined') {
-                        const modalInstance = bootstrap.Modal.getInstance(modalEl) || new bootstrap.Modal(modalEl);
-                        modalInstance.hide();
-                    }
-
-                    // You can show user feedback — here we use alert for simplicity
-                    alert('Service saved successfully.');
-                }, false);
-            })();
+        const saveBtn = document.getElementById('saveScheduleBtn');
+        if (saveBtn) saveBtn.addEventListener('click', function () {
+            const dtVal = document.getElementById('scheduleDateTime')?.value;
+            if (!dtVal || !activeRow) return;
+            const cells = activeRow.querySelectorAll('td');
+            const d = new Date(dtVal);
+            if (cells && cells[6]) cells[6].textContent = formatDisplayDate(d);
+            try {
+                const services = JSON.parse(activeRow.getAttribute('data-services') || '[]');
+                services.unshift({ schedule: d.toISOString().slice(0,10), maintenance: null, invoice: null });
+                activeRow.setAttribute('data-services', JSON.stringify(services));
+            } catch (e) {}
+            const modalEl = document.getElementById('scheduleModal');
+            const modalInst = bootstrap.Modal.getInstance(modalEl);
+            if (modalInst) modalInst.hide();
+            if (window.__applyUpcomingFilter) window.__applyUpcomingFilter();
+        });
+    })();
     </script>
 
-
-
-
-    <!-- JAVASCRIPT -->
-    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/libs/simplebar/simplebar.min.js"></script>
-    <script src="assets/libs/node-waves/waves.min.js"></script>
-    <script src="assets/libs/feather-icons/feather.min.js"></script>
-    <script src="assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
-    <script src="assets/js/plugins.js"></script>
-
-    <!-- apexcharts -->
-    <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
-
-    <!-- Vector map-->
-    <script src="assets/libs/jsvectormap/jsvectormap.min.js"></script>
-    <script src="assets/libs/jsvectormap/maps/world-merc.js"></script>
-
-    <!--Swiper slider js-->
-    <script src="assets/libs/swiper/swiper-bundle.min.js"></script>
-
-    <!-- Dashboard init -->
-    <script src="assets/js/pages/dashboard-ecommerce.init.js"></script>
-
-    <!-- App js -->
-    <script src="assets/js/app.js"></script>
 </body>
 
 </html>
