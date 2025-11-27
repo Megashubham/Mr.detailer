@@ -1172,7 +1172,7 @@
 
                             <!-- DATE FILTER -->
                             <div class="d-flex gap-2 mb-3 align-items-center">
-                                <label class="form-label mb-0 me-2">Filter by Date:</label>
+                                <label class="form-label mb-0 me-2">Filter by Date (Booking):</label>
                                 <input type="date" id="dateFrom" class="form-control form-control-sm"
                                     style="width:170px;">
                                 <input type="date" id="dateTo" class="form-control form-control-sm"
@@ -1181,48 +1181,36 @@
                                 <button class="btn btn-sm btn-outline-secondary" id="clearDateFilter">Clear</button>
                             </div>
 
-                            <!-- UPDATED TABS -->
-                            <ul class="nav nav-tabs nav-justified mb-3">
+                            <!-- TABS -->
+                            <ul class="nav nav-tabs nav-justified mb-3" id="filterTabs" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" data-bs-toggle="tab" href="#leadTableContent"
-                                        data-filter="CompletedAll">
-                                        Completed (All)
-                                        <span class="badge ms-1 bg-dark">20</span>
+                                    <a class="nav-link active" href="#" data-filter="CompletedAll" role="tab">
+                                        Completed (All) <span class="badge ms-1 bg-dark"
+                                            id="badge-CompletedAll">0</span>
                                     </a>
                                 </li>
-
                                 <li class="nav-item">
-                                    <a class="nav-link" data-bs-toggle="tab" href="#leadTableContent"
-                                        data-filter="Today">
-                                        Today
-                                        <span class="badge ms-1 bg-primary">4</span>
+                                    <a class="nav-link" href="#" data-filter="Today" role="tab">
+                                        Today <span class="badge ms-1 bg-primary" id="badge-Today">0</span>
                                     </a>
                                 </li>
-
                                 <li class="nav-item">
-                                    <a class="nav-link" data-bs-toggle="tab" href="#leadTableContent"
-                                        data-filter="Yesterday">
-                                        Yesterday
-                                        <span class="badge ms-1 bg-primary">2</span>
+                                    <a class="nav-link" href="#" data-filter="Yesterday" role="tab">
+                                        Yesterday <span class="badge ms-1 bg-primary" id="badge-Yesterday">0</span>
                                     </a>
                                 </li>
-
                                 <li class="nav-item">
-                                    <a class="nav-link" data-bs-toggle="tab" href="#leadTableContent"
-                                        data-filter="Last10">
-                                        Last 10 Days
-                                        <span class="badge ms-1 bg-warning">13</span>
+                                    <a class="nav-link" href="#" data-filter="Last10" role="tab">
+                                        Last 10 Days <span class="badge ms-1 bg-warning" id="badge-Last10">0</span>
                                     </a>
                                 </li>
                             </ul>
 
                             <!-- TABLE -->
                             <div class="tab-content text-muted">
-                                <div class="tab-pane active show" id="leadTableContent">
-
+                                <div class="tab-pane active show" id="leadTableContent" role="tabpanel">
                                     <div class="table-responsive">
-                                        <table class="table align-middle table-list text-center">
-
+                                        <table class="table align-middle table-list text-center" id="leadsTable">
                                             <thead class="table-light">
                                                 <tr>
                                                     <th>S.No.</th>
@@ -1238,64 +1226,47 @@
                                             </thead>
 
                                             <tbody>
-
-                                                <!-- UPDATED ROW -->
+                                                <!-- Example row (your updated row) -->
                                                 <tr>
                                                     <td>1.</td>
-
-                                                    <!-- Booking -->
                                                     <td class="text-start">
                                                         <div>ID450033</div>
-                                                        <div class="text-muted">21-Aug-25</div>
+                                                        <div class="text-muted booking-date">21-Aug-25</div>
                                                         <div class="fw-semibold mt-1">Mohit</div>
                                                         <div class="text-muted">9711844676</div>
                                                     </td>
-
-                                                    <!-- Treatment -->
                                                     <td class="text-start">
                                                         <div class="fw-medium">PPF - ABC PPF</div>
                                                         <div class="text-muted">(5 Year Warranty)</div>
                                                         <div class="text-muted">(6 Free Maintenance)</div>
                                                     </td>
-
-                                                    <!-- Vehicle -->
                                                     <td class="text-start">
                                                         <div>Car</div>
                                                         <div>Mini SUV</div>
                                                         <div class="text-muted">DL4C83221</div>
                                                         <div class="fw-medium">Tata Harrier (Black)</div>
                                                     </td>
-
-                                                    <!-- Pending Maint. -->
-                                                    <td>5</td>
-
-                                                    <!-- Last Maint. -->
-                                                    <td>-</td>
-
-                                                    <!-- Upcoming -->
-                                                    <td class="text-start">
+                                                    <td class="text-center">5</td>
+                                                    <td class="text-center last-maint">-</td>
+                                                    <td class="text-start upcoming-dates">
                                                         <div>21-Nov-25</div>
                                                         <div>21-Feb-26</div>
                                                         <small class="text-muted">1 of 6 (Invoice)</small>
                                                     </td>
-
-                                                    <!-- Studio -->
                                                     <td class="text-start">
                                                         Crystal Studio<br>
                                                         <small class="text-muted">New Delhi</small>
                                                     </td>
-
-                                                    <!-- Action -->
                                                     <td>
-                                                        <button class="btn btn-sm btn-outline-primary">View</button>
+                                                        <button class="btn btn-sm btn-outline-primary"><i class="ri-eye-line"></i></button>
                                                     </td>
                                                 </tr>
 
+                                                <!-- Add more rows below as needed, keeping .booking-date and .upcoming-dates cells present -->
                                             </tbody>
 
                                         </table>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -1373,155 +1344,234 @@
     <script src="assets/js/app.js"></script>
 
     <script>
-            // Minimal combined JS for Upcoming page: filtering + view/schedule wiring
             (function () {
-                // --- helper date utilities ---
-                function parseDate(cellText) {
-                    if (!cellText || cellText.trim() === '-') return null;
-                    const parts = cellText.trim().split('-');
-                    if (parts.length < 3) return null;
-                    let day = parseInt(parts[0], 10);
-                    let mon = parts[1];
-                    let year = parts[2];
-                    if (year.length === 2) year = '20' + year;
-                    const months = { Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5, Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11 };
-                    const mShort = mon.substring(0, 3);
-                    const mIdx = months[mShort] !== undefined ? months[mShort] : parseInt(mon, 10) - 1;
-                    const d = new Date(year, mIdx, day);
-                    return isNaN(d) ? null : d;
-                }
+                // Utility: parse dates from common formats used in your markup.
+                // Accepts: "21-Nov-25", "21-Nov-2025", "2025-11-21", "21 Aug 2025", JS Date objects, ISO strings, etc.
+                function parseDateFlexible(s) {
+                    if (!s) return null;
+                    if (s instanceof Date) return s;
+                    s = String(s).trim();
+                    if (!s) return null;
 
-                function startOfDay(d) { const x = new Date(d); x.setHours(0, 0, 0, 0); return x; }
+                    // Try ISO first
+                    var iso = Date.parse(s);
+                    if (!isNaN(iso)) return new Date(iso);
 
-                function formatDisplayDate(dt) {
-                    if (!dt) return '-';
-                    const d = new Date(dt);
-                    const dd = String(d.getDate()).padStart(2, '0');
-                    const mNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-                    const mon = mNames[d.getMonth()];
-                    const yy = String(d.getFullYear()).slice(2);
-                    return `${dd}-${mon}-${yy}`;
-                }
-
-                // --- filtering (tabs) ---
-                function categorizeRow(row) {
-                    const cells = row.querySelectorAll('td');
-                    if (!cells || cells.length < 7) return null;
-                    const upcomingText = cells[6].textContent || '';
-                    return parseDate(upcomingText);
-                }
-
-                function applyFilter(key) {
-                    const tbody = document.getElementById('leadsBody');
-                    const rows = Array.from(tbody.querySelectorAll('tr'));
-                    const today = startOfDay(new Date());
-                    const tomorrow = startOfDay(new Date(today.getTime() + 24 * 3600 * 1000));
-                    const next10End = startOfDay(new Date(today.getTime() + 10 * 24 * 3600 * 1000));
-                    let counts = { all: 0, today: 0, tomorrow: 0, next10: 0 };
-
-                    rows.forEach(r => {
-                        const d = categorizeRow(r);
-                        let show = true;
-                        if (!d) show = (key === 'All');
-                        else {
-                            const sd = startOfDay(d);
-                            counts.all += 1;
-                            if (sd.getTime() === today.getTime()) counts.today += 1;
-                            if (sd.getTime() === tomorrow.getTime()) counts.tomorrow += 1;
-                            if (sd.getTime() >= tomorrow.getTime() && sd.getTime() <= next10End.getTime()) counts.next10 += 1;
-                            if (key === 'All') show = true;
-                            else if (key === 'Today') show = (sd.getTime() === today.getTime());
-                            else if (key === 'Tomorrow') show = (sd.getTime() === tomorrow.getTime());
-                            else if (key === 'Next10') show = (sd.getTime() >= tomorrow.getTime() && sd.getTime() <= next10End.getTime());
+                    // Try dd-MMM-yy or dd-MMM-yyyy e.g. 21-Nov-25 or 21-Nov-2025
+                    var m = s.match(/^(\\d{1,2})[-\\s]([A-Za-z]{3,})[-\\s](\\d{2,4})$/);
+                    if (m) {
+                        var day = parseInt(m[1], 10);
+                        var monStr = m[2].toLowerCase();
+                        var year = parseInt(m[3], 10);
+                        if (m[3].length === 2) {
+                            // two-digit year -> assume 2000s (25 -> 2025). Adjust if you prefer different logic.
+                            year = 2000 + year;
                         }
-                        r.style.display = show ? '' : 'none';
-                    });
+                        var months = {
+                            jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5,
+                            jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11
+                        };
+                        var mon = months[monStr.substring(0, 3)];
+                        if (mon === undefined) return null;
+                        return new Date(year, mon, day);
+                    }
 
-                    document.querySelectorAll('.lead-count').forEach(el => {
-                        const txt = el.parentElement.textContent.trim().toLowerCase();
-                        if (txt.includes('upcoming')) el.textContent = counts.all || 0;
-                        if (txt.includes('today')) el.textContent = counts.today || 0;
-                        if (txt.includes('tomorrow')) el.textContent = counts.tomorrow || 0;
-                        if (txt.includes('next 10')) el.textContent = counts.next10 || 0;
-                    });
-                    window.__applyUpcomingFilter = applyFilter;
+                    // Try dd Month yyyy e.g. "21 August 2025"
+                    var m2 = s.match(/^(\\d{1,2})\\s+([A-Za-z]+)\\s+(\\d{4})$/);
+                    if (m2) {
+                        var day = parseInt(m2[1], 10);
+                        var monName = m2[2].substring(0, 3).toLowerCase();
+                        var year = parseInt(m2[3], 10);
+                        var months = {
+                            jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5,
+                            jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11
+                        };
+                        var mon = months[monName];
+                        if (mon === undefined) return null;
+                        return new Date(year, mon, day);
+                    }
+
+                    // Last fallback: try extracting yyyy-mm-dd pattern inside the string
+                    var m3 = s.match(/(\\d{4})[-\\/](\\d{1,2})[-\\/](\\d{1,2})/);
+                    if (m3) {
+                        return new Date(parseInt(m3[1], 10), parseInt(m3[2], 10) - 1, parseInt(m3[3], 10));
+                    }
+
+                    return null;
                 }
 
-                document.querySelectorAll('ul.nav-tabs a').forEach(a => {
-                    a.addEventListener('click', function () {
-                        const text = a.textContent.trim();
-                        if (text.startsWith('Upcoming')) applyFilter('All');
-                        else if (text.startsWith('Today')) applyFilter('Today');
-                        else if (text.startsWith('Tomorrow')) applyFilter('Tomorrow');
-                        else if (text.startsWith('Next 10')) applyFilter('Next10');
+                // Compare two Date objects by date only (no time).
+                function sameDay(a, b) {
+                    return a && b &&
+                        a.getFullYear() === b.getFullYear() &&
+                        a.getMonth() === b.getMonth() &&
+                        a.getDate() === b.getDate();
+                }
+
+                // Get upcoming date for a row: try to find first valid date inside .upcoming-dates cell.
+                function getUpcomingDateFromRow(row) {
+                    var upCell = row.querySelector('.upcoming-dates');
+                    if (!upCell) return null;
+                    var text = upCell.innerText || upCell.textContent || '';
+                    // find potential date tokens (simple regex for dd-xxx-yy/ yyyy or ISO)
+                    var tokens = text.split(/\\n|\\r|,/).map(t => t.trim()).filter(Boolean);
+                    for (var i = 0; i < tokens.length; i++) {
+                        var dt = parseDateFlexible(tokens[i]);
+                        if (dt) return dt;
+                        // also try to extract date-like substrings
+                        var sub = tokens[i].match(/(\\d{1,2}[-\\s][A-Za-z]{3,}[-\\s]\\d{2,4})/);
+                        if (sub) {
+                            var dt2 = parseDateFlexible(sub[1]);
+                            if (dt2) return dt2;
+                        }
+                        var sub2 = tokens[i].match(/(\\d{4}[-\\/]\\d{1,2}[-\\/]\\d{1,2})/);
+                        if (sub2) {
+                            var dt3 = parseDateFlexible(sub2[1]);
+                            if (dt3) return dt3;
+                        }
+                    }
+                    return null;
+                }
+
+                // Get booking date for a row (first .booking-date cell text)
+                function getBookingDateFromRow(row) {
+                    var bookCell = row.querySelector('.booking-date');
+                    if (!bookCell) {
+                        // fallback: try to find date-like text in booking details cell (cell index 1)
+                        var cell = row.cells[1];
+                        if (!cell) return null;
+                        var text = cell.innerText || cell.textContent || '';
+                        var m = text.match(/(\\d{1,2}[-\\s][A-Za-z]{3,}[-\\s]\\d{2,4})/);
+                        if (m) return parseDateFlexible(m[1]);
+                        var m2 = text.match(/(\\d{4}[-\\/]\\d{1,2}[-\\/]\\d{1,2})/);
+                        if (m2) return parseDateFlexible(m2[1]);
+                        return null;
+                    }
+                    return parseDateFlexible(bookCell.innerText || bookCell.textContent);
+                }
+
+                // Main filter function - evaluates selected tab + optional booking date range
+                function applyFilters() {
+                    var activeFilter = document.querySelector('#filterTabs .nav-link.active').dataset.filter;
+                    var fromVal = document.getElementById('dateFrom').value;
+                    var toVal = document.getElementById('dateTo').value;
+                    var fromDate = fromVal ? parseDateFlexible(fromVal) : null;
+                    var toDate = toVal ? parseDateFlexible(toVal) : null;
+                    if (toDate) {
+                        // set toDate to end of day for inclusive comparison
+                        toDate.setHours(23, 59, 59, 999);
+                    }
+
+                    var today = new Date();
+                    today.setHours(0, 0, 0, 0);
+                    var yesterday = new Date(today);
+                    yesterday.setDate(yesterday.getDate() - 1);
+                    var tenDaysAgo = new Date(today);
+                    tenDaysAgo.setDate(tenDaysAgo.getDate() - 9); // "Last 10 Days" includes today and previous 9 days
+
+                    var tbody = document.querySelector('#leadsTable tbody');
+                    var rows = Array.from(tbody.querySelectorAll('tr'));
+
+                    // Counters for badges (respecting the booking date range if given)
+                    var counts = {
+                        CompletedAll: 0,
+                        Today: 0,
+                        Yesterday: 0,
+                        Last10: 0
+                    };
+
+                    rows.forEach(function (row) {
+                        var bookingDate = getBookingDateFromRow(row); // booking date
+                        var upcomingDate = getUpcomingDateFromRow(row); // upcoming schedule date
+
+                        // Date-range (booking) filter: if provided, row must satisfy
+                        var withinBookingRange = true;
+                        if (fromDate || toDate) {
+                            if (!bookingDate) withinBookingRange = false;
+                            else {
+                                var b = new Date(bookingDate.getFullYear(), bookingDate.getMonth(), bookingDate.getDate());
+                                if (fromDate && b < fromDate) withinBookingRange = false;
+                                if (toDate && b > toDate) withinBookingRange = false;
+                            }
+                        }
+
+                        // Determine if row matches each tab condition (independent of currently active tab)
+                        var matchesToday = upcomingDate ? sameDay(upcomingDate, today) : false;
+                        var matchesYesterday = upcomingDate ? sameDay(upcomingDate, yesterday) : false;
+                        var matchesLast10 = upcomingDate ? (upcomingDate >= tenDaysAgo && upcomingDate <= today) : false;
+                        var matchesAll = true; // "CompletedAll" just means show if bookingRange ok (and/or we could interpret differently)
+
+                        // Count rows per category (we count only if within booking range)
+                        if (withinBookingRange) {
+                            if (matchesAll) counts.CompletedAll++;
+                            if (matchesToday) counts.Today++;
+                            if (matchesYesterday) counts.Yesterday++;
+                            if (matchesLast10) counts.Last10++;
+                        }
+
+                        // Decide visibility for the currently active tab
+                        var visible = false;
+                        switch (activeFilter) {
+                            case 'Today':
+                                visible = matchesToday && withinBookingRange;
+                                break;
+                            case 'Yesterday':
+                                visible = matchesYesterday && withinBookingRange;
+                                break;
+                            case 'Last10':
+                                visible = matchesLast10 && withinBookingRange;
+                                break;
+                            default: // CompletedAll
+                                visible = withinBookingRange;
+                                break;
+                        }
+
+                        row.style.display = visible ? '' : 'none';
+                    });
+
+                    // Update badges dynamically
+                    document.getElementById('badge-CompletedAll').innerText = counts.CompletedAll;
+                    document.getElementById('badge-Today').innerText = counts.Today;
+                    document.getElementById('badge-Yesterday').innerText = counts.Yesterday;
+                    document.getElementById('badge-Last10').innerText = counts.Last10;
+                }
+
+                // Hook up tab clicks + active toggling
+                var tabLinks = document.querySelectorAll('#filterTabs .nav-link');
+                tabLinks.forEach(function (link) {
+                    link.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        // mark active
+                        tabLinks.forEach(function (l) { l.classList.remove('active'); });
+                        link.classList.add('active');
+                        // reapply filters
+                        applyFilters();
                     });
                 });
 
-                window.addEventListener('load', function () { applyFilter('All'); });
-
-                // --- view & schedule wiring ---
-                const tbody = document.getElementById('leadsBody');
-                let activeRow = null;
-
-                if (tbody) {
-                    tbody.addEventListener('click', function (e) {
-                        const btnView = e.target.closest('.btn-view');
-                        const btnSchedule = e.target.closest('.btn-schedule');
-                        if (btnView) { activeRow = btnView.closest('tr'); openViewModal(activeRow); }
-                        else if (btnSchedule) { activeRow = btnSchedule.closest('tr'); openScheduleModal(activeRow); }
-                    });
-                }
-
-                function openViewModal(row) {
-                    const headerData = document.querySelector('thead tr[data-services]')?.getAttribute('data-services') || '[]';
-                    const data = row?.getAttribute('data-services') || headerData;
-                    let services = [];
-                    try { services = JSON.parse(data); } catch (e) { services = []; }
-                    const body = document.getElementById('servicesTableBody');
-                    if (!body) return;
-                    body.innerHTML = '';
-                    services.forEach((s, idx) => {
-                        const tr = document.createElement('tr');
-                        const schedule = s.schedule ? formatDisplayDate(s.schedule) : '-';
-                        const maint = s.maintenance ? formatDisplayDate(s.maintenance) : '-';
-                        const invo = s.invoice ? `"${s.invoice}"` : '-';
-                        tr.innerHTML = `<td>${idx + 1}.</td><td>${schedule}</td><td>${maint}</td><td>${invo}</td>`;
-                        body.appendChild(tr);
-                    });
-                    const modalEl = document.getElementById('viewServicesModal');
-                    if (modalEl) new bootstrap.Modal(modalEl).show();
-                }
-
-                function openScheduleModal(row) {
-                    const now = new Date();
-                    const localISO = new Date(now.getTime() - (now.getTimezoneOffset() * 60000)).toISOString().slice(0, 16);
-                    const dtEl = document.getElementById('scheduleDateTime');
-                    if (dtEl) dtEl.value = localISO;
-                    const notesEl = document.getElementById('scheduleNotes');
-                    if (notesEl) notesEl.value = '';
-                    const modalEl = document.getElementById('scheduleModal');
-                    if (modalEl) new bootstrap.Modal(modalEl).show();
-                }
-
-                const saveBtn = document.getElementById('saveScheduleBtn');
-                if (saveBtn) saveBtn.addEventListener('click', function () {
-                    const dtVal = document.getElementById('scheduleDateTime')?.value;
-                    if (!dtVal || !activeRow) return;
-                    const cells = activeRow.querySelectorAll('td');
-                    const d = new Date(dtVal);
-                    if (cells && cells[6]) cells[6].textContent = formatDisplayDate(d);
-                    try {
-                        const services = JSON.parse(activeRow.getAttribute('data-services') || '[]');
-                        services.unshift({ schedule: d.toISOString().slice(0, 10), maintenance: null, invoice: null });
-                        activeRow.setAttribute('data-services', JSON.stringify(services));
-                    } catch (e) { }
-                    const modalEl = document.getElementById('scheduleModal');
-                    const modalInst = bootstrap.Modal.getInstance(modalEl);
-                    if (modalInst) modalInst.hide();
-                    if (window.__applyUpcomingFilter) window.__applyUpcomingFilter();
+                // Hook up date filter buttons
+                document.getElementById('applyDateFilter').addEventListener('click', function () {
+                    applyFilters();
                 });
+                document.getElementById('clearDateFilter').addEventListener('click', function () {
+                    document.getElementById('dateFrom').value = '';
+                    document.getElementById('dateTo').value = '';
+                    applyFilters();
+                });
+
+                // Initial run to set correct visibility and badges
+                document.addEventListener('DOMContentLoaded', function () {
+                    applyFilters();
+                });
+
+                // In case this script runs after DOMContentLoaded
+                if (document.readyState === 'complete' || document.readyState === 'interactive') {
+                    setTimeout(applyFilters, 0);
+                }
+
             })();
     </script>
+
 
 </body>
 
