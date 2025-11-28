@@ -1203,107 +1203,104 @@
 
                     <!-- Start page title -->
 
-                    <style>
-                        .flatpickr-input[readonly] {
-                            cursor: pointer;
-                        }
-
-                        .demo-container {
-                            max-width: 520px;
-                            margin: 40px auto;
-                        }
-                    </style>
-
-
-
-                    <div class="card mt-2">
-                        <div class="card-body">
-                            <div class="mb-3 col-md-2">
-                                <input type="text" class="form-control bg-light border-light flatpickr-input"
-                                    id="demo-datepicker" data-provider="flatpickr" data-date-format="d M, Y"
-                                    data-range-date="true" placeholder="Select date range" readonly="readonly">
-                                <div class="mt-2" id="selected-range" style="font-size:0.95rem;color:#333;"></div>
-                                
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+                                <div>
+                                    <button id="btnCreatePurchase" type="button" class="btn btn-primary btn-sm p-2"
+                                        data-bs-toggle="modal" data-bs-target="#createPurchaseModal">
+                                        <i class="ri-add-line me-1"></i> Create Purchase
+                                    </button>
+                                </div>
                             </div>
-                            <ul class="nav nav-tabs nav-justified mb-3" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <a class="nav-link active" data-bs-toggle="tab" href="#leadTableContent" role="tab"
-                                        aria-selected="true" data-filter="All">
-                                        Upcoming (All)
-                                        <span class="badge ms-1 lead-count bg-dark">60</span></a>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <a class="nav-link align-middle" data-bs-toggle="tab" href="#leadTableContent"
-                                        role="tab" aria-selected="false" data-filter="Today" tabindex="-1">
-                                        Today
-                                        <span class="badge ms-1 lead-count bg-primary">2</span></a>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <a class="nav-link align-middle" data-bs-toggle="tab" href="#leadTableContent"
-                                        role="tab" aria-selected="false" data-filter="Tomorrow" tabindex="-1">
-                                        Tomorrow
-                                        <span class="badge ms-1 lead-count bg-primary">2</span></a>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <a class="nav-link" data-bs-toggle="tab" href="#leadTableContent" role="tab"
-                                        aria-selected="false" data-filter="Next10" tabindex="-1">
-                                        Next 10 Days
-                                        <span class="badge ms-1 lead-count bg-warning">15</span></a>
-                                </li>
-                            </ul>
+                        </div>
+                    </div>
 
-                            <div class="tab-content text-muted">
-                                <div class="tab-pane active show" id="leadTableContent" role="tabpanel">
+                    <div class="row mb-3">
+                        <div class="col-lg-4 col-md-6 mb-2">
+                            <label class="form-label mb-1">Date Range</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control bg-light flatpickr-input"
+                                    id="purchase-daterange" data-provider="flatpickr" data-date-format="d M, Y"
+                                    data-range-date="true" placeholder="Select date range" readonly>
+                                <span class="input-group-text"><i class="ri-calendar-line"></i></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 mb-2">
+                            <label class="form-label mb-1">Filter by Item</label>
+                            <select id="filterItem" class="form-select">
+                                <option value="">All Items</option>
+                                <option value="ABC Film 30 Mt.">ABC Film 30 Mt.</option>
+                                <option value="PPF - ABC PPF">PPF - ABC PPF</option>
+                                <option value="PPF - XYZ PPF">PPF - XYZ PPF</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-4 col-md-12 mb-2 d-flex align-items-end justify-content-end gap-2">
+                            <button id="btnResetFilters" class="btn btn-light btn-sm">Reset</button>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Purchases</h5>
+                                </div>
+                                <div class="card-body">
                                     <div class="table-responsive">
-                                        <table class="table align-middle table-list text-center">
+                                        <table class="table table-line align-middle text-center mb-0"
+                                            id="purchaseTable">
                                             <thead class="table-light">
-                                                <tr
-                                                    data-services='[{"schedule":"2025-11-21","maintenance":"2025-11-22","invoice":"Invoice 1"},{"schedule":"2026-02-21","maintenance":"2026-02-22","invoice":"Invoice 2"},{"schedule":"2026-05-21","maintenance":null,"invoice":null},{"schedule":"2026-08-21","maintenance":null,"invoice":null},{"schedule":"2026-11-21","maintenance":null,"invoice":null},{"schedule":"2027-02-21","maintenance":null,"invoice":null}]'>
-                                                    <th>S.No.</th>
-                                                    <th>Booking Details</th>
-                                                    <th>Treatment Details</th>
-                                                    <th>Vehicle Details</th>
-                                                    <th>Maintenance Pending</th>
-                                                    <th>Last Maintenance Date</th>
-                                                    <th>Upcoming Scheduled Maintenance</th>
-                                                    <th>Studio</th>
-                                                    <th>Action</th>
+                                                <tr>
+                                                    <th style="width: 60px;">S.No.</th>
+                                                    <th style="min-width: 220px;">Item</th>
+                                                    <th style="width: 80px;">Qty</th>
+                                                    <th style="min-width: 140px;">Amount</th>
+                                                    <th style="min-width: 140px;">Studio</th>
+                                                    <th style="min-width: 120px;">Attachment</th>
                                                 </tr>
                                             </thead>
-                                            <tbody id="leadsBody">
-                                                <!-- Sample row inserted per user request -->
-                                                <tr
-                                                    data-services='[{"schedule":"2025-11-21","maintenance":"2025-11-22","invoice":"Invoice 1"},{"schedule":"2026-02-21","maintenance":"2026-02-22","invoice":"Invoice 2"},{"schedule":"2026-05-21","maintenance":null,"invoice":null},{"schedule":"2026-08-21","maintenance":null,"invoice":null},{"schedule":"2026-11-21","maintenance":null,"invoice":null},{"schedule":"2027-02-21","maintenance":null,"invoice":null}]'>
+                                            <tbody id="purchaseTbody">
+                                                <tr data-item="ABC Film 30 Mt." data-date="2025-11-28">
                                                     <td>1.</td>
-                                                    <td class="text-start">
-                                                        <div>ID450033</div>
-                                                        <div class="text-muted">21-Aug-25</div>
-                                                        <div class="fw-semibold mt-1">Mohit</div>
-                                                        <div class="text-muted">9711844676</div>
-                                                    </td>
-                                                    <td class="text-start">
-                                                        <div class="fw-medium">PPF - ABC PPF</div>
-                                                        <div class="text-muted">(5 Year Warranty)</div>
-                                                        <div class="text-muted">(6 Fee Maintenance)</div>
-                                                    </td>
-                                                    <td class="text-start">
-                                                        <div>Car — Mini SUV</div>
-                                                        <div class="text-muted">DL4C83221</div>
-                                                        <div class="fw-medium">Tata Harrier (Black)</div>
-                                                    </td>
-                                                    <td class="text-center">6</td>
-                                                    <td class="text-center">-</td>
-                                                    <td class="text-center">21-Nov-25</td>
-                                                    <td class="text-start">Crystal Studio<br /><small
-                                                            class="text-muted">New Delhi</small></td>
                                                     <td>
-                                                        <div
-                                                            class="d-flex gap-2 align-items-center justify-content-center">
-                                                            <button class="btn btn-sm btn-outline-primary btn-view"><i
-                                                                    class="ri-eye-line"></i></button>
-                                                            <button
-                                                                class="btn btn-sm btn-primary btn-schedule">Schedule</button>
-                                                        </div>
+                                                        <div class="fw-semibold">ABC Film 30 Mt.</div>
+                                                        <div class="text-muted">PPF - ABC PPF</div>
+                                                        <div class="text-muted">(5 Year Warranty)</div>
+                                                        <div class="text-muted">(6 Free Maintenance)</div>
+                                                        <div class="text-muted mt-1">28-Nov-25</div>
+                                                    </td>
+                                                    <td>5</td>
+                                                    <td>Rs. 50,000</td>
+                                                    <td>
+                                                        <div>Crystal Studio</div>
+                                                        <div class="text-muted">New Delhi</div>
+                                                    </td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-link btn-sm p-0">
+                                                            <i class="ri-download-fill"></i> Bill-ABC-001.pdf
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr data-item="PPF - XYZ PPF" data-date="2025-11-28">
+                                                    <td>2.</td>
+                                                    <td>
+                                                        <div class="fw-semibold">PPF - XYZ PPF</div>
+                                                        <div class="text-muted">PPF - XYZ PPF</div>
+                                                        <div class="text-muted">(5 Year Warranty)</div>
+                                                        <div class="text-muted">(6 Free Maintenance)</div>
+                                                        <div class="text-muted mt-1">28-Nov-25</div>
+                                                    </td>
+                                                    <td>7</td>
+                                                    <td>Rs. 7,000</td>
+                                                    <td>
+                                                        <div>Crystal Studio</div>
+                                                        <div class="text-muted">New Delhi</div>
+                                                    </td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-link btn-sm p-0">
+                                                            <i class="ri-download-fill"></i> Bill-XYZ-002.pdf
+                                                        </button>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -1312,230 +1309,61 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <!-- Per-lead static follow-up modals (no JS required) -->
-                        <div class="modal fade" id="followupVishal" tabindex="-1">
-                            <div class="modal-dialog modal-lg modal-dialog-scrollable">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">Follow-up History — Vishal <span
-                                                class="ms-2 badge bg-secondary"
-                                                id="statusBadge-followupVishal">Fresh</span></h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="mb-3 d-flex">
-                                            <button type="button" class="btn btn-outline-primary btn-sm"
-                                                data-bs-toggle="modal" data-bs-target="#addFollowModal"
-                                                data-target-modal="#followupVishal"> <i class="ri-add-line me-1"></i>
-                                                Add Follow Up</button>
-                                        </div>
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered text-center">
-                                                <thead class="table-light">
-                                                    <tr>
-                                                        <th>#</th>
-                                                        <th>Date</th>
-                                                        <th>Remark</th>
-                                                        <th>Status</th>
-                                                        <th>Next Follow Up</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody class="followup-body">
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>01-Nov-2025</td>
-                                                        <td>Lead Added</td>
-                                                        <td>Fresh</td>
-                                                        <td>-</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>2</td>
-                                                        <td>02-Nov-2025</td>
-                                                        <td>He will think and discuss</td>
-                                                        <td>Open</td>
-                                                        <td>20-Nov-2025</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
-                                    </div>
+                    <!-- Create Purchase Modal -->
+                    <div class="modal fade" id="createPurchaseModal" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header bg-light">
+                                    <h5 class="modal-title">Create Purchase</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                 </div>
-                            </div>
-                        </div>
-
-                        <!-- Schedule Modal -->
-                        <div class="modal fade" id="scheduleModal" tabindex="-1" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header bg-light">
-                                        <h5 class="modal-title mb-2">Schedule Service</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form id="scheduleForm">
-                                            <div class="mb-3">
-                                                <label class="form-label">Select Date & Time</label>
-                                                <input type="datetime-local" id="scheduleDateTime" class="form-control"
-                                                    required />
+                                <div class="modal-body">
+                                    <form id="purchaseForm">
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label class="form-label">Select Item</label>
+                                                <input list="purchaseItems" id="purchaseItemInput" class="form-control"
+                                                    placeholder="Search or select item">
+                                                <datalist id="purchaseItems">
+                                                    <option value="ABC Film 30 Mt."></option>
+                                                    <option value="PPF - ABC PPF"></option>
+                                                    <option value="PPF - XYZ PPF"></option>
+                                                </datalist>
                                             </div>
-                                            <div class="mb-3">
-                                                <label class="form-label">Notes (optional)</label>
-                                                <textarea id="scheduleNotes" class="form-control" rows="2"></textarea>
+                                            <div class="col-md-3">
+                                                <label class="form-label">Treatment Type</label>
+                                                <input type="text" id="purchaseType" class="form-control" readonly>
                                             </div>
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                        <button class="btn btn-primary" id="saveScheduleBtn">Save</button>
-                                    </div>
+                                            <div class="col-md-3">
+                                                <label class="form-label">Unit Amount (Rs.)</label>
+                                                <input type="number" id="purchaseUnitAmount" class="form-control" readonly>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label class="form-label">Qty</label>
+                                                <input type="number" id="purchaseQty" class="form-control" min="1" value="1">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label class="form-label">Total Amount (Rs.)</label>
+                                                <input type="number" id="purchaseTotalAmount" class="form-control" readonly>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">Studio</label>
+                                                <input type="text" id="purchaseStudio" class="form-control"
+                                                    placeholder="Crystal Studio, New Delhi">
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label class="form-label">Attachments</label>
+                                                <input type="file" id="purchaseAttachments" class="form-control" multiple>
+                                                <div class="form-text">You can upload multiple bills/invoices or related files.</div>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
-                            </div>
-                        </div>
-
-                        <!-- View Services Modal -->
-                        <div class="modal fade" id="viewServicesModal" tabindex="-1" aria-hidden="true">
-                            <div class="modal-dialog modal-lg modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">All Services</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered">
-                                                <thead class="table-light">
-                                                    <tr>
-                                                        <th>#</th>
-                                                        <th>Schedule</th>
-                                                        <th>Maintenance Date</th>
-                                                        <th>Invoice</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody id="servicesTableBody"></tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="modal fade" id="followupPriya" tabindex="-1">
-                            <div class="modal-dialog modal-lg modal-dialog-scrollable">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">Follow-up History — Priya Sharma <span
-                                                class="ms-2 badge bg-warning" id="statusBadge-followupPriya">Open</span>
-                                        </h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="mb-3 d-flex">
-                                            <button type="button" class="btn btn-outline-primary btn-sm"
-                                                data-bs-toggle="modal" data-bs-target="#addFollowModal"
-                                                data-target-modal="#followupPriya"> <i class="ri-add-line me-1"></i> Add
-                                                Follow Up</button>
-                                        </div>
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered text-center">
-                                                <thead class="table-light">
-                                                    <tr>
-                                                        <th>#</th>
-                                                        <th>Date</th>
-                                                        <th>Remark</th>
-                                                        <th>Status</th>
-                                                        <th>Next Follow Up</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody class="followup-body">
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>15-Nov-2025</td>
-                                                        <td>Lead Added</td>
-                                                        <td>Open</td>
-                                                        <td>25-Nov-2025</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="modal fade" id="followupRavi" tabindex="-1">
-                            <div class="modal-dialog modal-lg modal-dialog-scrollable">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">Follow-up History — Ravi Verma <span
-                                                class="ms-2 badge bg-success"
-                                                id="statusBadge-followupRavi">Booked</span></h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="mb-3 d-flex">
-                                            <button type="button" class="btn btn-outline-primary btn-sm"
-                                                data-bs-toggle="modal" data-bs-target="#addFollowModal"
-                                                data-target-modal="#followupRavi"> <i class="ri-add-line me-1"></i> Add
-                                                Follow Up</button>
-                                        </div>
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered text-center">
-                                                <thead class="table-light">
-                                                    <tr>
-                                                        <th>#</th>
-                                                        <th>Date</th>
-                                                        <th>Remark</th>
-                                                        <th>Status</th>
-                                                        <th>Next Follow Up</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody class="followup-body">
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>18-Nov-2025</td>
-                                                        <td>Directly Booked</td>
-                                                        <td>Booked</td>
-                                                        <td>-</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Single Add Follow Up modal (static form, no JS processing) -->
-                        <div class="modal fade" id="addFollowModal" tabindex="-1">
-                            <div class="modal-dialog modal-sm modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header bg-light">
-                                        <h5 class="modal-title mb-2">Add Follow Up</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <label class="form-label">Remark</label>
-                                        <textarea id="fuRemark" class="form-control" rows="2"></textarea>
-                                        <label class="form-label mt-2">Next Follow Up Date</label>
-                                        <input id="fuDate" type="date" class="form-control">
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
-                                        <button class="btn btn-primary btn-sm" data-bs-dismiss="modal">Save</button>
-                                    </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+                                    <button id="btnSavePurchase" class="btn btn-primary btn-sm">Save Purchase</button>
                                 </div>
                             </div>
                         </div>
@@ -1615,203 +1443,125 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.js"></script>
 
     <script>
-            // Auto-init: elements having data-provider="flatpickr"
-            (function () {
-                const els = document.querySelectorAll('input[data-provider="flatpickr"]');
-
-                els.forEach(el => {
-                    // read attributes / fallbacks
-                    const dateFormat = el.getAttribute('data-date-format') || 'd M, Y';
-                    const isRange = el.getAttribute('data-range-date') === 'true';
-
-                    const fp = flatpickr(el, {
-                        mode: isRange ? 'range' : 'single',
-                        dateFormat: dateFormat,     // the value shown inside the input
-                        allowInput: false,          // keep readonly UX via picker
-                        // You can enable altInput if you want a different displayed format:
-                        // altInput: true,
-                        // altFormat: 'd M, Y',
-                        clickOpens: true,
-                        onChange: function (selectedDates, dateStr, instance) {
-                            // dateStr is already formatted according to dateFormat
-                            const display = document.getElementById('selected-range');
-                            if (!dateStr) {
-                                display.textContent = '';
-                                return;
-                            }
-
-                            // For range mode, dateStr will look like "01 Jan, 2025 to 07 Jan, 2025"
-                            display.textContent = 'Selected: ' + dateStr;
-
-                            // If you need JS Date objects:
-                            // selectedDates is an array of Date objects (length 0,1 or 2 for range)
-                            // console.log(selectedDates);
-                        },
-                        // optional: close after selecting range end
-                        onClose: function (selectedDates, dateStr, instance) {
-                            // अगर चाहो तो यहाँ कोई filtering call कर सकते हो
-                            // example: fetchFilteredData(selectedDates);
-                        }
-                    });
-
-                    // optional: set default dates from attributes (if you want)
-                    // const defaultStart = el.getAttribute('data-default-start');
-                    // const defaultEnd = el.getAttribute('data-default-end');
-                    // if (defaultStart || defaultEnd) {
-                    //   fp.setDate([defaultStart, defaultEnd].filter(Boolean));
-                    // }
+        (function () {
+            var rangeInput = document.getElementById('purchase-daterange');
+            if (rangeInput && window.flatpickr) {
+                flatpickr(rangeInput, {
+                    mode: 'range',
+                    dateFormat: 'd M, Y',
+                    clickOpens: true
                 });
-            })();
+            }
+        })();
     </script>
 
     <script>
-        // Minimal combined JS for Upcoming page: filtering + view/schedule wiring
         (function () {
-            // --- helper date utilities ---
-            function parseDate(cellText) {
-                if (!cellText || cellText.trim() === '-') return null;
-                const parts = cellText.trim().split('-');
-                if (parts.length < 3) return null;
-                let day = parseInt(parts[0], 10);
-                let mon = parts[1];
-                let year = parts[2];
-                if (year.length === 2) year = '20' + year;
-                const months = { Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5, Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11 };
-                const mShort = mon.substring(0, 3);
-                const mIdx = months[mShort] !== undefined ? months[mShort] : parseInt(mon, 10) - 1;
-                const d = new Date(year, mIdx, day);
-                return isNaN(d) ? null : d;
+            // --- Create Purchase modal helpers ---
+            var itemInput = document.getElementById('purchaseItemInput');
+            var typeInput = document.getElementById('purchaseType');
+            var unitInput = document.getElementById('purchaseUnitAmount');
+            var qtyInput = document.getElementById('purchaseQty');
+            var totalInput = document.getElementById('purchaseTotalAmount');
+
+            var simpleItems = {
+                'ABC Film 30 Mt.': { type: 'PPF - ABC PPF', unit: 50000 },
+                'PPF - ABC PPF': { type: 'PPF - ABC PPF', unit: 50000 },
+                'PPF - XYZ PPF': { type: 'PPF - XYZ PPF', unit: 7000 }
+            };
+
+            function recalcTotal() {
+                if (!unitInput || !qtyInput || !totalInput) return;
+                var unit = parseFloat(unitInput.value) || 0;
+                var qty = parseFloat(qtyInput.value) || 0;
+                totalInput.value = unit * qty;
             }
 
-            function startOfDay(d) { const x = new Date(d); x.setHours(0, 0, 0, 0); return x; }
-
-            function formatDisplayDate(dt) {
-                if (!dt) return '-';
-                const d = new Date(dt);
-                const dd = String(d.getDate()).padStart(2, '0');
-                const mNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-                const mon = mNames[d.getMonth()];
-                const yy = String(d.getFullYear()).slice(2);
-                return `${dd}-${mon}-${yy}`;
-            }
-
-            // --- filtering (tabs) ---
-            function categorizeRow(row) {
-                const cells = row.querySelectorAll('td');
-                if (!cells || cells.length < 7) return null;
-                const upcomingText = cells[6].textContent || '';
-                return parseDate(upcomingText);
-            }
-
-            function applyFilter(key) {
-                const tbody = document.getElementById('leadsBody');
-                const rows = Array.from(tbody.querySelectorAll('tr'));
-                const today = startOfDay(new Date());
-                const tomorrow = startOfDay(new Date(today.getTime() + 24 * 3600 * 1000));
-                const next10End = startOfDay(new Date(today.getTime() + 10 * 24 * 3600 * 1000));
-                let counts = { all: 0, today: 0, tomorrow: 0, next10: 0 };
-
-                rows.forEach(r => {
-                    const d = categorizeRow(r);
-                    let show = true;
-                    if (!d) show = (key === 'All');
-                    else {
-                        const sd = startOfDay(d);
-                        counts.all += 1;
-                        if (sd.getTime() === today.getTime()) counts.today += 1;
-                        if (sd.getTime() === tomorrow.getTime()) counts.tomorrow += 1;
-                        if (sd.getTime() >= tomorrow.getTime() && sd.getTime() <= next10End.getTime()) counts.next10 += 1;
-                        if (key === 'All') show = true;
-                        else if (key === 'Today') show = (sd.getTime() === today.getTime());
-                        else if (key === 'Tomorrow') show = (sd.getTime() === tomorrow.getTime());
-                        else if (key === 'Next10') show = (sd.getTime() >= tomorrow.getTime() && sd.getTime() <= next10End.getTime());
+            if (itemInput && typeInput && unitInput) {
+                itemInput.addEventListener('change', function () {
+                    var val = itemInput.value.trim();
+                    var cfg = simpleItems[val];
+                    if (cfg) {
+                        typeInput.value = cfg.type;
+                        unitInput.value = cfg.unit;
+                    } else {
+                        typeInput.value = '';
+                        unitInput.value = '';
                     }
-                    r.style.display = show ? '' : 'none';
-                });
-
-                document.querySelectorAll('.lead-count').forEach(el => {
-                    const txt = el.parentElement.textContent.trim().toLowerCase();
-                    if (txt.includes('upcoming')) el.textContent = counts.all || 0;
-                    if (txt.includes('today')) el.textContent = counts.today || 0;
-                    if (txt.includes('tomorrow')) el.textContent = counts.tomorrow || 0;
-                    if (txt.includes('next 10')) el.textContent = counts.next10 || 0;
-                });
-                window.__applyUpcomingFilter = applyFilter;
-            }
-
-            document.querySelectorAll('ul.nav-tabs a').forEach(a => {
-                a.addEventListener('click', function () {
-                    const text = a.textContent.trim();
-                    if (text.startsWith('Upcoming')) applyFilter('All');
-                    else if (text.startsWith('Today')) applyFilter('Today');
-                    else if (text.startsWith('Tomorrow')) applyFilter('Tomorrow');
-                    else if (text.startsWith('Next 10')) applyFilter('Next10');
-                });
-            });
-
-            window.addEventListener('load', function () { applyFilter('All'); });
-
-            // --- view & schedule wiring ---
-            const tbody = document.getElementById('leadsBody');
-            let activeRow = null;
-
-            if (tbody) {
-                tbody.addEventListener('click', function (e) {
-                    const btnView = e.target.closest('.btn-view');
-                    const btnSchedule = e.target.closest('.btn-schedule');
-                    if (btnView) { activeRow = btnView.closest('tr'); openViewModal(activeRow); }
-                    else if (btnSchedule) { activeRow = btnSchedule.closest('tr'); openScheduleModal(activeRow); }
+                    recalcTotal();
                 });
             }
 
-            function openViewModal(row) {
-                const headerData = document.querySelector('thead tr[data-services]')?.getAttribute('data-services') || '[]';
-                const data = row?.getAttribute('data-services') || headerData;
-                let services = [];
-                try { services = JSON.parse(data); } catch (e) { services = []; }
-                const body = document.getElementById('servicesTableBody');
-                if (!body) return;
-                body.innerHTML = '';
-                services.forEach((s, idx) => {
-                    const tr = document.createElement('tr');
-                    const schedule = s.schedule ? formatDisplayDate(s.schedule) : '-';
-                    const maint = s.maintenance ? formatDisplayDate(s.maintenance) : '-';
-                    const invo = s.invoice ? `"${s.invoice}"` : '-';
-                    tr.innerHTML = `<td>${idx + 1}.</td><td>${schedule}</td><td>${maint}</td><td>${invo}</td>`;
-                    body.appendChild(tr);
+            if (qtyInput) {
+                qtyInput.addEventListener('input', recalcTotal);
+            }
+            if (unitInput) {
+                unitInput.addEventListener('input', recalcTotal);
+            }
+
+            // --- Simple filters for static table ---
+            var rangeInput = document.getElementById('purchase-daterange');
+            var itemFilter = document.getElementById('filterItem');
+            var resetBtn = document.getElementById('btnResetFilters');
+            var tbody = document.getElementById('purchaseTbody');
+
+            function parseRange(str) {
+                if (!str) return { from: null, to: null };
+                var parts = str.split(/\s+to\s+/i);
+                function parseOne(s) {
+                    var d = new Date(s);
+                    return isNaN(d) ? null : d;
+                }
+                if (parts.length === 2) {
+                    var from = parseOne(parts[0]);
+                    var to = parseOne(parts[1]);
+                    if (to) to.setHours(23, 59, 59, 999);
+                    return { from: from, to: to };
+                }
+                var only = parseOne(str);
+                return { from: only, to: only };
+            }
+
+            function applyFilters() {
+                if (!tbody) return;
+                var rows = tbody.querySelectorAll('tr');
+                var rangeStr = rangeInput ? (rangeInput.value || '') : '';
+                var itemVal = itemFilter ? (itemFilter.value || '') : '';
+                var r = parseRange(rangeStr);
+
+                rows.forEach(function (row) {
+                    var item = row.getAttribute('data-item') || '';
+                    var dateStr = row.getAttribute('data-date');
+                    var d = dateStr ? new Date(dateStr) : null;
+
+                    var matchesItem = !itemVal || item === itemVal;
+                    var matchesDate = true;
+                    if (r.from || r.to) {
+                        if (!d || isNaN(d)) {
+                            matchesDate = false;
+                        } else {
+                            if (r.from && d < r.from) matchesDate = false;
+                            if (r.to && d > r.to) matchesDate = false;
+                        }
+                    }
+
+                    row.style.display = (matchesItem && matchesDate) ? '' : 'none';
                 });
-                const modalEl = document.getElementById('viewServicesModal');
-                if (modalEl) new bootstrap.Modal(modalEl).show();
             }
 
-            function openScheduleModal(row) {
-                const now = new Date();
-                const localISO = new Date(now.getTime() - (now.getTimezoneOffset() * 60000)).toISOString().slice(0, 16);
-                const dtEl = document.getElementById('scheduleDateTime');
-                if (dtEl) dtEl.value = localISO;
-                const notesEl = document.getElementById('scheduleNotes');
-                if (notesEl) notesEl.value = '';
-                const modalEl = document.getElementById('scheduleModal');
-                if (modalEl) new bootstrap.Modal(modalEl).show();
+            if (rangeInput) {
+                rangeInput.addEventListener('change', applyFilters);
             }
-
-            const saveBtn = document.getElementById('saveScheduleBtn');
-            if (saveBtn) saveBtn.addEventListener('click', function () {
-                const dtVal = document.getElementById('scheduleDateTime')?.value;
-                if (!dtVal || !activeRow) return;
-                const cells = activeRow.querySelectorAll('td');
-                const d = new Date(dtVal);
-                if (cells && cells[6]) cells[6].textContent = formatDisplayDate(d);
-                try {
-                    const services = JSON.parse(activeRow.getAttribute('data-services') || '[]');
-                    services.unshift({ schedule: d.toISOString().slice(0, 10), maintenance: null, invoice: null });
-                    activeRow.setAttribute('data-services', JSON.stringify(services));
-                } catch (e) { }
-                const modalEl = document.getElementById('scheduleModal');
-                const modalInst = bootstrap.Modal.getInstance(modalEl);
-                if (modalInst) modalInst.hide();
-                if (window.__applyUpcomingFilter) window.__applyUpcomingFilter();
-            });
+            if (itemFilter) {
+                itemFilter.addEventListener('change', applyFilters);
+            }
+            if (resetBtn) {
+                resetBtn.addEventListener('click', function () {
+                    if (rangeInput) rangeInput.value = '';
+                    if (itemFilter) itemFilter.value = '';
+                    applyFilters();
+                });
+            }
         })();
     </script>
 
