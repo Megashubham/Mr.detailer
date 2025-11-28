@@ -1214,17 +1214,18 @@
                         }
                     </style>
 
-
-
+                    <div class="col-lg-4 col-md-6 mb-3">
+                        <label class="form-label mb-1">Date Range</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control bg-light flatpickr-input active"
+                                id="purchase-daterange" data-provider="flatpickr" data-date-format="d M, Y"
+                                data-range-date="true" placeholder="Select date range" readonly="readonly">
+                            <span class="input-group-text"><i class="ri-calendar-line"></i></span>
+                        </div>
+                    </div>
                     <div class="card mt-2">
                         <div class="card-body">
-                            <div class="mb-3 col-md-2">
-                                <input type="text" class="form-control bg-light border-light flatpickr-input"
-                                    id="demo-datepicker" data-provider="flatpickr" data-date-format="d M, Y"
-                                    data-range-date="true" placeholder="Select date range" readonly="readonly">
-                                <div class="mt-2" id="selected-range" style="font-size:0.95rem;color:#333;"></div>
-                                
-                            </div>
+
                             <ul class="nav nav-tabs nav-justified mb-3" role="tablist">
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link active" data-bs-toggle="tab" href="#leadTableContent" role="tab"
