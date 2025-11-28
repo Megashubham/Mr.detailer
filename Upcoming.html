@@ -1167,29 +1167,53 @@
                 <div class="container-fluid">
 
                     <!-- Start page title -->
+
+                    <style>
+                        .flatpickr-input[readonly] {
+                            cursor: pointer;
+                        }
+
+                        .demo-container {
+                            max-width: 520px;
+                            margin: 40px auto;
+                        }
+                    </style>
+
+
+
                     <div class="card mt-2">
                         <div class="card-body">
-
+                            <div class="mb-3 col-md-2">
+                                <input type="text" class="form-control bg-light border-light flatpickr-input"
+                                    id="demo-datepicker" data-provider="flatpickr" data-date-format="d M, Y"
+                                    data-range-date="true" placeholder="Select date range" readonly="readonly">
+                                <div class="mt-2" id="selected-range" style="font-size:0.95rem;color:#333;"></div>
+                                
+                            </div>
                             <ul class="nav nav-tabs nav-justified mb-3" role="tablist">
                                 <li class="nav-item" role="presentation">
-                                    <a class="nav-link active" data-bs-toggle="tab" href="#leadTableContent" role="tab" aria-selected="true" data-filter="All">
+                                    <a class="nav-link active" data-bs-toggle="tab" href="#leadTableContent" role="tab"
+                                        aria-selected="true" data-filter="All">
                                         Upcoming (All)
-                                    <span class="badge ms-1 lead-count bg-dark">60</span></a>
+                                        <span class="badge ms-1 lead-count bg-dark">60</span></a>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <a class="nav-link align-middle" data-bs-toggle="tab" href="#leadTableContent" role="tab" aria-selected="false" data-filter="Today" tabindex="-1">
+                                    <a class="nav-link align-middle" data-bs-toggle="tab" href="#leadTableContent"
+                                        role="tab" aria-selected="false" data-filter="Today" tabindex="-1">
                                         Today
-                                    <span class="badge ms-1 lead-count bg-primary">2</span></a>
+                                        <span class="badge ms-1 lead-count bg-primary">2</span></a>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <a class="nav-link align-middle" data-bs-toggle="tab" href="#leadTableContent" role="tab" aria-selected="false" data-filter="Tomorrow" tabindex="-1">
+                                    <a class="nav-link align-middle" data-bs-toggle="tab" href="#leadTableContent"
+                                        role="tab" aria-selected="false" data-filter="Tomorrow" tabindex="-1">
                                         Tomorrow
-                                    <span class="badge ms-1 lead-count bg-primary">2</span></a>
+                                        <span class="badge ms-1 lead-count bg-primary">2</span></a>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <a class="nav-link" data-bs-toggle="tab" href="#leadTableContent" role="tab" aria-selected="false" data-filter="Next10" tabindex="-1">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#leadTableContent" role="tab"
+                                        aria-selected="false" data-filter="Next10" tabindex="-1">
                                         Next 10 Days
-                                    <span class="badge ms-1 lead-count bg-warning">15</span></a>
+                                        <span class="badge ms-1 lead-count bg-warning">15</span></a>
                                 </li>
                             </ul>
 
@@ -1198,7 +1222,8 @@
                                     <div class="table-responsive">
                                         <table class="table align-middle table-list text-center">
                                             <thead class="table-light">
-                                                <tr data-services='[{"schedule":"2025-11-21","maintenance":"2025-11-22","invoice":"Invoice 1"},{"schedule":"2026-02-21","maintenance":"2026-02-22","invoice":"Invoice 2"},{"schedule":"2026-05-21","maintenance":null,"invoice":null},{"schedule":"2026-08-21","maintenance":null,"invoice":null},{"schedule":"2026-11-21","maintenance":null,"invoice":null},{"schedule":"2027-02-21","maintenance":null,"invoice":null}]'>
+                                                <tr
+                                                    data-services='[{"schedule":"2025-11-21","maintenance":"2025-11-22","invoice":"Invoice 1"},{"schedule":"2026-02-21","maintenance":"2026-02-22","invoice":"Invoice 2"},{"schedule":"2026-05-21","maintenance":null,"invoice":null},{"schedule":"2026-08-21","maintenance":null,"invoice":null},{"schedule":"2026-11-21","maintenance":null,"invoice":null},{"schedule":"2027-02-21","maintenance":null,"invoice":null}]'>
                                                     <th>S.No.</th>
                                                     <th>Booking Details</th>
                                                     <th>Treatment Details</th>
@@ -1212,7 +1237,8 @@
                                             </thead>
                                             <tbody id="leadsBody">
                                                 <!-- Sample row inserted per user request -->
-                                                <tr data-services='[{"schedule":"2025-11-21","maintenance":"2025-11-22","invoice":"Invoice 1"},{"schedule":"2026-02-21","maintenance":"2026-02-22","invoice":"Invoice 2"},{"schedule":"2026-05-21","maintenance":null,"invoice":null},{"schedule":"2026-08-21","maintenance":null,"invoice":null},{"schedule":"2026-11-21","maintenance":null,"invoice":null},{"schedule":"2027-02-21","maintenance":null,"invoice":null}]'>
+                                                <tr
+                                                    data-services='[{"schedule":"2025-11-21","maintenance":"2025-11-22","invoice":"Invoice 1"},{"schedule":"2026-02-21","maintenance":"2026-02-22","invoice":"Invoice 2"},{"schedule":"2026-05-21","maintenance":null,"invoice":null},{"schedule":"2026-08-21","maintenance":null,"invoice":null},{"schedule":"2026-11-21","maintenance":null,"invoice":null},{"schedule":"2027-02-21","maintenance":null,"invoice":null}]'>
                                                     <td>1.</td>
                                                     <td class="text-start">
                                                         <div>ID450033</div>
@@ -1233,11 +1259,15 @@
                                                     <td class="text-center">6</td>
                                                     <td class="text-center">-</td>
                                                     <td class="text-center">21-Nov-25</td>
-                                                    <td class="text-start">Crystal Studio<br/><small class="text-muted">New Delhi</small></td>
+                                                    <td class="text-start">Crystal Studio<br /><small
+                                                            class="text-muted">New Delhi</small></td>
                                                     <td>
-                                                        <div class="d-flex gap-2 align-items-center justify-content-center">
-                                                            <button class="btn btn-sm btn-outline-primary btn-view"><i class="ri-eye-line"></i></button>
-                                                            <button class="btn btn-sm btn-primary btn-schedule">Schedule</button>
+                                                        <div
+                                                            class="d-flex gap-2 align-items-center justify-content-center">
+                                                            <button class="btn btn-sm btn-outline-primary btn-view"><i
+                                                                    class="ri-eye-line"></i></button>
+                                                            <button
+                                                                class="btn btn-sm btn-primary btn-schedule">Schedule</button>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -1253,21 +1283,44 @@
                             <div class="modal-dialog modal-lg modal-dialog-scrollable">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">Follow-up History — Vishal <span class="ms-2 badge bg-secondary" id="statusBadge-followupVishal">Fresh</span></h5>
+                                        <h5 class="modal-title">Follow-up History — Vishal <span
+                                                class="ms-2 badge bg-secondary"
+                                                id="statusBadge-followupVishal">Fresh</span></h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                     </div>
                                     <div class="modal-body">
                                         <div class="mb-3 d-flex">
-                                            <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addFollowModal" data-target-modal="#followupVishal"> <i class="ri-add-line me-1"></i> Add Follow Up</button>
+                                            <button type="button" class="btn btn-outline-primary btn-sm"
+                                                data-bs-toggle="modal" data-bs-target="#addFollowModal"
+                                                data-target-modal="#followupVishal"> <i class="ri-add-line me-1"></i>
+                                                Add Follow Up</button>
                                         </div>
                                         <div class="table-responsive">
                                             <table class="table table-bordered text-center">
                                                 <thead class="table-light">
-                                                    <tr><th>#</th><th>Date</th><th>Remark</th><th>Status</th><th>Next Follow Up</th></tr>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Date</th>
+                                                        <th>Remark</th>
+                                                        <th>Status</th>
+                                                        <th>Next Follow Up</th>
+                                                    </tr>
                                                 </thead>
                                                 <tbody class="followup-body">
-                                                    <tr><td>1</td><td>01-Nov-2025</td><td>Lead Added</td><td>Fresh</td><td>-</td></tr>
-                                                    <tr><td>2</td><td>02-Nov-2025</td><td>He will think and discuss</td><td>Open</td><td>20-Nov-2025</td></tr>
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>01-Nov-2025</td>
+                                                        <td>Lead Added</td>
+                                                        <td>Fresh</td>
+                                                        <td>-</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2</td>
+                                                        <td>02-Nov-2025</td>
+                                                        <td>He will think and discuss</td>
+                                                        <td>Open</td>
+                                                        <td>20-Nov-2025</td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -1278,7 +1331,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- Schedule Modal -->
                         <div class="modal fade" id="scheduleModal" tabindex="-1" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
@@ -1291,7 +1344,8 @@
                                         <form id="scheduleForm">
                                             <div class="mb-3">
                                                 <label class="form-label">Select Date & Time</label>
-                                                <input type="datetime-local" id="scheduleDateTime" class="form-control" required />
+                                                <input type="datetime-local" id="scheduleDateTime" class="form-control"
+                                                    required />
                                             </div>
                                             <div class="mb-3">
                                                 <label class="form-label">Notes (optional)</label>
@@ -1318,7 +1372,14 @@
                                     <div class="modal-body">
                                         <div class="table-responsive">
                                             <table class="table table-bordered">
-                                                <thead class="table-light"><tr><th>#</th><th>Schedule</th><th>Maintenance Date</th><th>Invoice</th></tr></thead>
+                                                <thead class="table-light">
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Schedule</th>
+                                                        <th>Maintenance Date</th>
+                                                        <th>Invoice</th>
+                                                    </tr>
+                                                </thead>
                                                 <tbody id="servicesTableBody"></tbody>
                                             </table>
                                         </div>
@@ -1334,20 +1395,37 @@
                             <div class="modal-dialog modal-lg modal-dialog-scrollable">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">Follow-up History — Priya Sharma <span class="ms-2 badge bg-warning" id="statusBadge-followupPriya">Open</span></h5>
+                                        <h5 class="modal-title">Follow-up History — Priya Sharma <span
+                                                class="ms-2 badge bg-warning" id="statusBadge-followupPriya">Open</span>
+                                        </h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                     </div>
                                     <div class="modal-body">
                                         <div class="mb-3 d-flex">
-                                            <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addFollowModal" data-target-modal="#followupPriya"> <i class="ri-add-line me-1"></i> Add Follow Up</button>
+                                            <button type="button" class="btn btn-outline-primary btn-sm"
+                                                data-bs-toggle="modal" data-bs-target="#addFollowModal"
+                                                data-target-modal="#followupPriya"> <i class="ri-add-line me-1"></i> Add
+                                                Follow Up</button>
                                         </div>
                                         <div class="table-responsive">
                                             <table class="table table-bordered text-center">
                                                 <thead class="table-light">
-                                                    <tr><th>#</th><th>Date</th><th>Remark</th><th>Status</th><th>Next Follow Up</th></tr>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Date</th>
+                                                        <th>Remark</th>
+                                                        <th>Status</th>
+                                                        <th>Next Follow Up</th>
+                                                    </tr>
                                                 </thead>
                                                 <tbody class="followup-body">
-                                                    <tr><td>1</td><td>15-Nov-2025</td><td>Lead Added</td><td>Open</td><td>25-Nov-2025</td></tr>
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>15-Nov-2025</td>
+                                                        <td>Lead Added</td>
+                                                        <td>Open</td>
+                                                        <td>25-Nov-2025</td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -1363,20 +1441,37 @@
                             <div class="modal-dialog modal-lg modal-dialog-scrollable">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">Follow-up History — Ravi Verma <span class="ms-2 badge bg-success" id="statusBadge-followupRavi">Booked</span></h5>
+                                        <h5 class="modal-title">Follow-up History — Ravi Verma <span
+                                                class="ms-2 badge bg-success"
+                                                id="statusBadge-followupRavi">Booked</span></h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                     </div>
                                     <div class="modal-body">
                                         <div class="mb-3 d-flex">
-                                            <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addFollowModal" data-target-modal="#followupRavi"> <i class="ri-add-line me-1"></i> Add Follow Up</button>
+                                            <button type="button" class="btn btn-outline-primary btn-sm"
+                                                data-bs-toggle="modal" data-bs-target="#addFollowModal"
+                                                data-target-modal="#followupRavi"> <i class="ri-add-line me-1"></i> Add
+                                                Follow Up</button>
                                         </div>
                                         <div class="table-responsive">
                                             <table class="table table-bordered text-center">
                                                 <thead class="table-light">
-                                                    <tr><th>#</th><th>Date</th><th>Remark</th><th>Status</th><th>Next Follow Up</th></tr>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Date</th>
+                                                        <th>Remark</th>
+                                                        <th>Status</th>
+                                                        <th>Next Follow Up</th>
+                                                    </tr>
                                                 </thead>
                                                 <tbody class="followup-body">
-                                                    <tr><td>1</td><td>18-Nov-2025</td><td>Directly Booked</td><td>Booked</td><td>-</td></tr>
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>18-Nov-2025</td>
+                                                        <td>Directly Booked</td>
+                                                        <td>Booked</td>
+                                                        <td>-</td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -1410,7 +1505,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -1476,159 +1571,213 @@
     </div>
 
 
+
+
     <!-- Minimal JS: keep local Bootstrap bundle and app bootstrapper only -->
     <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/app.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.js"></script>
+
     <script>
-    // Minimal combined JS for Upcoming page: filtering + view/schedule wiring
-    (function () {
-        // --- helper date utilities ---
-        function parseDate(cellText) {
-            if (!cellText || cellText.trim() === '-') return null;
-            const parts = cellText.trim().split('-');
-            if (parts.length < 3) return null;
-            let day = parseInt(parts[0], 10);
-            let mon = parts[1];
-            let year = parts[2];
-            if (year.length === 2) year = '20' + year;
-            const months = { Jan:0, Feb:1, Mar:2, Apr:3, May:4, Jun:5, Jul:6, Aug:7, Sep:8, Oct:9, Nov:10, Dec:11 };
-            const mShort = mon.substring(0,3);
-            const mIdx = months[mShort] !== undefined ? months[mShort] : parseInt(mon,10)-1;
-            const d = new Date(year, mIdx, day);
-            return isNaN(d) ? null : d;
-        }
+            // Auto-init: elements having data-provider="flatpickr"
+            (function () {
+                const els = document.querySelectorAll('input[data-provider="flatpickr"]');
 
-        function startOfDay(d) { const x = new Date(d); x.setHours(0,0,0,0); return x; }
+                els.forEach(el => {
+                    // read attributes / fallbacks
+                    const dateFormat = el.getAttribute('data-date-format') || 'd M, Y';
+                    const isRange = el.getAttribute('data-range-date') === 'true';
 
-        function formatDisplayDate(dt) {
-            if (!dt) return '-';
-            const d = new Date(dt);
-            const dd = String(d.getDate()).padStart(2,'0');
-            const mNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-            const mon = mNames[d.getMonth()];
-            const yy = String(d.getFullYear()).slice(2);
-            return `${dd}-${mon}-${yy}`;
-        }
+                    const fp = flatpickr(el, {
+                        mode: isRange ? 'range' : 'single',
+                        dateFormat: dateFormat,     // the value shown inside the input
+                        allowInput: false,          // keep readonly UX via picker
+                        // You can enable altInput if you want a different displayed format:
+                        // altInput: true,
+                        // altFormat: 'd M, Y',
+                        clickOpens: true,
+                        onChange: function (selectedDates, dateStr, instance) {
+                            // dateStr is already formatted according to dateFormat
+                            const display = document.getElementById('selected-range');
+                            if (!dateStr) {
+                                display.textContent = '';
+                                return;
+                            }
 
-        // --- filtering (tabs) ---
-        function categorizeRow(row) {
-            const cells = row.querySelectorAll('td');
-            if (!cells || cells.length < 7) return null;
-            const upcomingText = cells[6].textContent || '';
-            return parseDate(upcomingText);
-        }
+                            // For range mode, dateStr will look like "01 Jan, 2025 to 07 Jan, 2025"
+                            display.textContent = 'Selected: ' + dateStr;
 
-        function applyFilter(key) {
+                            // If you need JS Date objects:
+                            // selectedDates is an array of Date objects (length 0,1 or 2 for range)
+                            // console.log(selectedDates);
+                        },
+                        // optional: close after selecting range end
+                        onClose: function (selectedDates, dateStr, instance) {
+                            // अगर चाहो तो यहाँ कोई filtering call कर सकते हो
+                            // example: fetchFilteredData(selectedDates);
+                        }
+                    });
+
+                    // optional: set default dates from attributes (if you want)
+                    // const defaultStart = el.getAttribute('data-default-start');
+                    // const defaultEnd = el.getAttribute('data-default-end');
+                    // if (defaultStart || defaultEnd) {
+                    //   fp.setDate([defaultStart, defaultEnd].filter(Boolean));
+                    // }
+                });
+            })();
+    </script>
+
+    <script>
+        // Minimal combined JS for Upcoming page: filtering + view/schedule wiring
+        (function () {
+            // --- helper date utilities ---
+            function parseDate(cellText) {
+                if (!cellText || cellText.trim() === '-') return null;
+                const parts = cellText.trim().split('-');
+                if (parts.length < 3) return null;
+                let day = parseInt(parts[0], 10);
+                let mon = parts[1];
+                let year = parts[2];
+                if (year.length === 2) year = '20' + year;
+                const months = { Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5, Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11 };
+                const mShort = mon.substring(0, 3);
+                const mIdx = months[mShort] !== undefined ? months[mShort] : parseInt(mon, 10) - 1;
+                const d = new Date(year, mIdx, day);
+                return isNaN(d) ? null : d;
+            }
+
+            function startOfDay(d) { const x = new Date(d); x.setHours(0, 0, 0, 0); return x; }
+
+            function formatDisplayDate(dt) {
+                if (!dt) return '-';
+                const d = new Date(dt);
+                const dd = String(d.getDate()).padStart(2, '0');
+                const mNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                const mon = mNames[d.getMonth()];
+                const yy = String(d.getFullYear()).slice(2);
+                return `${dd}-${mon}-${yy}`;
+            }
+
+            // --- filtering (tabs) ---
+            function categorizeRow(row) {
+                const cells = row.querySelectorAll('td');
+                if (!cells || cells.length < 7) return null;
+                const upcomingText = cells[6].textContent || '';
+                return parseDate(upcomingText);
+            }
+
+            function applyFilter(key) {
+                const tbody = document.getElementById('leadsBody');
+                const rows = Array.from(tbody.querySelectorAll('tr'));
+                const today = startOfDay(new Date());
+                const tomorrow = startOfDay(new Date(today.getTime() + 24 * 3600 * 1000));
+                const next10End = startOfDay(new Date(today.getTime() + 10 * 24 * 3600 * 1000));
+                let counts = { all: 0, today: 0, tomorrow: 0, next10: 0 };
+
+                rows.forEach(r => {
+                    const d = categorizeRow(r);
+                    let show = true;
+                    if (!d) show = (key === 'All');
+                    else {
+                        const sd = startOfDay(d);
+                        counts.all += 1;
+                        if (sd.getTime() === today.getTime()) counts.today += 1;
+                        if (sd.getTime() === tomorrow.getTime()) counts.tomorrow += 1;
+                        if (sd.getTime() >= tomorrow.getTime() && sd.getTime() <= next10End.getTime()) counts.next10 += 1;
+                        if (key === 'All') show = true;
+                        else if (key === 'Today') show = (sd.getTime() === today.getTime());
+                        else if (key === 'Tomorrow') show = (sd.getTime() === tomorrow.getTime());
+                        else if (key === 'Next10') show = (sd.getTime() >= tomorrow.getTime() && sd.getTime() <= next10End.getTime());
+                    }
+                    r.style.display = show ? '' : 'none';
+                });
+
+                document.querySelectorAll('.lead-count').forEach(el => {
+                    const txt = el.parentElement.textContent.trim().toLowerCase();
+                    if (txt.includes('upcoming')) el.textContent = counts.all || 0;
+                    if (txt.includes('today')) el.textContent = counts.today || 0;
+                    if (txt.includes('tomorrow')) el.textContent = counts.tomorrow || 0;
+                    if (txt.includes('next 10')) el.textContent = counts.next10 || 0;
+                });
+                window.__applyUpcomingFilter = applyFilter;
+            }
+
+            document.querySelectorAll('ul.nav-tabs a').forEach(a => {
+                a.addEventListener('click', function () {
+                    const text = a.textContent.trim();
+                    if (text.startsWith('Upcoming')) applyFilter('All');
+                    else if (text.startsWith('Today')) applyFilter('Today');
+                    else if (text.startsWith('Tomorrow')) applyFilter('Tomorrow');
+                    else if (text.startsWith('Next 10')) applyFilter('Next10');
+                });
+            });
+
+            window.addEventListener('load', function () { applyFilter('All'); });
+
+            // --- view & schedule wiring ---
             const tbody = document.getElementById('leadsBody');
-            const rows = Array.from(tbody.querySelectorAll('tr'));
-            const today = startOfDay(new Date());
-            const tomorrow = startOfDay(new Date(today.getTime() + 24 * 3600 * 1000));
-            const next10End = startOfDay(new Date(today.getTime() + 10 * 24 * 3600 * 1000));
-            let counts = { all:0, today:0, tomorrow:0, next10:0 };
+            let activeRow = null;
 
-            rows.forEach(r => {
-                const d = categorizeRow(r);
-                let show = true;
-                if (!d) show = (key === 'All');
-                else {
-                    const sd = startOfDay(d);
-                    counts.all += 1;
-                    if (sd.getTime() === today.getTime()) counts.today += 1;
-                    if (sd.getTime() === tomorrow.getTime()) counts.tomorrow += 1;
-                    if (sd.getTime() >= tomorrow.getTime() && sd.getTime() <= next10End.getTime()) counts.next10 += 1;
-                    if (key === 'All') show = true;
-                    else if (key === 'Today') show = (sd.getTime() === today.getTime());
-                    else if (key === 'Tomorrow') show = (sd.getTime() === tomorrow.getTime());
-                    else if (key === 'Next10') show = (sd.getTime() >= tomorrow.getTime() && sd.getTime() <= next10End.getTime());
-                }
-                r.style.display = show ? '' : 'none';
+            if (tbody) {
+                tbody.addEventListener('click', function (e) {
+                    const btnView = e.target.closest('.btn-view');
+                    const btnSchedule = e.target.closest('.btn-schedule');
+                    if (btnView) { activeRow = btnView.closest('tr'); openViewModal(activeRow); }
+                    else if (btnSchedule) { activeRow = btnSchedule.closest('tr'); openScheduleModal(activeRow); }
+                });
+            }
+
+            function openViewModal(row) {
+                const headerData = document.querySelector('thead tr[data-services]')?.getAttribute('data-services') || '[]';
+                const data = row?.getAttribute('data-services') || headerData;
+                let services = [];
+                try { services = JSON.parse(data); } catch (e) { services = []; }
+                const body = document.getElementById('servicesTableBody');
+                if (!body) return;
+                body.innerHTML = '';
+                services.forEach((s, idx) => {
+                    const tr = document.createElement('tr');
+                    const schedule = s.schedule ? formatDisplayDate(s.schedule) : '-';
+                    const maint = s.maintenance ? formatDisplayDate(s.maintenance) : '-';
+                    const invo = s.invoice ? `"${s.invoice}"` : '-';
+                    tr.innerHTML = `<td>${idx + 1}.</td><td>${schedule}</td><td>${maint}</td><td>${invo}</td>`;
+                    body.appendChild(tr);
+                });
+                const modalEl = document.getElementById('viewServicesModal');
+                if (modalEl) new bootstrap.Modal(modalEl).show();
+            }
+
+            function openScheduleModal(row) {
+                const now = new Date();
+                const localISO = new Date(now.getTime() - (now.getTimezoneOffset() * 60000)).toISOString().slice(0, 16);
+                const dtEl = document.getElementById('scheduleDateTime');
+                if (dtEl) dtEl.value = localISO;
+                const notesEl = document.getElementById('scheduleNotes');
+                if (notesEl) notesEl.value = '';
+                const modalEl = document.getElementById('scheduleModal');
+                if (modalEl) new bootstrap.Modal(modalEl).show();
+            }
+
+            const saveBtn = document.getElementById('saveScheduleBtn');
+            if (saveBtn) saveBtn.addEventListener('click', function () {
+                const dtVal = document.getElementById('scheduleDateTime')?.value;
+                if (!dtVal || !activeRow) return;
+                const cells = activeRow.querySelectorAll('td');
+                const d = new Date(dtVal);
+                if (cells && cells[6]) cells[6].textContent = formatDisplayDate(d);
+                try {
+                    const services = JSON.parse(activeRow.getAttribute('data-services') || '[]');
+                    services.unshift({ schedule: d.toISOString().slice(0, 10), maintenance: null, invoice: null });
+                    activeRow.setAttribute('data-services', JSON.stringify(services));
+                } catch (e) { }
+                const modalEl = document.getElementById('scheduleModal');
+                const modalInst = bootstrap.Modal.getInstance(modalEl);
+                if (modalInst) modalInst.hide();
+                if (window.__applyUpcomingFilter) window.__applyUpcomingFilter();
             });
-
-            document.querySelectorAll('.lead-count').forEach(el => {
-                const txt = el.parentElement.textContent.trim().toLowerCase();
-                if (txt.includes('upcoming')) el.textContent = counts.all || 0;
-                if (txt.includes('today')) el.textContent = counts.today || 0;
-                if (txt.includes('tomorrow')) el.textContent = counts.tomorrow || 0;
-                if (txt.includes('next 10')) el.textContent = counts.next10 || 0;
-            });
-            window.__applyUpcomingFilter = applyFilter;
-        }
-
-        document.querySelectorAll('ul.nav-tabs a').forEach(a => {
-            a.addEventListener('click', function () {
-                const text = a.textContent.trim();
-                if (text.startsWith('Upcoming')) applyFilter('All');
-                else if (text.startsWith('Today')) applyFilter('Today');
-                else if (text.startsWith('Tomorrow')) applyFilter('Tomorrow');
-                else if (text.startsWith('Next 10')) applyFilter('Next10');
-            });
-        });
-
-        window.addEventListener('load', function () { applyFilter('All'); });
-
-        // --- view & schedule wiring ---
-        const tbody = document.getElementById('leadsBody');
-        let activeRow = null;
-
-        if (tbody) {
-            tbody.addEventListener('click', function (e) {
-                const btnView = e.target.closest('.btn-view');
-                const btnSchedule = e.target.closest('.btn-schedule');
-                if (btnView) { activeRow = btnView.closest('tr'); openViewModal(activeRow); }
-                else if (btnSchedule) { activeRow = btnSchedule.closest('tr'); openScheduleModal(activeRow); }
-            });
-        }
-
-        function openViewModal(row) {
-            const headerData = document.querySelector('thead tr[data-services]')?.getAttribute('data-services') || '[]';
-            const data = row?.getAttribute('data-services') || headerData;
-            let services = [];
-            try { services = JSON.parse(data); } catch (e) { services = []; }
-            const body = document.getElementById('servicesTableBody');
-            if (!body) return;
-            body.innerHTML = '';
-            services.forEach((s, idx) => {
-                const tr = document.createElement('tr');
-                const schedule = s.schedule ? formatDisplayDate(s.schedule) : '-';
-                const maint = s.maintenance ? formatDisplayDate(s.maintenance) : '-';
-                const invo = s.invoice ? `"${s.invoice}"` : '-';
-                tr.innerHTML = `<td>${idx+1}.</td><td>${schedule}</td><td>${maint}</td><td>${invo}</td>`;
-                body.appendChild(tr);
-            });
-            const modalEl = document.getElementById('viewServicesModal');
-            if (modalEl) new bootstrap.Modal(modalEl).show();
-        }
-
-        function openScheduleModal(row) {
-            const now = new Date();
-            const localISO = new Date(now.getTime() - (now.getTimezoneOffset() * 60000)).toISOString().slice(0,16);
-            const dtEl = document.getElementById('scheduleDateTime');
-            if (dtEl) dtEl.value = localISO;
-            const notesEl = document.getElementById('scheduleNotes');
-            if (notesEl) notesEl.value = '';
-            const modalEl = document.getElementById('scheduleModal');
-            if (modalEl) new bootstrap.Modal(modalEl).show();
-        }
-
-        const saveBtn = document.getElementById('saveScheduleBtn');
-        if (saveBtn) saveBtn.addEventListener('click', function () {
-            const dtVal = document.getElementById('scheduleDateTime')?.value;
-            if (!dtVal || !activeRow) return;
-            const cells = activeRow.querySelectorAll('td');
-            const d = new Date(dtVal);
-            if (cells && cells[6]) cells[6].textContent = formatDisplayDate(d);
-            try {
-                const services = JSON.parse(activeRow.getAttribute('data-services') || '[]');
-                services.unshift({ schedule: d.toISOString().slice(0,10), maintenance: null, invoice: null });
-                activeRow.setAttribute('data-services', JSON.stringify(services));
-            } catch (e) {}
-            const modalEl = document.getElementById('scheduleModal');
-            const modalInst = bootstrap.Modal.getInstance(modalEl);
-            if (modalInst) modalInst.hide();
-            if (window.__applyUpcomingFilter) window.__applyUpcomingFilter();
-        });
-    })();
+        })();
     </script>
 
 </body>

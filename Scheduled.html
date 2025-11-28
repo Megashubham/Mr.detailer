@@ -1167,18 +1167,26 @@
                 <div class="container-fluid">
 
                     <!-- Start page title -->
+                    <style>
+                        .flatpickr-input[readonly] {
+                            cursor: pointer;
+                        }
+
+                        .demo-container {
+                            max-width: 520px;
+                            margin: 40px auto;
+                        }
+                    </style>
+
                     <div class="card mt-2">
                         <div class="card-body">
 
                             <!-- DATE FILTER -->
-                            <div class="d-flex gap-2 mb-3 align-items-center">
-                                <label class="form-label mb-0 me-2">Filter by Date (Booking):</label>
-                                <input type="date" id="dateFrom" class="form-control form-control-sm"
-                                    style="width:170px;">
-                                <input type="date" id="dateTo" class="form-control form-control-sm"
-                                    style="width:170px;">
-                                <button class="btn btn-sm btn-primary" id="applyDateFilter">Apply</button>
-                                <button class="btn btn-sm btn-outline-secondary" id="clearDateFilter">Clear</button>
+                            <div class="mb-3 col-md-2">
+                                <input type="text" class="form-control bg-light border-light flatpickr-input"
+                                    id="demo-datepicker" data-provider="flatpickr" data-date-format="d M, Y"
+                                    data-range-date="true" placeholder="Select date range" readonly="readonly">
+                                <div class="mt-2" id="selected-range" style="font-size:0.95rem;color:#333;"></div>
                             </div>
 
                             <!-- TABS -->
@@ -1227,7 +1235,7 @@
 
                                             <tbody>
                                                 <!-- Example row (your updated row) -->
-                                                <tr>
+                                                <tr data-services='[{"schedule":"2025-11-21","maintenance":"2025-11-22","invoice":"Invoice 1"},{"schedule":"2026-02-21","maintenance":"2026-02-22","invoice":"Invoice 2"},{"schedule":"2026-05-21","maintenance":null,"invoice":null},{"schedule":"2026-08-21","maintenance":null,"invoice":null},{"schedule":"2026-11-21","maintenance":null,"invoice":null},{"schedule":"2027-02-21","maintenance":null,"invoice":null}]'>
                                                     <td>1.</td>
                                                     <td class="text-start">
                                                         <div>ID450033</div>
@@ -1258,11 +1266,11 @@
                                                         <small class="text-muted">New Delhi</small>
                                                     </td>
                                                     <td>
-                                                        <button class="btn btn-sm btn-outline-primary"><i class="ri-eye-line"></i></button>
+                                                        <button class="btn btn-sm btn-outline-primary btn-view"><i
+                                                                class="ri-eye-line"></i></button>
                                                     </td>
                                                 </tr>
 
-                                                <!-- Add more rows below as needed, keeping .booking-date and .upcoming-dates cells present -->
                                             </tbody>
 
                                         </table>
@@ -1271,8 +1279,149 @@
                             </div>
                         </div>
                     </div>
+                    <!-- view page modal -->
+                    <div class="modal fade" id="viewServicesModal" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">All Services</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Schedule</th>
+                                                    <th>Maintenance Date</th>
+                                                    <th>Invoice</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="servicesTableBody"></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="modal fade" id="followupPriya" tabindex="-1">
+                        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Follow-up History — Priya Sharma <span
+                                            class="ms-2 badge bg-warning" id="statusBadge-followupPriya">Open</span>
+                                    </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="mb-3 d-flex">
+                                        <button type="button" class="btn btn-outline-primary btn-sm"
+                                            data-bs-toggle="modal" data-bs-target="#addFollowModal"
+                                            data-target-modal="#followupPriya"> <i class="ri-add-line me-1"></i> Add
+                                            Follow Up</button>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered text-center">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Date</th>
+                                                    <th>Remark</th>
+                                                    <th>Status</th>
+                                                    <th>Next Follow Up</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="followup-body">
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>15-Nov-2025</td>
+                                                    <td>Lead Added</td>
+                                                    <td>Open</td>
+                                                    <td>25-Nov-2025</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="modal fade" id="followupRavi" tabindex="-1">
+                        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Follow-up History — Ravi Verma <span
+                                            class="ms-2 badge bg-success" id="statusBadge-followupRavi">Booked</span>
+                                    </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="mb-3 d-flex">
+                                        <button type="button" class="btn btn-outline-primary btn-sm"
+                                            data-bs-toggle="modal" data-bs-target="#addFollowModal"
+                                            data-target-modal="#followupRavi"> <i class="ri-add-line me-1"></i> Add
+                                            Follow Up</button>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered text-center">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Date</th>
+                                                    <th>Remark</th>
+                                                    <th>Status</th>
+                                                    <th>Next Follow Up</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="followup-body">
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>18-Nov-2025</td>
+                                                    <td>Directly Booked</td>
+                                                    <td>Booked</td>
+                                                    <td>-</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Single Add Follow Up modal (static form, no JS processing) -->
+                    <div class="modal fade" id="addFollowModal" tabindex="-1">
+                        <div class="modal-dialog modal-sm modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header bg-light">
+                                    <h5 class="modal-title mb-2">Add Follow Up</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <label class="form-label">Remark</label>
+                                    <textarea id="fuRemark" class="form-control" rows="2"></textarea>
+                                    <label class="form-label mt-2">Next Follow Up Date</label>
+                                    <input id="fuDate" type="date" class="form-control">
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+                                    <button class="btn btn-primary btn-sm" data-bs-dismiss="modal">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
             </div>
@@ -1338,240 +1487,290 @@
 
     </div>
 
+        
 
     <!-- Minimal JS: keep local Bootstrap bundle and app bootstrapper only -->
     <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.js"></script>
 
     <script>
-            (function () {
-                // Utility: parse dates from common formats used in your markup.
-                // Accepts: "21-Nov-25", "21-Nov-2025", "2025-11-21", "21 Aug 2025", JS Date objects, ISO strings, etc.
-                function parseDateFlexible(s) {
-                    if (!s) return null;
-                    if (s instanceof Date) return s;
-                    s = String(s).trim();
-                    if (!s) return null;
+        // Auto-init: elements having data-provider="flatpickr"
+        (function () {
+            const els = document.querySelectorAll('input[data-provider="flatpickr"]');
 
-                    // Try ISO first
-                    var iso = Date.parse(s);
-                    if (!isNaN(iso)) return new Date(iso);
+            els.forEach(function (el) {
+                const dateFormat = el.getAttribute('data-date-format') || 'd M, Y';
+                const isRange = el.getAttribute('data-range-date') === 'true';
 
-                    // Try dd-MMM-yy or dd-MMM-yyyy e.g. 21-Nov-25 or 21-Nov-2025
-                    var m = s.match(/^(\\d{1,2})[-\\s]([A-Za-z]{3,})[-\\s](\\d{2,4})$/);
-                    if (m) {
-                        var day = parseInt(m[1], 10);
-                        var monStr = m[2].toLowerCase();
-                        var year = parseInt(m[3], 10);
-                        if (m[3].length === 2) {
-                            // two-digit year -> assume 2000s (25 -> 2025). Adjust if you prefer different logic.
-                            year = 2000 + year;
+                flatpickr(el, {
+                    mode: isRange ? 'range' : 'single',
+                    dateFormat: dateFormat,
+                    allowInput: false,
+                    clickOpens: true,
+                    onChange: function (selectedDates, dateStr) {
+                        const display = document.getElementById('selected-range');
+                        if (!display) return;
+                        if (!dateStr) {
+                            display.textContent = '';
+                            return;
                         }
-                        var months = {
-                            jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5,
-                            jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11
-                        };
-                        var mon = months[monStr.substring(0, 3)];
-                        if (mon === undefined) return null;
-                        return new Date(year, mon, day);
+                        // For range mode, dateStr will look like "01 Jan, 2025 to 07 Jan, 2025"
+                        display.textContent = 'Selected: ' + dateStr;
                     }
-
-                    // Try dd Month yyyy e.g. "21 August 2025"
-                    var m2 = s.match(/^(\\d{1,2})\\s+([A-Za-z]+)\\s+(\\d{4})$/);
-                    if (m2) {
-                        var day = parseInt(m2[1], 10);
-                        var monName = m2[2].substring(0, 3).toLowerCase();
-                        var year = parseInt(m2[3], 10);
-                        var months = {
-                            jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5,
-                            jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11
-                        };
-                        var mon = months[monName];
-                        if (mon === undefined) return null;
-                        return new Date(year, mon, day);
-                    }
-
-                    // Last fallback: try extracting yyyy-mm-dd pattern inside the string
-                    var m3 = s.match(/(\\d{4})[-\\/](\\d{1,2})[-\\/](\\d{1,2})/);
-                    if (m3) {
-                        return new Date(parseInt(m3[1], 10), parseInt(m3[2], 10) - 1, parseInt(m3[3], 10));
-                    }
-
-                    return null;
-                }
-
-                // Compare two Date objects by date only (no time).
-                function sameDay(a, b) {
-                    return a && b &&
-                        a.getFullYear() === b.getFullYear() &&
-                        a.getMonth() === b.getMonth() &&
-                        a.getDate() === b.getDate();
-                }
-
-                // Get upcoming date for a row: try to find first valid date inside .upcoming-dates cell.
-                function getUpcomingDateFromRow(row) {
-                    var upCell = row.querySelector('.upcoming-dates');
-                    if (!upCell) return null;
-                    var text = upCell.innerText || upCell.textContent || '';
-                    // find potential date tokens (simple regex for dd-xxx-yy/ yyyy or ISO)
-                    var tokens = text.split(/\\n|\\r|,/).map(t => t.trim()).filter(Boolean);
-                    for (var i = 0; i < tokens.length; i++) {
-                        var dt = parseDateFlexible(tokens[i]);
-                        if (dt) return dt;
-                        // also try to extract date-like substrings
-                        var sub = tokens[i].match(/(\\d{1,2}[-\\s][A-Za-z]{3,}[-\\s]\\d{2,4})/);
-                        if (sub) {
-                            var dt2 = parseDateFlexible(sub[1]);
-                            if (dt2) return dt2;
-                        }
-                        var sub2 = tokens[i].match(/(\\d{4}[-\\/]\\d{1,2}[-\\/]\\d{1,2})/);
-                        if (sub2) {
-                            var dt3 = parseDateFlexible(sub2[1]);
-                            if (dt3) return dt3;
-                        }
-                    }
-                    return null;
-                }
-
-                // Get booking date for a row (first .booking-date cell text)
-                function getBookingDateFromRow(row) {
-                    var bookCell = row.querySelector('.booking-date');
-                    if (!bookCell) {
-                        // fallback: try to find date-like text in booking details cell (cell index 1)
-                        var cell = row.cells[1];
-                        if (!cell) return null;
-                        var text = cell.innerText || cell.textContent || '';
-                        var m = text.match(/(\\d{1,2}[-\\s][A-Za-z]{3,}[-\\s]\\d{2,4})/);
-                        if (m) return parseDateFlexible(m[1]);
-                        var m2 = text.match(/(\\d{4}[-\\/]\\d{1,2}[-\\/]\\d{1,2})/);
-                        if (m2) return parseDateFlexible(m2[1]);
-                        return null;
-                    }
-                    return parseDateFlexible(bookCell.innerText || bookCell.textContent);
-                }
-
-                // Main filter function - evaluates selected tab + optional booking date range
-                function applyFilters() {
-                    var activeFilter = document.querySelector('#filterTabs .nav-link.active').dataset.filter;
-                    var fromVal = document.getElementById('dateFrom').value;
-                    var toVal = document.getElementById('dateTo').value;
-                    var fromDate = fromVal ? parseDateFlexible(fromVal) : null;
-                    var toDate = toVal ? parseDateFlexible(toVal) : null;
-                    if (toDate) {
-                        // set toDate to end of day for inclusive comparison
-                        toDate.setHours(23, 59, 59, 999);
-                    }
-
-                    var today = new Date();
-                    today.setHours(0, 0, 0, 0);
-                    var yesterday = new Date(today);
-                    yesterday.setDate(yesterday.getDate() - 1);
-                    var tenDaysAgo = new Date(today);
-                    tenDaysAgo.setDate(tenDaysAgo.getDate() - 9); // "Last 10 Days" includes today and previous 9 days
-
-                    var tbody = document.querySelector('#leadsTable tbody');
-                    var rows = Array.from(tbody.querySelectorAll('tr'));
-
-                    // Counters for badges (respecting the booking date range if given)
-                    var counts = {
-                        CompletedAll: 0,
-                        Today: 0,
-                        Yesterday: 0,
-                        Last10: 0
-                    };
-
-                    rows.forEach(function (row) {
-                        var bookingDate = getBookingDateFromRow(row); // booking date
-                        var upcomingDate = getUpcomingDateFromRow(row); // upcoming schedule date
-
-                        // Date-range (booking) filter: if provided, row must satisfy
-                        var withinBookingRange = true;
-                        if (fromDate || toDate) {
-                            if (!bookingDate) withinBookingRange = false;
-                            else {
-                                var b = new Date(bookingDate.getFullYear(), bookingDate.getMonth(), bookingDate.getDate());
-                                if (fromDate && b < fromDate) withinBookingRange = false;
-                                if (toDate && b > toDate) withinBookingRange = false;
-                            }
-                        }
-
-                        // Determine if row matches each tab condition (independent of currently active tab)
-                        var matchesToday = upcomingDate ? sameDay(upcomingDate, today) : false;
-                        var matchesYesterday = upcomingDate ? sameDay(upcomingDate, yesterday) : false;
-                        var matchesLast10 = upcomingDate ? (upcomingDate >= tenDaysAgo && upcomingDate <= today) : false;
-                        var matchesAll = true; // "CompletedAll" just means show if bookingRange ok (and/or we could interpret differently)
-
-                        // Count rows per category (we count only if within booking range)
-                        if (withinBookingRange) {
-                            if (matchesAll) counts.CompletedAll++;
-                            if (matchesToday) counts.Today++;
-                            if (matchesYesterday) counts.Yesterday++;
-                            if (matchesLast10) counts.Last10++;
-                        }
-
-                        // Decide visibility for the currently active tab
-                        var visible = false;
-                        switch (activeFilter) {
-                            case 'Today':
-                                visible = matchesToday && withinBookingRange;
-                                break;
-                            case 'Yesterday':
-                                visible = matchesYesterday && withinBookingRange;
-                                break;
-                            case 'Last10':
-                                visible = matchesLast10 && withinBookingRange;
-                                break;
-                            default: // CompletedAll
-                                visible = withinBookingRange;
-                                break;
-                        }
-
-                        row.style.display = visible ? '' : 'none';
-                    });
-
-                    // Update badges dynamically
-                    document.getElementById('badge-CompletedAll').innerText = counts.CompletedAll;
-                    document.getElementById('badge-Today').innerText = counts.Today;
-                    document.getElementById('badge-Yesterday').innerText = counts.Yesterday;
-                    document.getElementById('badge-Last10').innerText = counts.Last10;
-                }
-
-                // Hook up tab clicks + active toggling
-                var tabLinks = document.querySelectorAll('#filterTabs .nav-link');
-                tabLinks.forEach(function (link) {
-                    link.addEventListener('click', function (e) {
-                        e.preventDefault();
-                        // mark active
-                        tabLinks.forEach(function (l) { l.classList.remove('active'); });
-                        link.classList.add('active');
-                        // reapply filters
-                        applyFilters();
-                    });
                 });
-
-                // Hook up date filter buttons
-                document.getElementById('applyDateFilter').addEventListener('click', function () {
-                    applyFilters();
-                });
-                document.getElementById('clearDateFilter').addEventListener('click', function () {
-                    document.getElementById('dateFrom').value = '';
-                    document.getElementById('dateTo').value = '';
-                    applyFilters();
-                });
-
-                // Initial run to set correct visibility and badges
-                document.addEventListener('DOMContentLoaded', function () {
-                    applyFilters();
-                });
-
-                // In case this script runs after DOMContentLoaded
-                if (document.readyState === 'complete' || document.readyState === 'interactive') {
-                    setTimeout(applyFilters, 0);
-                }
-
-            })();
+            });
+        })();
     </script>
 
+    <script>
+        (function () {
+            // Utility: parse dates from common formats used in your markup.
+            function parseDateFlexible(s) {
+                if (!s) return null;
+                if (s instanceof Date) return s;
+                s = String(s).trim();
+                if (!s) return null;
+
+                // Try ISO first
+                var iso = Date.parse(s);
+                if (!isNaN(iso)) return new Date(iso);
+
+                // Try dd-MMM-yy or dd-MMM-yyyy e.g. 21-Nov-25 or 21-Nov-2025
+                var m = s.match(/^(\d{1,2})[-\s]([A-Za-z]{3,})[-\s](\d{2,4})$/);
+                if (m) {
+                    var day = parseInt(m[1], 10);
+                    var monStr = m[2].toLowerCase();
+                    var year = parseInt(m[3], 10);
+                    if (m[3].length === 2) {
+                        year = 2000 + year;
+                    }
+                    var months = {
+                        jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5,
+                        jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11
+                    };
+                    var mon = months[monStr.substring(0, 3)];
+                    if (mon === undefined) return null;
+                    return new Date(year, mon, day);
+                }
+
+                // Try dd Month yyyy e.g. "21 August 2025"
+                var m2 = s.match(/^(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})$/);
+                if (m2) {
+                    var day2 = parseInt(m2[1], 10);
+                    var monName = m2[2].substring(0, 3).toLowerCase();
+                    var year2 = parseInt(m2[3], 10);
+                    var months2 = {
+                        jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5,
+                        jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11
+                    };
+                    var mon2 = months2[monName];
+                    if (mon2 === undefined) return null;
+                    return new Date(year2, mon2, day2);
+                }
+
+                // yyyy-mm-dd pattern
+                var m3 = s.match(/(\d{4})[-\/](\d{1,2})[-\/](\d{1,2})/);
+                if (m3) {
+                    return new Date(parseInt(m3[1], 10), parseInt(m3[2], 10) - 1, parseInt(m3[3], 10));
+                }
+
+                return null;
+            }
+
+            function sameDay(a, b) {
+                return a && b &&
+                    a.getFullYear() === b.getFullYear() &&
+                    a.getMonth() === b.getMonth() &&
+                    a.getDate() === b.getDate();
+            }
+
+            function getUpcomingDateFromRow(row) {
+                var upCell = row.querySelector('.upcoming-dates');
+                if (!upCell) return null;
+                var text = upCell.innerText || upCell.textContent || '';
+                var tokens = text.split(/\n|\r|,/).map(function (t) { return t.trim(); }).filter(Boolean);
+                for (var i = 0; i < tokens.length; i++) {
+                    var dt = parseDateFlexible(tokens[i]);
+                    if (dt) return dt;
+                }
+                return null;
+            }
+
+            function getBookingDateFromRow(row) {
+                var bookCell = row.querySelector('.booking-date');
+                if (!bookCell) return null;
+                return parseDateFlexible(bookCell.innerText || bookCell.textContent);
+            }
+
+            function applyFilters() {
+                var activeLink = document.querySelector('#filterTabs .nav-link.active');
+                var activeFilter = activeLink ? activeLink.dataset.filter : 'CompletedAll';
+
+                var rangeInput = document.getElementById('demo-datepicker');
+                var fromVal = '';
+                var toVal = '';
+                if (rangeInput && rangeInput.value) {
+                    var raw = rangeInput.value.trim();
+                    var parts = raw.split(/\s+to\s+/i);
+                    if (parts.length === 2) {
+                        fromVal = parts[0].trim();
+                        toVal = parts[1].trim();
+                    } else {
+                        fromVal = raw;
+                    }
+                }
+
+                var fromDate = fromVal ? parseDateFlexible(fromVal) : null;
+                var toDate = toVal ? parseDateFlexible(toVal) : null;
+                if (toDate) {
+                    toDate.setHours(23, 59, 59, 999);
+                }
+
+                var today = new Date();
+                today.setHours(0, 0, 0, 0);
+                var yesterday = new Date(today);
+                yesterday.setDate(yesterday.getDate() - 1);
+                var tenDaysAgo = new Date(today);
+                tenDaysAgo.setDate(tenDaysAgo.getDate() - 9);
+
+                var tbody = document.querySelector('#leadsTable tbody');
+                if (!tbody) return;
+                var rows = Array.prototype.slice.call(tbody.querySelectorAll('tr'));
+
+                var counts = {
+                    CompletedAll: 0,
+                    Today: 0,
+                    Yesterday: 0,
+                    Last10: 0
+                };
+
+                rows.forEach(function (row) {
+                    var bookingDate = getBookingDateFromRow(row);
+                    var upcomingDate = getUpcomingDateFromRow(row);
+
+                    var withinBookingRange = true;
+                    if (fromDate || toDate) {
+                        if (!bookingDate) {
+                            withinBookingRange = false;
+                        } else {
+                            var b = new Date(bookingDate.getFullYear(), bookingDate.getMonth(), bookingDate.getDate());
+                            if (fromDate && b < fromDate) withinBookingRange = false;
+                            if (toDate && b > toDate) withinBookingRange = false;
+                        }
+                    }
+
+                    var matchesToday = upcomingDate ? sameDay(upcomingDate, today) : false;
+                    var matchesYesterday = upcomingDate ? sameDay(upcomingDate, yesterday) : false;
+                    var matchesLast10 = upcomingDate ? (upcomingDate >= tenDaysAgo && upcomingDate <= today) : false;
+
+                    if (withinBookingRange) {
+                        counts.CompletedAll++;
+                        if (matchesToday) counts.Today++;
+                        if (matchesYesterday) counts.Yesterday++;
+                        if (matchesLast10) counts.Last10++;
+                    }
+
+                    var visible = false;
+                    switch (activeFilter) {
+                        case 'Today':
+                            visible = matchesToday && withinBookingRange;
+                            break;
+                        case 'Yesterday':
+                            visible = matchesYesterday && withinBookingRange;
+                            break;
+                        case 'Last10':
+                            visible = matchesLast10 && withinBookingRange;
+                            break;
+                        default:
+                            visible = withinBookingRange;
+                            break;
+                    }
+
+                    row.style.display = visible ? '' : 'none';
+                });
+
+                var cAll = document.getElementById('badge-CompletedAll');
+                var cToday = document.getElementById('badge-Today');
+                var cYes = document.getElementById('badge-Yesterday');
+                var cLast = document.getElementById('badge-Last10');
+                if (cAll) cAll.innerText = counts.CompletedAll;
+                if (cToday) cToday.innerText = counts.Today;
+                if (cYes) cYes.innerText = counts.Yesterday;
+                if (cLast) cLast.innerText = counts.Last10;
+            }
+
+            var tabLinks = document.querySelectorAll('#filterTabs .nav-link');
+            tabLinks.forEach(function (link) {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    tabLinks.forEach(function (l) { l.classList.remove('active'); });
+                    link.classList.add('active');
+                    applyFilters();
+                });
+            });
+
+            var rangeInputEl = document.getElementById('demo-datepicker');
+            if (rangeInputEl) {
+                rangeInputEl.addEventListener('change', function () {
+                    applyFilters();
+                });
+            }
+
+            document.addEventListener('DOMContentLoaded', function () {
+                applyFilters();
+            });
+
+            if (document.readyState === 'complete' || document.readyState === 'interactive') {
+                setTimeout(applyFilters, 0);
+            }
+        })();
+    </script>
+
+    <script>
+        (function () {
+            function formatDisplayDate(dt) {
+                if (!dt) return '-';
+                var d = new Date(dt);
+                if (isNaN(d)) return '-';
+                var dd = String(d.getDate()).padStart(2, '0');
+                var mNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                var mon = mNames[d.getMonth()];
+                var yy = String(d.getFullYear()).slice(2);
+                return dd + '-' + mon + '-' + yy;
+            }
+
+            var table = document.getElementById('leadsTable');
+            if (!table) return;
+            var tbody = table.querySelector('tbody');
+            if (!tbody) return;
+
+            tbody.addEventListener('click', function (e) {
+                var btnView = e.target.closest('.btn-view');
+                if (!btnView) return;
+                var row = btnView.closest('tr');
+                if (!row) return;
+                var dataAttr = row.getAttribute('data-services') || '[]';
+                var services = [];
+                try { services = JSON.parse(dataAttr); } catch (err) { services = []; }
+                var body = document.getElementById('servicesTableBody');
+                if (!body) return;
+                body.innerHTML = '';
+                services.forEach(function (s, idx) {
+                    var tr = document.createElement('tr');
+                    var schedule = s.schedule ? formatDisplayDate(s.schedule) : '-';
+                    var maint = s.maintenance ? formatDisplayDate(s.maintenance) : '-';
+                    var invo = s.invoice ? '"' + s.invoice + '"' : '-';
+                    tr.innerHTML = '<td>' + (idx + 1) + '.</td><td>' + schedule + '</td><td>' + maint + '</td><td>' + invo + '</td>';
+                    body.appendChild(tr);
+                });
+                var modalEl = document.getElementById('viewServicesModal');
+                if (modalEl && window.bootstrap && window.bootstrap.Modal) {
+                    new bootstrap.Modal(modalEl).show();
+                }
+            });
+        })();
+    </script>
 
 </body>
 
