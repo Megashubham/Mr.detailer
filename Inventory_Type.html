@@ -1122,8 +1122,8 @@
 
                         <!-- MAINTENANCE -->
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="#sidebarMaintenance" data-bs-toggle="collapse" role="button"
-                                aria-expanded="false" aria-controls="sidebarMaintenance">
+                            <a class="nav-link menu-link" href="#sidebarMaintenance" data-bs-toggle="collapse"
+                                role="button" aria-expanded="false" aria-controls="sidebarMaintenance">
                                 <i class="ri-tools-fill"></i>
                                 <span data-key="t-Maintenance">Maintenance</span>
                             </a>
@@ -1192,11 +1192,13 @@
                                 <ul class="nav nav-sm flex-column">
 
                                     <li class="nav-item">
-                                        <a href="Inventory_Type.html" class="nav-link" data-key="Inventory_Type">Inventory Type</a>
+                                        <a href="Inventory_Type.html" class="nav-link"
+                                            data-key="Inventory_Type">Inventory Type</a>
                                     </li>
 
                                     <li class="nav-item">
-                                        <a href="Manage_Inventory.html" class="nav-link" data-key="Manage_Inventory">Manage Inventory</a>
+                                        <a href="Manage_Inventory.html" class="nav-link"
+                                            data-key="Manage_Inventory">Manage Inventory</a>
                                     </li>
 
                                     <li class="nav-item">
@@ -1227,150 +1229,125 @@
             <div class="page-content">
                 <div class="container-fluid">
 
-                    <!-- Start page title -->
-                     <style>
-                        body {
-                            background: #f7f9fb;
-                            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-                        }
-
-                        .card {
-                            border: 0;
-                            box-shadow: 0 6px 18px rgba(22, 28, 37, 0.06);
-                            border-radius: 8px;
-                        }
-
-                        .filters .form-control,
-                        .filters .btn {
-                            min-height: 38px;
-                        }
-
-                        .toggle-group .btn {
-                            min-width: 100px;
-                        }
-
-                        table thead th {
-                            background: #f1f5f9;
-                        }
-
-                        .small-note {
-                            font-size: 0.9rem;
-                            color: #556;
-                        }
-
-                        @media (max-width:767px) {
-                            .filters {
-                                flex-direction: column;
-                                gap: .5rem;
-                            }
-                        }
-                    </style>
-
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h3 class="mb-0">Statement</h3>
-                        <div>
-                            <!-- This will trigger DataTables Excel export -->
-                            <button id="exportExcel" class="btn btn-sm btn-success">Export Excel</button>
-                        </div>
-                    </div>
-
-                    <div class="card p-3 mb-3">
-                        <div class="d-flex align-items-center gap-3 filters flex-wrap">
-                            <div class="col-lg-4 col-md-6">
-                                <label class="form-label mb-1">Date Range :</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control bg-light flatpickr-input"
-                                        id="expense-daterange" data-provider="flatpickr" data-date-format="d M, Y"
-                                        data-range-date="true" placeholder="Select date range" readonly>
-                                    <span class="input-group-text"><i class="ri-calendar-line"></i></span>
-                                </div>
-                            </div>
-
-                            <div class="d-flex align-items-center gap-2 mt-4">
-                                <label class="mb-0 fw-semibold">Filter By :</label>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="dateType" id="transDate"
-                                        value="transaction" checked>
-                                    <label class="form-check-label" for="transDate">Transaction Date</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="dateType" id="entryDate"
-                                        value="entry">
-                                    <label class="form-check-label" for="entryDate">Entry Date</label>
-                                </div>
-                            </div>
-
-                            <div class="ms-auto">
-                                <div class="btn-group toggle-group" role="group" aria-label="Collected / Expenses">
-                                    <button type="button" class="btn btn-outline-secondary active"
-                                        id="btnAll">All</button>
-                                    <button type="button" class="btn btn-outline-secondary"
-                                        id="btnCollected">Collected</button>
-                                    <button type="button" class="btn btn-outline-secondary"
-                                        id="btnExpenses">Expenses</button>
-                                </div>
-                            </div>
-                        </div>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#itemModal">Add
+                            Item</button>
                     </div>
 
                     <div class="card">
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table id="statementTable" class="table table-line table-hover table-line align-middle"
-                                    style="width:100%;">
+                                <table class="table table-line table-striped table-hover table-md align-middle"
+                                    id="itemTable">
                                     <thead class="table-light">
                                         <tr>
-                                            <th>Entry Date</th>
-                                            <th>Transaction Date</th>
-                                            <th>Category</th>
-                                            <th>Summary (category – Remark)</th>
-                                            <th class="text-end">Debit</th>
-                                            <th class="text-end">Credit</th>
-                                            <th class="text-end">Balance</th>
+                                            <th style="width:60px">S.No</th>
+                                            <th>Treatment Type</th>
+                                            <th>Treatment</th>
+                                            <th>Item Name</th>
+                                            <th>Price (Per Unit)</th>
+                                            <th>Unit Consumption</th>
+                                            <th style="width:140px">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <!-- Your provided rows, adapted -->
-                                        <tr data-entry="31-Oct-25" data-transaction="31-Oct-25">
-                                            <td>31-Oct-25</td>
-                                            <td>31-Oct-25</td>
-                                            <td>Purchase</td>
-                                            <td>PPF-XYZ (5 Year)(6 Services)</td>
-                                            <td class="text-end">7,000</td>
-                                            <td class="text-end">-</td>
-                                            <td class="text-end">7,000</td>
+                                        <!-- Initial sample rows -->
+                                        <tr>
+                                            <td>1</td>
+                                            <td>PPF</td>
+                                            <td>ABC PPF<br><small>(5 Year Warranty)(6 Fee Maintenance)</small></td>
+                                            <td>ABC Film 30 Mt.</td>
+                                            <td>10,000</td>
+                                            <td>1</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-primary btn-edit"><i class="ri-edit-line"></i></button>
+                                                <button class="btn btn-sm btn-outline-danger btn-delete">Delete</button>
+                                            </td>
                                         </tr>
-
-                                        <tr data-entry="02-Nov-25" data-transaction="27-Jun-25">
-                                            <td>02-Nov-25</td>
-                                            <td>27-jun-25</td>
-                                            <td>Booking</td>
-                                            <td>#Booking ID-PPF-ABC (5 Year)(8 Services)</td>
-                                            <td class="text-end">50,000</td>
-                                            <td class="text-end">43,000</td>
-                                            <td class="text-end">7,000</td>
-                                        </tr>
-
-                                        <tr data-entry="02-Nov-25" data-transaction="28-Jun-25">
-                                            <td>02-Nov-25</td>
-                                            <td>28-June-25</td>
-                                            <td>Expense</td>
-                                            <td>Travel – Amritsar Trip</td>
-                                            <td class="text-end">5,000</td>
-                                            <td class="text-end">-</td>
-                                            <td class="text-end">38,000</td>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>PPF</td>
+                                            <td>ABC PPF<br><small>(5 Year Warranty)(6 Fee Maintenance)</small></td>
+                                            <td>XYC Cleaning Solution</td>
+                                            <td>1,000</td>
+                                            <td>0.5</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-primary btn-edit"><i class="ri-edit-line"></i></button>
+                                                <button class="btn btn-sm btn-outline-danger btn-delete">Delete</button>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
 
+                            <small class="text-muted">Price per unit inclusive of GST</small>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Add / Edit Modal -->
+                <div class="modal fade" id="itemModal" tabindex="-1">
+                    <div class="modal-dialog">
+                        <form class="modal-content" id="itemForm">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalTitle">Add Item</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+
+                            <div class="modal-body">
+
+                                <div class="mb-3">
+                                    <label class="form-label required">Treatment Type</label>
+                                    <select class="form-select" id="typeSelect" required>
+                                        <option value="PPF">PPF</option>
+                                        <option value="Ceramic">Ceramic</option>
+                                        <option value="Window Tint">Window Tint</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label required">Treatment</label>
+                                    <select class="form-select" id="treatmentSelect" required>
+                                        <option value="ABC PPF (5 Year Warranty)(6 Fee Maintenance)">ABC PPF (5 Year
+                                            Warranty)(6 Fee Maintenance)</option>
+                                        <option value="XYZ PPF">XYZ PPF</option>
+                                        <option value="Ceramic Pro">Ceramic Pro</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label required">Item Name</label>
+                                    <input type="text" id="itemName" class="form-control" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label required">Price Per Unit</label>
+                                    <input type="number" id="itemPrice" class="form-control" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label required">Unit Consumption</label>
+                                    <input type="number" id="itemUnit" class="form-control" required>
+                                </div>
+
+                                <input type="hidden" id="editIndex">
+
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </div>
+
+                        </form>
+                    </div>
 
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- end main content-->
+        <!-- end main content-->
     </div>
     <!-- END layout-wrapper -->
 
@@ -1416,7 +1393,7 @@
         </div>
     </div>
 
-    
+
     </div>
     </div>
     </div>
@@ -1449,251 +1426,80 @@
     <!-- App js -->
     <script src="assets/js/app.js"></script>
 
-    
-
     <script>
-            // Initialize date pickers
-            (function () {
-                var rangeInput = document.getElementById('expense-daterange');
-                if (rangeInput && window.flatpickr) {
-                    flatpickr(rangeInput, {
-                        mode: 'range',
-                        dateFormat: 'd M, Y',
-                        clickOpens: true
-                    });
-                }
+  const table = document.querySelector("#itemTable tbody");
+  const form = document.querySelector("#itemForm");
+  const modalTitle = document.querySelector("#modalTitle");
 
-                var expenseDate = document.getElementById('expenseDate');
-                if (expenseDate && window.flatpickr) {
-                    flatpickr(expenseDate, {
-                        dateFormat: 'd M, Y',
-                        defaultDate: 'today'
-                    });
-                }
-            })();
-    </script>
+  form.addEventListener("submit", e => {
+    e.preventDefault();
 
-    <script>
-        // Simple filter + totals for static table
-        (function () {
-            var tbody = document.getElementById('expenseTbody');
-            var rangeInput = document.getElementById('expense-daterange');
-            var catFilter = document.getElementById('filterCategory');
-            var resetBtn = document.getElementById('btnExpenseReset');
-            var dateModeRadios = document.querySelectorAll('input[name="expenseDateMode"]');
+    const type = typeSelect.value;
+    const treatment = treatmentSelect.value;
+    const name = itemName.value;
+    const price = itemPrice.value;
+    const unit = itemUnit.value;
 
-            var totalSpan = document.getElementById('totalExpense');
-            var cashSpan = document.getElementById('totalCash');
-            var onlineSpan = document.getElementById('totalOnline');
+    const index = editIndex.value;
 
-            function parseRange(str) {
-                if (!str) return { from: null, to: null };
-                var parts = str.split(/\s+to\s+/i);
-                function parseOne(s) {
-                    var d = new Date(s);
-                    return isNaN(d) ? null : d;
-                }
-                if (parts.length === 2) {
-                    var from = parseOne(parts[0]);
-                    var to = parseOne(parts[1]);
-                    if (to) to.setHours(23, 59, 59, 999);
-                    return { from: from, to: to };
-                }
-                var only = parseOne(str);
-                return { from: only, to: only };
-            }
+    if (index === "") {
+      // Add new
+      const row = table.insertRow();
+      const sn = table.rows.length;
 
-            function getDateMode() {
-                var val = 'transaction';
-                dateModeRadios.forEach(function (r) {
-                    if (r.checked) val = r.value;
-                });
-                return val;
-            }
+      row.innerHTML = `
+        <td>${sn}</td>
+        <td>${type}</td>
+        <td>${treatment}</td>
+        <td>${name}</td>
+        <td>${price}</td>
+        <td>${unit}</td>
+        <td>
+          <button class="btn btn-sm btn-outline-primary btn-edit">Edit</button>
+          <button class="btn btn-sm btn-outline-danger btn-delete">Delete</button>
+        </td>
+      `;
+    } else {
+      // Edit existing
+      const row = table.rows[index];
+      row.cells[1].textContent = type;
+      row.cells[2].textContent = treatment;
+      row.cells[3].textContent = name;
+      row.cells[4].textContent = price;
+      row.cells[5].textContent = unit;
+    }
 
-            function applyFilters() {
-                if (!tbody) return;
-                var rows = tbody.querySelectorAll('tr');
-                var rangeStr = rangeInput ? (rangeInput.value || '') : '';
-                var catVal = catFilter ? (catFilter.value || '') : '';
-                var r = parseRange(rangeStr);
-                var mode = getDateMode();
+    form.reset();
+    editIndex.value = "";
+    bootstrap.Modal.getInstance(document.getElementById("itemModal")).hide();
+  });
 
-                var total = 0;
-                var totalCash = 0;
-                var totalOnline = 0;
+  // Edit / Delete handlers (delegated)
+  table.addEventListener("click", e => {
+    if (e.target.classList.contains("btn-edit")) {
+      const row = e.target.closest("tr");
+      const index = row.rowIndex - 1;
 
-                rows.forEach(function (row) {
-                    var cat = row.getAttribute('data-category') || '';
-                    var payMode = row.getAttribute('data-mode') || '';
-                    var amount = parseFloat(row.getAttribute('data-amount')) || 0;
-                    var dateAttr = mode === 'entry' ? 'data-entry-date' : 'data-transaction-date';
-                    var dateStr = row.getAttribute(dateAttr);
-                    var d = dateStr ? new Date(dateStr) : null;
+      editIndex.value = index;
+      modalTitle.textContent = "Edit Item";
 
-                    var matchesCat = !catVal || cat === catVal;
-                    var matchesDate = true;
-                    if (r.from || r.to) {
-                        if (!d || isNaN(d)) {
-                            matchesDate = false;
-                        } else {
-                            if (r.from && d < r.from) matchesDate = false;
-                            if (r.to && d > r.to) matchesDate = false;
-                        }
-                    }
+      typeSelect.value = row.cells[1].textContent.trim();
+      treatmentSelect.value = row.cells[2].textContent.trim();
+      itemName.value = row.cells[3].textContent.trim();
+      itemPrice.value = row.cells[4].textContent.trim();
+      itemUnit.value = row.cells[5].textContent.trim();
 
-                    var visible = matchesCat && matchesDate;
-                    row.style.display = visible ? '' : 'none';
+      new bootstrap.Modal(document.getElementById("itemModal")).show();
+    }
 
-                    if (visible) {
-                        total += amount;
-                        if (payMode === 'cash') totalCash += amount;
-                        if (payMode === 'online') totalOnline += amount;
-                    }
-                });
-
-                if (totalSpan) totalSpan.textContent = 'Rs. ' + total.toLocaleString('en-IN');
-                if (cashSpan) cashSpan.textContent = 'Rs. ' + totalCash.toLocaleString('en-IN');
-                if (onlineSpan) onlineSpan.textContent = 'Rs. ' + totalOnline.toLocaleString('en-IN');
-            }
-
-            if (rangeInput) {
-                rangeInput.addEventListener('change', applyFilters);
-            }
-            if (catFilter) {
-                catFilter.addEventListener('change', applyFilters);
-            }
-            dateModeRadios.forEach(function (r) {
-                r.addEventListener('change', applyFilters);
-            });
-            if (resetBtn) {
-                resetBtn.addEventListener('click', function () {
-                    if (rangeInput) rangeInput.value = '';
-                    if (catFilter) catFilter.value = '';
-                    applyFilters();
-                });
-            }
-
-            if (document.readyState === 'complete' || document.readyState === 'interactive') {
-                setTimeout(applyFilters, 0);
-            } else {
-                document.addEventListener('DOMContentLoaded', applyFilters);
-            }
-        })();
-    </script>
-
-    <script>
-        /* Helper: parse dates in formats like "31-Oct-25", "27-jun-25", "28-June-25", "2025-10-31" */
-        function parseDateCell(txt) {
-            if (!txt) return null;
-            txt = txt.trim();
-            // ISO yyyy-mm-dd
-            if (/^\d{4}-\d{2}-\d{2}$/.test(txt)) return new Date(txt + 'T00:00:00');
-            // dd-MMM-yy or dd-MMM-yyyy, case-insensitive month
-            const m = txt.match(/^(\d{1,2})-([A-Za-z]+)-(\d{2,4})$/);
-            if (m) {
-                const d = parseInt(m[1], 10);
-                const monStr = m[2].toLowerCase();
-                const yRaw = parseInt(m[3], 10);
-                const monthMap = { jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5, jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11 };
-                const monKey = monStr.slice(0, 3);
-                const mon = monthMap[monKey] ?? 0;
-                const year = yRaw < 100 ? 2000 + yRaw : yRaw;
-                return new Date(year, mon, d, 0, 0, 0);
-            }
-            // fallback
-            const dt = new Date(txt);
-            return isNaN(dt) ? null : dt;
-        }
-
-        /* Helper: numeric parser (handles "7,000", "-", empty) */
-        function parseNumberCell(txt) {
-            if (!txt) return 0;
-            const s = String(txt).trim();
-            if (s === '-' || s === '') return 0;
-            return Number(s.replace(/[, ]+/g, '').replace(/[^\d.-]/g, '') || 0);
-        }
-
-        /* DataTables custom filtering: date range based on selected dateType, and Collected/Expenses toggle */
-        $.fn.dataTable.ext.search.push(function (settings, data, dataIndex, rowData, counter) {
-            // This function will be called for every row. We will inspect DOM attributes for robustness.
-            const tableRow = settings.aoData[dataIndex].nTr; // DOM TR
-            if (!tableRow) return true;
-
-            // get chosen date type
-            const dateType = document.querySelector('input[name="dateType"]:checked')?.value || 'transaction';
-            const dateAttr = dateType === 'entry' ? tableRow.getAttribute('data-entry') : tableRow.getAttribute('data-transaction');
-            const rowDate = parseDateCell(dateAttr || data[(dateType === 'entry') ? 0 : 1]);
-
-            const fromVal = document.getElementById('fromDate').value ? new Date(document.getElementById('fromDate').value + 'T00:00:00') : null;
-            const toVal = document.getElementById('toDate').value ? new Date(document.getElementById('toDate').value + 'T23:59:59') : null;
-
-            if (fromVal && rowDate && rowDate < fromVal) return false;
-            if (toVal && rowDate && rowDate > toVal) return false;
-
-            // Collected / Expenses / All filter
-            const btnCollected = document.getElementById('btnCollected');
-            const btnExpenses = document.getElementById('btnExpenses');
-            const mode = btnCollected.classList.contains('active') ? 'collected' : btnExpenses.classList.contains('active') ? 'expenses' : 'all';
-
-            // Debit is column index 4, Credit index 5 (0-based)
-            const debitVal = parseNumberCell($(tableRow).find('td').eq(4).text());
-            const creditVal = parseNumberCell($(tableRow).find('td').eq(5).text());
-
-            if (mode === 'collected' && !(creditVal > 0)) return false;
-            if (mode === 'expenses' && !(debitVal > 0)) return false;
-
-            return true;
-        });
-
-        $(document).ready(function () {
-            // initialize DataTable
-            const table = $('#statementTable').DataTable({
-                responsive: true,
-                pageLength: 10,
-                order: [[1, 'desc']], // sort by Transaction Date by default (column index 1)
-                columnDefs: [
-                    { className: 'dt-right', targets: [4, 5, 6] } // align Debit/Credit/Balance right
-                ],
-                dom: "<'row mb-2'<'col-sm-6'l><'col-sm-6 text-end'B>>" +
-                    "<'row'<'col-sm-12'tr>>" +
-                    "<'row mt-2'<'col-sm-6'i><'col-sm-6'p>>",
-                buttons: [
-                    { extend: 'excelHtml5', text: 'Excel', className: 'btn btn-sm btn-outline-success' },
-                    { extend: 'csvHtml5', text: 'CSV', className: 'btn btn-sm btn-outline-secondary' },
-                    { extend: 'copyHtml5', text: 'Copy', className: 'btn btn-sm btn-outline-secondary' }
-                ],
-                initComplete: function () {
-                    // If you want export to only include visible (filtered) rows, Buttons already respect current view by default.
-                    // Wire external Export Excel button to trigger DataTables' Excel button
-                    const dt = this.api();
-                    $('#exportExcel').on('click', function () {
-                        dt.button(0).trigger(); // 0 -> first button is Excel
-                    });
-                }
-            });
-
-            // Hook up filters: date inputs, radio buttons and toggle buttons
-            function applyFilters() { table.draw(); }
-
-            $('#fromDate, #toDate').on('change', applyFilters);
-            $('input[name="dateType"]').on('change', applyFilters);
-
-            // toggle buttons behavior
-            const btnAll = document.getElementById('btnAll');
-            const btnCollected = document.getElementById('btnCollected');
-            const btnExpenses = document.getElementById('btnExpenses');
-
-            function clearActive() { [btnAll, btnCollected, btnExpenses].forEach(b => b.classList.remove('active')); }
-            btnAll.addEventListener('click', () => { clearActive(); btnAll.classList.add('active'); applyFilters(); });
-            btnCollected.addEventListener('click', () => { clearActive(); btnCollected.classList.add('active'); applyFilters(); });
-            btnExpenses.addEventListener('click', () => { clearActive(); btnExpenses.classList.add('active'); applyFilters(); });
-
-            // initial draw (applies default Transaction Date & All)
-            table.draw();
-        });
-    </script>
-
+    if (e.target.classList.contains("btn-delete")) {
+      if (confirm("Delete this item?")) {
+        e.target.closest("tr").remove();
+        [...table.rows].forEach((r, i) => r.cells[0].textContent = i + 1);
+      }
+    }
+  });
+</script>
 </body>
 
 </html>

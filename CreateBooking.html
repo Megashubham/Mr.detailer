@@ -1122,8 +1122,8 @@
 
                         <!-- MAINTENANCE -->
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="#sidebarMaintenance" data-bs-toggle="collapse" role="button"
-                                aria-expanded="false" aria-controls="sidebarMaintenance">
+                            <a class="nav-link menu-link" href="#sidebarMaintenance" data-bs-toggle="collapse"
+                                role="button" aria-expanded="false" aria-controls="sidebarMaintenance">
                                 <i class="ri-tools-fill"></i>
                                 <span data-key="t-Maintenance">Maintenance</span>
                             </a>
@@ -1176,6 +1176,32 @@
                                         <a href="Statement.html" class="nav-link" data-key="Scheduled">Statement</a>
                                     </li>
 
+                                </ul>
+                            </div>
+                        </li>
+
+                        <!-- Inventory -->
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="#sidebarInventory" data-bs-toggle="collapse"
+                                role="button" aria-expanded="false" aria-controls="sidebarInventory">
+                                <i class="bx bxs-box"></i>
+                                <span data-key="t-Accounts">Inventory</span>
+                            </a>
+
+                            <div class="collapse menu-dropdown" id="sidebarInventory">
+                                <ul class="nav nav-sm flex-column">
+
+                                    <li class="nav-item">
+                                        <a href="Inventory_Type.html" class="nav-link" data-key="Inventory_Type">Inventory Type</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a href="Manage_Inventory.html" class="nav-link" data-key="Manage_Inventory">Manage Inventory</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a href="Entry.html" class="nav-link" data-key="Entry">All Entry</a>
+                                    </li>
                                 </ul>
                             </div>
                         </li>
@@ -1353,7 +1379,7 @@
                     </div>
 
                     <!-- Tabs -->
-                    
+
                 </div>
             </div>
         </div>
@@ -1366,7 +1392,7 @@
     <!-- END layout-wrapper -->
 
 
-    
+
 
 
     <!--start back-to-top-->
@@ -1756,164 +1782,164 @@
     </style>
 
     <script>
-            (function () {
-                // select all analytics cards (adjust selector if your HTML is different)
-                const cards = document.querySelectorAll('.card.card-animate');
-                if (!cards.length) return;
+        (function () {
+            // select all analytics cards (adjust selector if your HTML is different)
+            const cards = document.querySelectorAll('.card.card-animate');
+            if (!cards.length) return;
 
-                // table selector - change if your table has another id/class
-                const table = document.querySelector('table');
-                if (!table) {
-                    console.warn('No table found to filter. Put a <table> in the page or change selector.');
-                    return;
-                }
-                const rows = Array.from(table.querySelectorAll('tbody tr'));
+            // table selector - change if your table has another id/class
+            const table = document.querySelector('table');
+            if (!table) {
+                console.warn('No table found to filter. Put a <table> in the page or change selector.');
+                return;
+            }
+            const rows = Array.from(table.querySelectorAll('tbody tr'));
 
-                // helpers
-                function startOfDay(d) {
-                    const x = new Date(d);
-                    x.setHours(0, 0, 0, 0);
-                    return x;
-                }
-                function addDays(d, n) {
-                    const x = new Date(d);
-                    x.setDate(x.getDate() + n);
-                    return x;
-                }
-                function yyyyMMdd(date) {
-                    const y = date.getFullYear();
-                    const m = String(date.getMonth() + 1).padStart(2, '0');
-                    const dd = String(date.getDate()).padStart(2, '0');
-                    return `${y}-${m}-${dd}`;
-                }
+            // helpers
+            function startOfDay(d) {
+                const x = new Date(d);
+                x.setHours(0, 0, 0, 0);
+                return x;
+            }
+            function addDays(d, n) {
+                const x = new Date(d);
+                x.setDate(x.getDate() + n);
+                return x;
+            }
+            function yyyyMMdd(date) {
+                const y = date.getFullYear();
+                const m = String(date.getMonth() + 1).padStart(2, '0');
+                const dd = String(date.getDate()).padStart(2, '0');
+                return `${y}-${m}-${dd}`;
+            }
 
-                // try to parse date from a row
-                function parseDateFromRow(row) {
-                    // 1) data-booking-date="YYYY-MM-DD"
-                    const dAttr = row.dataset.bookingDate || row.getAttribute('data-booking-date');
-                    if (dAttr) {
-                        // try ISO first
-                        const iso = dAttr.trim();
-                        const parsed = new Date(iso);
-                        if (!isNaN(parsed)) return startOfDay(parsed);
-                    }
-
-                    // 2) td with class booking-date (text like YYYY-MM-DD or DD-MM-YYYY)
-                    const dateCell = row.querySelector('.booking-date');
-                    if (dateCell) {
-                        const txt = dateCell.textContent.trim();
-                        // YYYY-MM-DD
-                        const ymd = txt.match(/(\\d{4})-(\\d{1,2})-(\\d{1,2})/);
-                        if (ymd) return startOfDay(new Date(`${ymd[1]}-${ymd[2]}-${ymd[3]}`));
-                        // DD-MM-YYYY
-                        const dmy = txt.match(/(\\d{1,2})-(\\d{1,2})-(\\d{4})/);
-                        if (dmy) return startOfDay(new Date(`${dmy[3]}-${dmy[2]}-${dmy[1]}`));
-                        // fallback: attempt Date.parse
-                        const parsed = new Date(txt);
-                        if (!isNaN(parsed)) return startOfDay(parsed);
-                    }
-
-                    // 3) try to find any ISO-ish date text in the row
-                    const text = row.textContent;
-                    const isoMatch = text.match(/(\\d{4}-\\d{2}-\\d{2})/);
-                    if (isoMatch) {
-                        const parsed = new Date(isoMatch[1]);
-                        if (!isNaN(parsed)) return startOfDay(parsed);
-                    }
-
-                    return null; // unknown
+            // try to parse date from a row
+            function parseDateFromRow(row) {
+                // 1) data-booking-date="YYYY-MM-DD"
+                const dAttr = row.dataset.bookingDate || row.getAttribute('data-booking-date');
+                if (dAttr) {
+                    // try ISO first
+                    const iso = dAttr.trim();
+                    const parsed = new Date(iso);
+                    if (!isNaN(parsed)) return startOfDay(parsed);
                 }
 
-                // get status text from row
-                function getStatusFromRow(row) {
-                    const s = row.dataset.status || row.getAttribute('data-status');
-                    if (s) return s.toString().trim().toLowerCase();
-                    const cell = row.querySelector('.status');
-                    if (cell) return cell.textContent.trim().toLowerCase();
-                    return '';
+                // 2) td with class booking-date (text like YYYY-MM-DD or DD-MM-YYYY)
+                const dateCell = row.querySelector('.booking-date');
+                if (dateCell) {
+                    const txt = dateCell.textContent.trim();
+                    // YYYY-MM-DD
+                    const ymd = txt.match(/(\\d{4})-(\\d{1,2})-(\\d{1,2})/);
+                    if (ymd) return startOfDay(new Date(`${ymd[1]}-${ymd[2]}-${ymd[3]}`));
+                    // DD-MM-YYYY
+                    const dmy = txt.match(/(\\d{1,2})-(\\d{1,2})-(\\d{4})/);
+                    if (dmy) return startOfDay(new Date(`${dmy[3]}-${dmy[2]}-${dmy[1]}`));
+                    // fallback: attempt Date.parse
+                    const parsed = new Date(txt);
+                    if (!isNaN(parsed)) return startOfDay(parsed);
                 }
 
-                // filter function
-                function applyFilter(filterKey) {
-                    const today = startOfDay(new Date());
-                    const tomorrow = startOfDay(addDays(today, 1));
-                    const next10End = startOfDay(addDays(today, 10));
+                // 3) try to find any ISO-ish date text in the row
+                const text = row.textContent;
+                const isoMatch = text.match(/(\\d{4}-\\d{2}-\\d{2})/);
+                if (isoMatch) {
+                    const parsed = new Date(isoMatch[1]);
+                    if (!isNaN(parsed)) return startOfDay(parsed);
+                }
 
-                    rows.forEach(row => {
-                        let show = true;
-                        if (filterKey === 'booking-raised') {
-                            const status = getStatusFromRow(row);
-                            show = status.includes('raised') || status.includes('booking') || status.includes('booked');
+                return null; // unknown
+            }
+
+            // get status text from row
+            function getStatusFromRow(row) {
+                const s = row.dataset.status || row.getAttribute('data-status');
+                if (s) return s.toString().trim().toLowerCase();
+                const cell = row.querySelector('.status');
+                if (cell) return cell.textContent.trim().toLowerCase();
+                return '';
+            }
+
+            // filter function
+            function applyFilter(filterKey) {
+                const today = startOfDay(new Date());
+                const tomorrow = startOfDay(addDays(today, 1));
+                const next10End = startOfDay(addDays(today, 10));
+
+                rows.forEach(row => {
+                    let show = true;
+                    if (filterKey === 'booking-raised') {
+                        const status = getStatusFromRow(row);
+                        show = status.includes('raised') || status.includes('booking') || status.includes('booked');
+                    } else {
+                        const d = parseDateFromRow(row);
+                        if (!d) {
+                            // if we don't know the date, hide for date-based filters
+                            show = false;
+                        } else if (filterKey === 'today') {
+                            show = (yyyyMMdd(d) === yyyyMMdd(today));
+                        } else if (filterKey === 'tomorrow') {
+                            show = (yyyyMMdd(d) === yyyyMMdd(tomorrow));
+                        } else if (filterKey === 'next-10') {
+                            // include tomorrow through next10End inclusive
+                            show = (d >= tomorrow && d <= next10End);
                         } else {
-                            const d = parseDateFromRow(row);
-                            if (!d) {
-                                // if we don't know the date, hide for date-based filters
-                                show = false;
-                            } else if (filterKey === 'today') {
-                                show = (yyyyMMdd(d) === yyyyMMdd(today));
-                            } else if (filterKey === 'tomorrow') {
-                                show = (yyyyMMdd(d) === yyyyMMdd(tomorrow));
-                            } else if (filterKey === 'next-10') {
-                                // include tomorrow through next10End inclusive
-                                show = (d >= tomorrow && d <= next10End);
-                            } else {
-                                show = true;
-                            }
+                            show = true;
                         }
+                    }
 
-                        row.style.display = show ? '' : 'none';
-                    });
-                }
-
-                // helper to clear filters (show all)
-                function clearFilter() {
-                    rows.forEach(r => r.style.display = '');
-                }
-
-                // determine filter type from card's label text
-                function detectFilterFromCard(card) {
-                    // look for p.fw-medium text inside the card (your markup uses that)
-                    const labelEl = card.querySelector('p.fw-medium') || card.querySelector('p');
-                    const text = labelEl ? labelEl.textContent.trim().toLowerCase() : '';
-                    if (text.includes('today')) return 'today';
-                    if (text.includes('tomorrow')) return 'tomorrow';
-                    if (text.includes('next') && text.match(/\\d+/)) return 'next-10';
-                    if (text.includes('booking') && text.includes('raised')) return 'booking-raised';
-                    // fallback: check data-filter attribute if you add it manually
-                    const df = card.getAttribute('data-filter');
-                    if (df) return df;
-                    return null;
-                }
-
-                // attach listeners
-                cards.forEach(card => {
-                    card.addEventListener('click', function (e) {
-                        e.preventDefault();
-                        // toggle active state
-                        const wasActive = card.classList.contains('active');
-                        // clear all active
-                        cards.forEach(c => c.classList.remove('active'));
-
-                        if (wasActive) {
-                            // clicked same card => clear filter
-                            clearFilter();
-                            return;
-                        }
-
-                        card.classList.add('active');
-                        const filterKey = detectFilterFromCard(card);
-                        if (!filterKey) {
-                            console.warn('Unknown filter for card:', card);
-                            clearFilter();
-                            return;
-                        }
-                        applyFilter(filterKey);
-                    });
+                    row.style.display = show ? '' : 'none';
                 });
+            }
 
-                // optional: expose functions for debugging
-                window.__analyticsFilter = { applyFilter, clearFilter };
-            })();
+            // helper to clear filters (show all)
+            function clearFilter() {
+                rows.forEach(r => r.style.display = '');
+            }
+
+            // determine filter type from card's label text
+            function detectFilterFromCard(card) {
+                // look for p.fw-medium text inside the card (your markup uses that)
+                const labelEl = card.querySelector('p.fw-medium') || card.querySelector('p');
+                const text = labelEl ? labelEl.textContent.trim().toLowerCase() : '';
+                if (text.includes('today')) return 'today';
+                if (text.includes('tomorrow')) return 'tomorrow';
+                if (text.includes('next') && text.match(/\\d+/)) return 'next-10';
+                if (text.includes('booking') && text.includes('raised')) return 'booking-raised';
+                // fallback: check data-filter attribute if you add it manually
+                const df = card.getAttribute('data-filter');
+                if (df) return df;
+                return null;
+            }
+
+            // attach listeners
+            cards.forEach(card => {
+                card.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    // toggle active state
+                    const wasActive = card.classList.contains('active');
+                    // clear all active
+                    cards.forEach(c => c.classList.remove('active'));
+
+                    if (wasActive) {
+                        // clicked same card => clear filter
+                        clearFilter();
+                        return;
+                    }
+
+                    card.classList.add('active');
+                    const filterKey = detectFilterFromCard(card);
+                    if (!filterKey) {
+                        console.warn('Unknown filter for card:', card);
+                        clearFilter();
+                        return;
+                    }
+                    applyFilter(filterKey);
+                });
+            });
+
+            // optional: expose functions for debugging
+            window.__analyticsFilter = { applyFilter, clearFilter };
+        })();
     </script>
 
     <script>
