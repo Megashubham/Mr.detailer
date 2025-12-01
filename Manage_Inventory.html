@@ -17,6 +17,9 @@
     <!--Swiper slider css-->
     <link href="assets/libs/swiper/swiper-bundle.min.css" rel="stylesheet" type="text/css" />
 
+    <!-- Choices.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
+
     <!-- Layout config Js -->
     <script src="assets/js/layout.js"></script>
     <!-- Bootstrap Css -->
@@ -1268,9 +1271,9 @@
                             <div class="modal-body">
                                 <div class="mb-3">
                                     <label class="form-label required">Select Item</label>
-                                    <input id="siItem" class="form-control" list="itemsList"
-                                        placeholder="Type to search item..." required>
-                                    <datalist id="itemsList"></datalist>
+                                    <select id="siItem" class="form-control" data-choices="" name="choices-single-default" required>
+                                        <option value="">Select an item...</option>
+                                    </select>
                                 </div>
 
                                 <div class="mb-3">
@@ -1311,8 +1314,9 @@
                             <div class="modal-body">
                                 <div class="mb-3">
                                     <label class="form-label required">Select Item</label>
-                                    <input id="soItem" class="form-control" list="itemsList"
-                                        placeholder="Type to search item..." required>
+                                    <select id="soItem" class="form-control" data-choices="" name="choices-single-default" required>
+                                        <option value="">Select an item...</option>
+                                    </select>
                                 </div>
 
                                 <div class="mb-3">
@@ -1457,6 +1461,9 @@
     <!--Swiper slider js-->
     <script src="assets/libs/swiper/swiper-bundle.min.js"></script>
 
+    <!-- Choices.js JS -->
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+
     <!-- Dashboard init -->
     <script src="assets/js/pages/dashboard-ecommerce.init.js"></script>
 
@@ -1507,7 +1514,6 @@
 
         // --- DOM refs ---
         const tblBody = document.querySelector('#tblStock tbody');
-        const itemsDatalist = document.getElementById('itemsList');
 
         const siItem = document.getElementById('siItem');
         const soItem = document.getElementById('soItem');
@@ -1515,6 +1521,35 @@
         const soTreatment = document.getElementById('soTreatment');
         const formStockIn = document.getElementById('formStockIn');
         const formStockOut = document.getElementById('formStockOut');
+
+        // Initialize Choices.js for searchable dropdowns
+        let siItemChoices = null;
+        let soItemChoices = null;
+
+        function initializeChoices() {
+            if (siItemChoices) {
+                siItemChoices.destroy();
+            }
+            if (soItemChoices) {
+                soItemChoices.destroy();
+            }
+
+            siItemChoices = new Choices(siItem, {
+                searchEnabled: true,
+                searchPlaceholderValue: 'Type to search...',
+                itemSelectText: 'Press to select',
+                shouldSort: false,
+                removeItemButton: false
+            });
+
+            soItemChoices = new Choices(soItem, {
+                searchEnabled: true,
+                searchPlaceholderValue: 'Type to search...',
+                itemSelectText: 'Press to select',
+                shouldSort: false,
+                removeItemButton: false
+            });
+        }
 
         const ledgerBody = document.getElementById('ledgerBody');
         const ledgerHeader = document.getElementById('ledgerHeader');
@@ -1532,14 +1567,26 @@
             return d.toLocaleDateString('en-GB', opts); // e.g. 03-Nov-2025
         }
 
-        // populate datalist
+        // populate select options with items
         function fillDatalist() {
-            itemsDatalist.innerHTML = '';
+            // Clear existing options except the placeholder
+            siItem.innerHTML = '<option value="">Select an item...</option>';
+            soItem.innerHTML = '<option value="">Select an item...</option>';
+            
             itemsMaster.forEach(it => {
-                const opt = document.createElement('option');
-                opt.value = it.name;
-                itemsDatalist.appendChild(opt);
+                const opt1 = document.createElement('option');
+                opt1.value = it.name;
+                opt1.textContent = it.name;
+                siItem.appendChild(opt1);
+
+                const opt2 = document.createElement('option');
+                opt2.value = it.name;
+                opt2.textContent = it.name;
+                soItem.appendChild(opt2);
             });
+
+            // Initialize Choices.js after populating options
+            initializeChoices();
         }
 
         // get item object by name
@@ -1573,9 +1620,9 @@
         // small escape
         function escapeHtml(s) { return String(s).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;'); }
 
-        // when user types in stock modals, populate treatment chip
+        // when user selects in stock modals, populate treatment chip
         function wireItemInput(inputEl, chipEl) {
-            inputEl.addEventListener('input', () => {
+            inputEl.addEventListener('change', () => {
                 const val = inputEl.value.trim();
                 const it = findItemByName(val);
                 chipEl.textContent = it ? `${it.treatmentType} - ${it.treatmentName}` : '—';

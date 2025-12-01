@@ -95,23 +95,21 @@
 
     <!-- Custom Logo Styles -->
     <style>
-        .mr-detailer-text {
-            font-family: 'Brush Script MT', 'Lucida Handwriting', 'Comic Sans MS', cursive;
-            font-size: 28px;
-            font-weight: bold;
-            font-style: italic;
-            color: #000;
-            margin: 0;
-            padding: 5px 10px;
-            white-space: nowrap;
+        .logo img.mr-detailer-logo {
+            height: 45px;
+            width: auto;
+            max-width: 180px;
+            object-fit: contain;
         }
-        
-        .logo-light .mr-detailer-text {
-            color: #fff;
+
+        .logo-sm img.mr-detailer-logo {
+            height: 35px;
+            max-width: 150px;
         }
-        
-        .logo-sm .mr-detailer-text {
-            font-size: 22px;
+
+        /* Ensure logo displays properly in both light and dark modes */
+        .navbar-brand-box .logo img {
+            display: block;
         }
     </style>
 
@@ -130,19 +128,19 @@
                         <div class="navbar-brand-box horizontal-logo">
                             <a href="index.html" class="logo logo-dark">
                                 <span class="logo-sm">
-                                    <span class="mr-detailer-text">Mr. detailer</span>
+                                    <img src="assets/images/mr-detailer-logo.png" alt="Mr. Detailer" class="mr-detailer-logo">
                                 </span>
                                 <span class="logo-lg">
-                                    <span class="mr-detailer-text">Mr. detailer</span>
+                                    <img src="assets/images/mr-detailer-logo.png" alt="Mr. Detailer" class="mr-detailer-logo">
                                 </span>
                             </a>
 
                             <a href="index.html" class="logo logo-light">
                                 <span class="logo-sm">
-                                    <span class="mr-detailer-text">Mr. detailer</span>
+                                    <img src="assets/images/mr-detailer-logo.png" alt="Mr. Detailer" class="mr-detailer-logo">
                                 </span>
                                 <span class="logo-lg">
-                                    <span class="mr-detailer-text">Mr. detailer</span>
+                                    <img src="assets/images/mr-detailer-logo.png" alt="Mr. Detailer" class="mr-detailer-logo">
                                 </span>
                             </a>
                         </div>
@@ -1018,19 +1016,19 @@
                 <!-- Dark Logo-->
                 <a href="index.html" class="logo logo-dark">
                     <span class="logo-sm">
-                        <span class="mr-detailer-text">Mr. detailer</span>
+                        <img src="assets/images/mr-detailer-logo.png" alt="Mr. Detailer" class="mr-detailer-logo">
                     </span>
                     <span class="logo-lg">
-                        <span class="mr-detailer-text">Mr. detailer</span>
+                        <img src="assets/images/mr-detailer-logo.png" alt="Mr. Detailer" class="mr-detailer-logo">
                     </span>
                 </a>
                 <!-- Light Logo-->
                 <a href="index.html" class="logo logo-light">
                     <span class="logo-sm">
-                        <span class="mr-detailer-text">Mr. detailer</span>
+                        <img src="assets/images/mr-detailer-logo.png" alt="Mr. Detailer" class="mr-detailer-logo">
                     </span>
                     <span class="logo-lg">
-                        <span class="mr-detailer-text">Mr. detailer</span>
+                        <img src="assets/images/mr-detailer-logo.png" alt="Mr. Detailer" class="mr-detailer-logo">
                     </span>
                 </a>
                 <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover"
@@ -1819,12 +1817,27 @@
                     const tr = document.createElement('tr');
                     const schedule = s.schedule ? formatDisplayDate(s.schedule) : '-';
                     const maint = s.maintenance ? formatDisplayDate(s.maintenance) : '-';
-                    const invo = s.invoice ? `"${s.invoice}"` : '-';
+                    const invo = s.invoice ? `<button class="btn btn-sm btn-primary download-invoice-btn" data-invoice="${s.invoice}"><i class="ri-download-line me-1"></i>${s.invoice}</button>` : '-';
                     tr.innerHTML = `<td>${idx + 1}.</td><td>${schedule}</td><td>${maint}</td><td>${invo}</td>`;
                     body.appendChild(tr);
                 });
                 const modalEl = document.getElementById('viewServicesModal');
                 if (modalEl) new bootstrap.Modal(modalEl).show();
+                
+                // Add event listener for download invoice buttons
+                const downloadBtns = body.querySelectorAll('.download-invoice-btn');
+                downloadBtns.forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                        const invoiceName = this.getAttribute('data-invoice');
+                        // Here you can implement actual download logic
+                        // For now, we'll show an alert and simulate download
+                        alert('Downloading invoice: ' + invoiceName);
+                        console.log('Download invoice:', invoiceName);
+                        
+                        // Simulate download - in real scenario, you would make an API call
+                        // window.location.href = '/api/download-invoice?name=' + invoiceName;
+                    });
+                });
             }
 
             function openScheduleModal(row) {

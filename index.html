@@ -43,11 +43,11 @@
             padding: 5px 10px;
             white-space: nowrap;
         }
-        
+
         .logo-light .mr-detailer-text {
             color: #fff;
         }
-        
+
         .logo-sm .mr-detailer-text {
             font-size: 22px;
         }
@@ -1364,7 +1364,8 @@
                                     <!--end col-->
                                     <div class="col-6 col-sm-3">
                                         <div class="p-3 border border-dashed border-start-0 border-end-0">
-                                            <h5 class="mb-1 text-success"><span class="counter-value" data-target="0">0</span>%</h5>
+                                            <h5 class="mb-1 text-success"><span class="counter-value"
+                                                    data-target="0">0</span>%</h5>
                                             <p class="text-muted mb-0">Conversion %</p>
                                         </div>
                                     </div>
@@ -1374,7 +1375,9 @@
 
                             <div class="card-body p-0 pb-2">
                                 <div class="w-100">
-                                    <div id="customer_impression_charts" data-colors='["--vz-success", "--vz-primary", "--vz-danger"]' class="apex-charts" dir="ltr"></div>
+                                    <div id="customer_impression_charts"
+                                        data-colors='["--vz-success", "--vz-primary", "--vz-danger"]'
+                                        class="apex-charts" dir="ltr"></div>
                                 </div>
                             </div><!-- end card body -->
                         </div><!-- end card -->
@@ -1388,7 +1391,9 @@
                             </div><!-- end card header -->
 
                             <div class="card-body">
-                                <div id="store-visits-source" data-colors='["--vz-primary", "--vz-success", "--vz-warning", "--vz-danger", "--vz-info"]' class="apex-charts" dir="ltr"></div>
+                                <div id="store-visits-source"
+                                    data-colors='["--vz-primary", "--vz-success", "--vz-warning", "--vz-danger", "--vz-info"]'
+                                    class="apex-charts" dir="ltr"></div>
                             </div>
                         </div> <!-- end card-->
                     </div> <!-- end col-->
@@ -1401,21 +1406,27 @@
                             <div class="col-xl-3">
                                 <div class="card card-h-100">
                                     <div class="card-body">
-                                        <button class="btn btn-primary w-100" id="btn-new-event"><i class="mdi mdi-plus"></i> Add New Event</button>
+                                        <button class="btn btn-primary w-100" id="btn-new-event"><i
+                                                class="mdi mdi-plus"></i> Add New Event</button>
 
                                         <div id="external-events">
                                             <br>
                                             <p class="text-muted">Drag and drop your event or click in the calendar</p>
-                                            <div class="external-event fc-event bg-success-subtle text-success" data-class="bg-success-subtle">
+                                            <div class="external-event fc-event bg-success-subtle text-success"
+                                                data-class="bg-success-subtle">
                                                 <i class="mdi mdi-checkbox-blank-circle font-size-11 me-2"></i>Bookings
                                             </div>
-                                            <div class="external-event fc-event bg-secondary-subtle text-secondary" data-class="bg-secondary-subtle">
+                                            <div class="external-event fc-event bg-secondary-subtle text-secondary"
+                                                data-class="bg-secondary-subtle">
                                                 <i class="mdi mdi-checkbox-blank-circle font-size-11 me-2"></i>Leads
                                             </div>
-                                            <div class="external-event fc-event bg-warning-subtle text-warning" data-class="bg-warning-subtle">
-                                                <i class="mdi mdi-checkbox-blank-circle font-size-11 me-2"></i>Maintenance
+                                            <div class="external-event fc-event bg-warning-subtle text-warning"
+                                                data-class="bg-warning-subtle">
+                                                <i
+                                                    class="mdi mdi-checkbox-blank-circle font-size-11 me-2"></i>Maintenance
                                             </div>
-                                            <div class="external-event fc-event bg-primary-subtle text-primary" data-class="bg-primary-subtle">
+                                            <div class="external-event fc-event bg-primary-subtle text-primary"
+                                                data-class="bg-primary-subtle">
                                                 <i class="mdi mdi-checkbox-blank-circle font-size-11 me-2"></i>Other
                                             </div>
                                         </div>
@@ -1449,12 +1460,15 @@
                                 <div class="modal-content border-0">
                                     <div class="modal-header p-3 bg-info-subtle">
                                         <h5 class="modal-title" id="modal-title">Event</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-hidden="true"></button>
                                     </div>
                                     <div class="modal-body p-4">
                                         <form class="needs-validation" name="event-form" id="form-event" novalidate>
                                             <div class="text-end">
-                                                <a href="#" class="btn btn-sm btn-soft-primary" id="edit-event-btn" data-id="edit-event" onclick="editEvent(this)" role="button">Edit</a>
+                                                <a href="#" class="btn btn-sm btn-soft-primary" id="edit-event-btn"
+                                                    data-id="edit-event" onclick="editEvent(this)"
+                                                    role="button">Edit</a>
                                             </div>
                                             <div class="event-details">
                                                 <div class="d-flex mb-2">
@@ -1463,7 +1477,8 @@
                                                             <i class="ri-calendar-event-line text-muted fs-16"></i>
                                                         </div>
                                                         <div class="flex-grow-1">
-                                                            <h6 class="d-block fw-semibold mb-0" id="event-start-date-tag"></h6>
+                                                            <h6 class="d-block fw-semibold mb-0"
+                                                                id="event-start-date-tag"></h6>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1472,7 +1487,9 @@
                                                         <i class="ri-time-line text-muted fs-16"></i>
                                                     </div>
                                                     <div class="flex-grow-1">
-                                                        <h6 class="d-block fw-semibold mb-0"><span id="event-timepicker1-tag"></span> - <span id="event-timepicker2-tag"></span></h6>
+                                                        <h6 class="d-block fw-semibold mb-0"><span
+                                                                id="event-timepicker1-tag"></span> - <span
+                                                                id="event-timepicker2-tag"></span></h6>
                                                     </div>
                                                 </div>
                                                 <div class="d-flex align-items-center mb-2">
@@ -1480,7 +1497,8 @@
                                                         <i class="ri-map-pin-line text-muted fs-16"></i>
                                                     </div>
                                                     <div class="flex-grow-1">
-                                                        <h6 class="d-block fw-semibold mb-0"> <span id="event-location-tag"></span></h6>
+                                                        <h6 class="d-block fw-semibold mb-0"> <span
+                                                                id="event-location-tag"></span></h6>
                                                     </div>
                                                 </div>
                                                 <div class="d-flex mb-3">
@@ -1488,7 +1506,8 @@
                                                         <i class="ri-discuss-line text-muted fs-16"></i>
                                                     </div>
                                                     <div class="flex-grow-1">
-                                                        <p class="d-block text-muted mb-0" id="event-description-tag"></p>
+                                                        <p class="d-block text-muted mb-0" id="event-description-tag">
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1496,22 +1515,26 @@
                                                 <div class="col-12">
                                                     <div class="mb-3">
                                                         <label class="form-label">Type</label>
-                                                        <select class="form-select" name="category" id="event-category" required>
+                                                        <select class="form-select" name="category" id="event-category"
+                                                            required>
                                                             <option value="">Select Type</option>
                                                             <option value="bg-success-subtle">Bookings</option>
                                                             <option value="bg-secondary-subtle">Leads</option>
                                                             <option value="bg-warning-subtle">Maintenance</option>
                                                             <option value="bg-primary-subtle">Other</option>
                                                         </select>
-                                                        <div class="invalid-feedback">Please select a valid event type</div>
+                                                        <div class="invalid-feedback">Please select a valid event type
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <!--end col-->
                                                 <div class="col-12">
                                                     <div class="mb-3">
                                                         <label class="form-label">Event Name</label>
-                                                        <input class="form-control" placeholder="Enter event name" type="text" name="title" id="event-title" required>
-                                                        <div class="invalid-feedback">Please provide a valid event name</div>
+                                                        <input class="form-control" placeholder="Enter event name"
+                                                            type="text" name="title" id="event-title" required>
+                                                        <div class="invalid-feedback">Please provide a valid event name
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <!--end col-->
@@ -1519,8 +1542,11 @@
                                                     <div class="mb-3">
                                                         <label>Event Date</label>
                                                         <div class="input-group">
-                                                            <input type="text" id="event-start-date" class="form-control flatpickr" placeholder="Select date" required>
-                                                            <span class="input-group-text"><i class="ri-calendar-event-line"></i></span>
+                                                            <input type="text" id="event-start-date"
+                                                                class="form-control flatpickr" placeholder="Select date"
+                                                                required>
+                                                            <span class="input-group-text"><i
+                                                                    class="ri-calendar-event-line"></i></span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1531,45 +1557,46 @@
                                                             <div class="mb-3">
                                                                 <label class="form-label">Start Time</label>
                                                                 <div class="input-group">
-                                                                    <input id="timepicker1" type="text" class="form-control flatpickr" placeholder="Select start time">
-                                                                    <span class="input-group-text"><i class="ri-time-line"></i></span>
+                                                                    <input id="timepicker1" type="text"
+                                                                        class="form-control flatpickr"
+                                                                        placeholder="Select start time">
+                                                                    <span class="input-group-text"><i
+                                                                            class="ri-time-line"></i></span>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-6">
                                                             <div class="mb-3">
-                                                                <label class="form-label">End Time</label>
-                                                                <div class="input-group">
-                                                                    <input id="timepicker2" type="text" class="form-control flatpickr" placeholder="Select end time">
-                                                                    <span class="input-group-text"><i class="ri-time-line"></i></span>
+                                                                <label for="event-location">Location</label>
+                                                                <div>
+                                                                    <input type="text" class="form-control"
+                                                                        name="event-location" id="event-location"
+                                                                        placeholder="Event location">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <!--end col-->
-                                                <div class="col-12">
-                                                    <div class="mb-3">
-                                                        <label for="event-location">Location</label>
-                                                        <div>
-                                                            <input type="text" class="form-control" name="event-location" id="event-location" placeholder="Event location">
-                                                        </div>
-                                                    </div>
-                                                </div>
+
                                                 <!--end col-->
                                                 <input type="hidden" id="eventid" name="eventid" value="">
                                                 <div class="col-12">
                                                     <div class="mb-3">
                                                         <label class="form-label">Description</label>
-                                                        <textarea class="form-control" id="event-description" placeholder="Enter a description" rows="3"></textarea>
+                                                        <textarea class="form-control" id="event-description"
+                                                            placeholder="Enter a description" rows="3"></textarea>
                                                     </div>
                                                 </div>
                                                 <!--end col-->
                                             </div>
                                             <!--end row-->
                                             <div class="hstack gap-2 justify-content-end">
-                                                <button type="button" class="btn btn-soft-danger" id="btn-delete-event"><i class="ri-close-line align-bottom"></i> Delete</button>
-                                                <button type="submit" class="btn btn-primary" id="btn-save-event">Add Event</button>
+                                                <button type="button" class="btn btn-soft-danger"
+                                                    id="btn-delete-event"><i class="ri-close-line align-bottom"></i>
+                                                    Delete</button>
+                                                <button type="submit" class="btn btn-primary" id="btn-save-event">Add
+                                                    Event</button>
                                             </div>
                                         </form>
                                     </div>

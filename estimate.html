@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg"
+    data-sidebar-image="none" data-preloader="disable">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Generate Estimate | Mr. Detailer ERP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Generate Estimate for Lead" name="description" />
+    <meta content="Mr. Detailer" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+    <!-- Layout config Js -->
+    <script src="assets/js/layout.js"></script>
+    <!-- Bootstrap Css -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+    <!-- custom Css-->
+    <link href="assets/css/custom.min.css" rel="stylesheet" type="text/css" />
+
+    <style>
+        /* Custom Styles for Estimate Page */
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .card {
+            border: 1px solid #e9ecef;
+            border-radius: 0.5rem;
+        }
+
+        .border-bottom-dashed {
+            border-bottom: 1px dashed #ced4da !important;
+        }
+
+        .border-top-dashed {
+            border-top: 1px dashed #ced4da !important;
+        }
+
+        .table-active th {
+            background-color: #f7f7f7 !important;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background-color: #fff !important;
+            }
+
+            .d-print-none {
+                display: none !important;
+            }
+
+            .col-xxl-9 {
+                width: 100% !important;
+            }
+        }
+    </style>
+
+    <!-- Custom Logo Styles -->
+    <style>
+        .mr-detailer-logo {
+            max-height: 40px;
+            width: auto;
+            object-fit: contain;
+        }
+        
+        .logo-sm .mr-detailer-logo {
+            max-height: 30px;
+        }
+        
+        .logo-lg .mr-detailer-logo {
+            max-height: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Begin page -->
+    <div id="layout-wrapper">
+        <header id="page-topbar">
+            <div class="layout-width">
+                <div class="navbar-header">
+                    <div class="d-flex">
+                        <!-- LOGO -->
+                        <div class="navbar-brand-box horizontal-logo">
+                            <a href="index.html" class="logo logo-dark">
+                                <span class="logo-sm">
+                                    <img src="assets/images/mr-detailer-logo.png" alt="Mr. Detailer" class="mr-detailer-logo">
+                                </span>
+                                <span class="logo-lg">
+                                    <img src="assets/images/mr-detailer-logo.png" alt="Mr. Detailer" class="mr-detailer-logo">
+                                </span>
+                            </a>
+                            <a href="index.html" class="logo logo-light">
+                                <span class="logo-sm">
+                                    <img src="assets/images/mr-detailer-logo.png" alt="Mr. Detailer" class="mr-detailer-logo">
+                                </span>
+                                <span class="logo-lg">
+                                    <img src="assets/images/mr-detailer-logo.png" alt="Mr. Detailer" class="mr-detailer-logo">
+                                </span>
+                            </a>
+                        </div>
+
+                        <button type="button"
+                            class="btn btn-sm px-3 fs-16 header-item vertical-menu-btn topnav-hamburger shadow-none"
+                            id="topnav-hamburger-icon">
+                            <span class="hamburger-icon">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </span>
+                        </button>
+                    </div>
+
+                    <div class="d-flex align-items-center">
+                        <div class="ms-1 header-item d-none d-sm-flex">
+                            <button type="button"
+                                class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle shadow-none"
+                                data-toggle="fullscreen">
+                                <i class='bx bx-fullscreen fs-22'></i>
+                            </button>
+                        </div>
+
+                        <div class="dropdown ms-sm-3 header-item topbar-user">
+                            <button type="button" class="btn shadow-none" id="page-header-user-dropdown"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="d-flex align-items-center">
+                                    <img class="rounded-circle header-profile-user"
+                                        src="assets/images/users/avatar-1.jpg" alt="Header Avatar">
+                                    <span class="text-start ms-xl-2">
+                                        <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">Admin</span>
+                                        <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">Manager</span>
+                                    </span>
+                                </span>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <h6 class="dropdown-header">Welcome Admin!</h6>
+                                <a class="dropdown-item" href="pages-profile.html"><i
+                                        class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
+                                        class="align-middle">Profile</span></a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="pages-profile-settings.html"><span
+                                        class="badge bg-success-subtle text-success mt-1 float-end">New</span><i
+                                        class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span
+                                        class="align-middle">Settings</span></a>
+                                <a class="dropdown-item" href="auth-logout-basic.html"><i
+                                        class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span
+                                        class="align-middle" data-key="t-logout">Logout</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- ========== App Menu ========== -->
+        <div class="app-menu navbar-menu">
+            <!-- LOGO -->
+            <div class="navbar-brand-box">
+                <a href="index.html" class="logo logo-dark">
+                    <span class="logo-sm">
+                        <img src="assets/images/mr-detailer-logo.png" alt="Mr. Detailer" class="mr-detailer-logo">
+                    </span>
+                    <span class="logo-lg">
+                        <img src="assets/images/mr-detailer-logo.png" alt="Mr. Detailer" class="mr-detailer-logo">
+                    </span>
+                </a>
+                <a href="index.html" class="logo logo-light">
+                    <span class="logo-sm">
+                        <img src="assets/images/mr-detailer-logo.png" alt="Mr. Detailer" class="mr-detailer-logo">
+                    </span>
+                    <span class="logo-lg">
+                        <img src="assets/images/mr-detailer-logo.png" alt="Mr. Detailer" class="mr-detailer-logo">
+                    </span>
+                </a>
+                <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover"
+                    id="vertical-hover">
+                    <i class="ri-record-circle-line"></i>
+                </button>
+            </div>
+
+            <div id="scrollbar">
+                <div class="container-fluid">
+                    <ul class="navbar-nav" id="navbar-nav">
+                        <li class="menu-title"><span data-key="t-menu">Menu</span></li>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="index.html">
+                                <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Dashboards</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="Leads.html">
+                                <i class="ri-user-add-line"></i> <span data-key="t-leads">Leads</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="Services.html">
+                                <i class="ri-service-line"></i> <span data-key="t-services">Services</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="Customer.html">
+                                <i class="ri-account-circle-line"></i> <span data-key="t-customers">Customers</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="sidebar-background"></div>
+        </div>
+        <!-- Left Sidebar End -->
+
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="main-content">
+            <div class="page-content">
+                <div class="container-fluid">
+                    <!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                <h4 class="mb-sm-0">Generate Estimate</h4>
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                                        <li class="breadcrumb-item"><a href="Leads.html">Leads</a></li>
+                                        <li class="breadcrumb-item active">Generate Estimate</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end page title -->
+
+                    <div class="row justify-content-center">
+                        <div class="col-xxl-9">
+                            <div class="card" id="estimateCard">
+                                <div class="card-header border-bottom-dashed p-4">
+                                    <div class="d-sm-flex">
+                                        <div class="flex-grow-1">
+                                            <div class="mb-3">
+                                                <img src="assets/images/mr-detailer-logo.png" alt="Mr. Detailer" style="height: 100px; width: auto;">
+                                            </div>
+                                            <h6 class="mb-1">Business Address:</h6>
+                                            <p class="text-muted mb-1">123 Main Street, City Name</p>
+                                            <p class="text-muted mb-1">State, PIN 123456</p>
+                                            <p class="text-muted mb-0">Phone: +91 98765 43210</p>
+                                            <p class="text-muted mb-0">Email: info@mrdetailer.com</p>
+                                        </div>
+                                        <div class="flex-shrink-0 mt-sm-0 mt-3">
+                                            <h6><span class="text-muted fw-normal">Estimate No:</span> <span id="estimate-no">#EST2024001</span></h6>
+                                            <h6><span class="text-muted fw-normal">Date:</span> <span id="estimate-date"></span></h6>
+                                            <h6 class="mb-0"><span class="text-muted fw-normal">Valid Until:</span> <span id="valid-until"></span></h6>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card-body p-4">
+                                    <div class="row g-3">
+                                        <div class="col-lg-6">
+                                            <label for="customer-name" class="form-label">Customer Name</label>
+                                            <input type="text" class="form-control" id="customer-name" placeholder="Enter customer name" value="">
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label for="customer-phone" class="form-label">Phone Number</label>
+                                            <input type="text" class="form-control" id="customer-phone" placeholder="Enter phone number" value="">
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <label for="customer-address" class="form-label">Customer Address</label>
+                                            <textarea class="form-control" id="customer-address" rows="2" placeholder="Enter address"></textarea>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label for="vehicle-details" class="form-label">Vehicle Details</label>
+                                            <input type="text" class="form-control" id="vehicle-details" placeholder="e.g., Maruti Swift - Red" value="">
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label for="vehicle-number" class="form-label">Vehicle Number</label>
+                                            <input type="text" class="form-control" id="vehicle-number" placeholder="e.g., DL 01 AB 1234" value="">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card-body p-4 border-top border-top-dashed">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="table-responsive">
+                                                <table class="table table-borderless text-center table-nowrap align-middle mb-0">
+                                                    <thead>
+                                                        <tr class="table-active">
+                                                            <th scope="col" style="width: 50px;">#</th>
+                                                            <th scope="col">Service Details</th>
+                                                            <th scope="col" style="width: 150px;">Rate</th>
+                                                            <th scope="col" style="width: 150px;">Quantity</th>
+                                                            <th scope="col" class="text-end" style="width: 150px;">Amount</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="service-list">
+                                                        <tr>
+                                                            <th scope="row">01</th>
+                                                            <td class="text-start">
+                                                                <input type="text" class="form-control bg-light border-0 service-name" 
+                                                                    placeholder="Service name" value="Full Body Detailing">
+                                                            </td>
+                                                            <td>
+                                                                <input type="number" class="form-control service-rate text-end" 
+                                                                    placeholder="0.00" value="3000" step="0.01">
+                                                            </td>
+                                                            <td>
+                                                                <input type="number" class="form-control service-qty text-end" 
+                                                                    placeholder="0" value="1" min="1">
+                                                            </td>
+                                                            <td class="text-end">
+                                                                <span class="service-amount">₹3,000.00</span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="mt-3">
+                                                <button type="button" class="btn btn-soft-secondary" id="add-service-btn">
+                                                    <i class="ri-add-line align-bottom me-1"></i> Add Service
+                                                </button>
+                                            </div>
+
+                                            <div class="border-top border-top-dashed mt-4">
+                                                <table class="table table-borderless table-nowrap align-middle mb-0 ms-auto" style="width:250px">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Sub Total</td>
+                                                            <td class="text-end" id="cart-subtotal">₹0.00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                Discount 
+                                                                <small class="text-muted">(%)</small>
+                                                            </td>
+                                                            <td class="text-end">
+                                                                <input type="number" class="form-control form-control-sm text-end" 
+                                                                    id="discount-percentage" value="0" min="0" max="100" step="0.01">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Discount Amount</td>
+                                                            <td class="text-end" id="cart-discount">- ₹0.00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                Tax 
+                                                                <small class="text-muted">(GST %)</small>
+                                                            </td>
+                                                            <td class="text-end">
+                                                                <input type="number" class="form-control form-control-sm text-end" 
+                                                                    id="tax-percentage" value="18" min="0" max="100" step="0.01">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Tax Amount</td>
+                                                            <td class="text-end" id="cart-tax">₹0.00</td>
+                                                        </tr>
+                                                        <tr class="border-top border-top-dashed fs-15">
+                                                            <th scope="row">Total Amount</th>
+                                                            <th class="text-end" id="cart-total">₹0.00</th>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                            <div class="mt-4">
+                                                <label for="estimate-notes" class="form-label text-muted text-uppercase fw-semibold">Notes</label>
+                                                <textarea class="form-control alert alert-info" id="estimate-notes" rows="3" 
+                                                    placeholder="Terms and conditions or additional notes">All services include basic cleaning materials. Additional charges may apply for heavily soiled vehicles. Estimate valid for 15 days from the date of issue.</textarea>
+                                            </div>
+
+                                            <div class="hstack gap-2 justify-content-end d-print-none mt-4">
+                                                <button type="button" class="btn btn-success" onclick="window.print()">
+                                                    <i class="ri-printer-line align-bottom me-1"></i> Print
+                                                </button>
+                                                <button type="button" class="btn btn-primary" id="save-estimate-btn">
+                                                    <i class="ri-save-line align-bottom me-1"></i> Save Estimate
+                                                </button>
+                                                <a href="Leads.html" class="btn btn-secondary">
+                                                    <i class="ri-arrow-left-line align-bottom me-1"></i> Back to Leads
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Page-content -->
+
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <script>document.write(new Date().getFullYear())</script> © Mr. Detailer.
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="text-sm-end d-none d-sm-block">
+                                Designed & Developed by Mr. Detailer Team
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <!-- end main content-->
+    </div>
+    <!-- END layout-wrapper -->
+
+    <!-- JAVASCRIPT -->
+    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="assets/libs/node-waves/waves.min.js"></script>
+    <script src="assets/libs/feather-icons/feather.min.js"></script>
+    <script src="assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
+    <script src="assets/js/plugins.js"></script>
+
+    <!-- App js -->
+    <script src="assets/js/app.js"></script>
+
+    <script>
+        // Set current date and valid until date
+        const today = new Date();
+        const validUntil = new Date(today);
+        validUntil.setDate(validUntil.getDate() + 15);
+
+        document.getElementById('estimate-date').textContent = today.toLocaleDateString('en-IN', {
+            day: '2-digit',
+            month: 'short',
+            year: 'numeric'
+        });
+        document.getElementById('valid-until').textContent = validUntil.toLocaleDateString('en-IN', {
+            day: '2-digit',
+            month: 'short',
+            year: 'numeric'
+        });
+
+        // Get lead ID from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const leadId = urlParams.get('lead');
+        
+        // In a real application, you would fetch lead data from the backend
+        // For now, we'll use placeholder data
+        if (leadId) {
+            // You can populate customer details here based on leadId
+            console.log('Generating estimate for lead:', leadId);
+        }
+
+        // Calculate totals
+        function calculateTotals() {
+            let subtotal = 0;
+            
+            // Calculate subtotal from all service rows
+            document.querySelectorAll('#service-list tr').forEach(row => {
+                const rate = parseFloat(row.querySelector('.service-rate')?.value || 0);
+                const qty = parseFloat(row.querySelector('.service-qty')?.value || 0);
+                const amount = rate * qty;
+                
+                const amountCell = row.querySelector('.service-amount');
+                if (amountCell) {
+                    amountCell.textContent = '₹' + amount.toLocaleString('en-IN', {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2
+                    });
+                }
+                
+                subtotal += amount;
+            });
+
+            // Get discount and tax percentages
+            const discountPercent = parseFloat(document.getElementById('discount-percentage').value || 0);
+            const taxPercent = parseFloat(document.getElementById('tax-percentage').value || 0);
+
+            // Calculate discount
+            const discountAmount = (subtotal * discountPercent) / 100;
+            const amountAfterDiscount = subtotal - discountAmount;
+
+            // Calculate tax
+            const taxAmount = (amountAfterDiscount * taxPercent) / 100;
+
+            // Calculate total
+            const total = amountAfterDiscount + taxAmount;
+
+            // Update display
+            document.getElementById('cart-subtotal').textContent = '₹' + subtotal.toLocaleString('en-IN', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+            
+            document.getElementById('cart-discount').textContent = '- ₹' + discountAmount.toLocaleString('en-IN', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+            
+            document.getElementById('cart-tax').textContent = '₹' + taxAmount.toLocaleString('en-IN', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+            
+            document.getElementById('cart-total').textContent = '₹' + total.toLocaleString('en-IN', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+        }
+
+        // Add service row
+        document.getElementById('add-service-btn').addEventListener('click', function() {
+            const tbody = document.getElementById('service-list');
+            const rowCount = tbody.querySelectorAll('tr').length + 1;
+            
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <th scope="row">${String(rowCount).padStart(2, '0')}</th>
+                <td class="text-start">
+                    <input type="text" class="form-control bg-light border-0 service-name" 
+                        placeholder="Service name" value="">
+                </td>
+                <td>
+                    <input type="number" class="form-control service-rate text-end" 
+                        placeholder="0.00" value="0" step="0.01">
+                </td>
+                <td>
+                    <input type="number" class="form-control service-qty text-end" 
+                        placeholder="0" value="1" min="1">
+                </td>
+                <td class="text-end">
+                    <div class="d-flex align-items-center justify-content-end gap-2">
+                        <span class="service-amount">₹0.00</span>
+                        <button type="button" class="btn btn-sm btn-danger remove-row-btn">
+                            <i class="ri-delete-bin-5-line"></i>
+                        </button>
+                    </div>
+                </td>
+            `;
+            
+            tbody.appendChild(newRow);
+            
+            // Add event listeners to new inputs
+            newRow.querySelector('.service-rate').addEventListener('input', calculateTotals);
+            newRow.querySelector('.service-qty').addEventListener('input', calculateTotals);
+            newRow.querySelector('.remove-row-btn').addEventListener('click', function() {
+                newRow.remove();
+                // Renumber rows
+                document.querySelectorAll('#service-list tr').forEach((row, index) => {
+                    row.querySelector('th').textContent = String(index + 1).padStart(2, '0');
+                });
+                calculateTotals();
+            });
+        });
+
+        // Add event listeners for calculation
+        document.addEventListener('input', function(e) {
+            if (e.target.classList.contains('service-rate') || 
+                e.target.classList.contains('service-qty') ||
+                e.target.id === 'discount-percentage' ||
+                e.target.id === 'tax-percentage') {
+                calculateTotals();
+            }
+        });
+
+        // Save estimate button
+        document.getElementById('save-estimate-btn').addEventListener('click', function() {
+            const estimateData = {
+                estimateNo: document.getElementById('estimate-no').textContent,
+                date: document.getElementById('estimate-date').textContent,
+                validUntil: document.getElementById('valid-until').textContent,
+                customerName: document.getElementById('customer-name').value,
+                customerPhone: document.getElementById('customer-phone').value,
+                customerAddress: document.getElementById('customer-address').value,
+                vehicleDetails: document.getElementById('vehicle-details').value,
+                vehicleNumber: document.getElementById('vehicle-number').value,
+                services: [],
+                subtotal: document.getElementById('cart-subtotal').textContent,
+                discount: document.getElementById('cart-discount').textContent,
+                tax: document.getElementById('cart-tax').textContent,
+                total: document.getElementById('cart-total').textContent,
+                notes: document.getElementById('estimate-notes').value,
+                leadId: leadId
+            };
+
+            // Collect service data
+            document.querySelectorAll('#service-list tr').forEach(row => {
+                estimateData.services.push({
+                    name: row.querySelector('.service-name').value,
+                    rate: row.querySelector('.service-rate').value,
+                    qty: row.querySelector('.service-qty').value,
+                    amount: row.querySelector('.service-amount').textContent
+                });
+            });
+
+            // In a real application, send this data to the backend
+            console.log('Estimate Data:', estimateData);
+            
+            alert('Estimate saved successfully! Redirecting to Leads page...');
+            setTimeout(() => {
+                window.location.href = 'Leads.html';
+            }, 1000);
+        });
+
+        // Initial calculation
+        calculateTotals();
+    </script>
+</body>
+</html>

@@ -32,228 +32,18 @@
 
     <!-- Custom Logo Styles -->
     <style>
-        .mr-detailer-text {
-            font-family: 'Brush Script MT', 'Lucida Handwriting', 'Comic Sans MS', cursive;
-            font-size: 28px;
-            font-weight: bold;
-            font-style: italic;
-            color: #000;
-            margin: 0;
-            padding: 5px 10px;
-            white-space: nowrap;
+        .mr-detailer-logo {
+            max-height: 40px;
+            width: auto;
+            object-fit: contain;
         }
         
-        .logo-light .mr-detailer-text {
-            color: #fff;
+        .logo-sm .mr-detailer-logo {
+            max-height: 30px;
         }
         
-        .logo-sm .mr-detailer-text {
-            font-size: 22px;
-        }
-
-        /* Fix dropdown positioning in tables */
-        .table-responsive {
-            overflow-x: auto !important;
-            overflow-y: visible;
-            -webkit-overflow-scrolling: touch;
-        }
-        
-        .status-cell .dropdown {
-            position: static;
-        }
-        
-        .status-cell .dropdown-menu {
-            position: absolute !important;
-            z-index: 1050;
-            margin-top: 0.125rem;
-        }
-        
-        /* Alternative: if table is inside card, ensure card doesn't clip */
-        .card-body {
-            overflow: visible;
-        }
-
-        /* Responsive Styles for Leads Table */
-        
-        /* Mobile devices (up to 576px) */
-        @media (max-width: 576px) {
-            /* Make table scrollable horizontally */
-            .table-responsive {
-                display: block;
-                width: 100%;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-            }
-            
-            /* Set minimum width for table to enable horizontal scroll */
-            .table {
-                min-width: 1000px;
-                font-size: 12px;
-            }
-            
-            .table thead th {
-                font-size: 11px;
-                padding: 8px 6px;
-                white-space: nowrap;
-            }
-            
-            .table tbody td {
-                padding: 8px 6px;
-                white-space: nowrap;
-            }
-            
-            /* Make status badges smaller */
-            .badge {
-                font-size: 10px;
-                padding: 4px 6px !important;
-            }
-            
-            /* Action buttons - smaller */
-            .action-cell .btn {
-                font-size: 10px;
-                padding: 4px 6px;
-            }
-            
-            /* Nav tabs - scrollable */
-            .nav-tabs {
-                flex-wrap: nowrap;
-                overflow-x: auto;
-                overflow-y: hidden;
-                -webkit-overflow-scrolling: touch;
-                scrollbar-width: thin;
-            }
-            
-            .nav-tabs .nav-link {
-                white-space: nowrap;
-                font-size: 12px;
-                padding: 8px 12px;
-            }
-            
-            /* Dropdown menus */
-            .dropdown-menu {
-                font-size: 12px;
-                min-width: 120px !important;
-            }
-            
-            /* Card header */
-            .card-header h4 {
-                font-size: 16px;
-            }
-            
-            /* Add Lead button */
-            .btn-primary {
-                width: 100%;
-                margin-bottom: 10px;
-            }
-        }
-        
-        /* Tablet devices (577px to 768px) */
-        @media (min-width: 577px) and (max-width: 768px) {
-            .table-responsive {
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-            }
-            
-            .table {
-                min-width: 900px;
-                font-size: 13px;
-            }
-            
-            .table thead th,
-            .table tbody td {
-                padding: 10px 8px;
-            }
-            
-            .nav-tabs .nav-link {
-                font-size: 13px;
-                padding: 10px 15px;
-            }
-            
-            .badge {
-                font-size: 11px;
-            }
-            
-            .action-cell .btn {
-                font-size: 12px;
-                padding: 5px 8px;
-            }
-        }
-        
-        /* Small laptops (769px to 992px) */
-        @media (min-width: 769px) and (max-width: 992px) {
-            .table {
-                font-size: 14px;
-            }
-            
-            .nav-tabs .nav-link {
-                font-size: 14px;
-                padding: 10px 16px;
-            }
-        }
-        
-        /* Large screens (993px and above) */
-        @media (min-width: 993px) {
-            .table thead th,
-            .table tbody td {
-                padding: 12px 10px;
-            }
-        }
-        
-        /* Fix for dropdown in responsive table on mobile */
-        @media (max-width: 768px) {
-            .status-cell .dropdown-menu {
-                position: fixed !important;
-                z-index: 1060;
-                transform: translateX(-50%);
-                left: 50% !important;
-            }
-        }
-        
-        /* Better scrollbar styling for mobile */
-        @media (max-width: 768px) {
-            .table-responsive::-webkit-scrollbar {
-                height: 8px;
-            }
-            
-            .table-responsive::-webkit-scrollbar-track {
-                background: #f1f1f1;
-                border-radius: 10px;
-            }
-            
-            .table-responsive::-webkit-scrollbar-thumb {
-                background: #888;
-                border-radius: 10px;
-            }
-            
-            .table-responsive::-webkit-scrollbar-thumb:hover {
-                background: #555;
-            }
-        }
-        
-        /* Modal responsive fixes */
-        @media (max-width: 576px) {
-            .modal-dialog {
-                margin: 10px;
-                max-width: calc(100% - 20px);
-            }
-            
-            .modal-body {
-                padding: 15px;
-            }
-            
-            .modal-title {
-                font-size: 16px;
-            }
-            
-            .modal .form-label {
-                font-size: 13px;
-            }
-            
-            .modal .form-control,
-            .modal .form-select {
-                font-size: 13px;
-                padding: 6px 10px;
-            }
+        .logo-lg .mr-detailer-logo {
+            max-height: 40px;
         }
     </style>
 
@@ -272,19 +62,19 @@
                         <div class="navbar-brand-box horizontal-logo">
                             <a href="index.html" class="logo logo-dark">
                                 <span class="logo-sm">
-                                    <span class="mr-detailer-text">Mr. detailer</span>
+                                    <img src="assets/images/mr-detailer-logo.png" alt="Mr. Detailer" class="mr-detailer-logo">
                                 </span>
                                 <span class="logo-lg">
-                                    <span class="mr-detailer-text">Mr. detailer</span>
+                                    <img src="assets/images/mr-detailer-logo.png" alt="Mr. Detailer" class="mr-detailer-logo">
                                 </span>
                             </a>
 
                             <a href="index.html" class="logo logo-light">
                                 <span class="logo-sm">
-                                    <span class="mr-detailer-text">Mr. detailer</span>
+                                    <img src="assets/images/mr-detailer-logo.png" alt="Mr. Detailer" class="mr-detailer-logo">
                                 </span>
                                 <span class="logo-lg">
-                                    <span class="mr-detailer-text">Mr. detailer</span>
+                                    <img src="assets/images/mr-detailer-logo.png" alt="Mr. Detailer" class="mr-detailer-logo">
                                 </span>
                             </a>
                         </div>
@@ -1160,10 +950,10 @@
                 <!-- Dark Logo-->
                 <a href="index.html" class="logo logo-dark">
                     <span class="logo-sm">
-                        <span class="mr-detailer-text">Mr. detailer</span>
+                        <img src="assets/images/mr-detailer-logo.png" alt="Mr. Detailer" class="mr-detailer-logo">
                     </span>
                     <span class="logo-lg">
-                        <span class="mr-detailer-text">Mr. detailer</span>
+                        <img src="assets/images/mr-detailer-logo.png" alt="Mr. Detailer" class="mr-detailer-logo">
                     </span>
                 </a>
                 <!-- Light Logo-->
@@ -1408,12 +1198,31 @@
                         .nav-link .lead-count {
                             font-weight: bold;
                         }
+
+                        /* Fix dropdown overflow in table */
+                        .table-responsive {
+                            overflow: visible !important;
+                        }
+
+                        .card-body {
+                            overflow: visible !important;
+                        }
+
+                        /* Ensure dropdown appears above table */
+                        .status-cell .dropdown {
+                            position: static;
+                        }
+
+                        .status-cell .dropdown-menu {
+                            position: absolute !important;
+                            z-index: 1050;
+                        }
                     </style>
 
                     <div class="card">
                         <div class="card-body">
 
-                            <ul class="nav nav-tabs nav-justified mb-3" role="tablist" style="flex-wrap: nowrap; overflow-x: auto;">
+                            <ul class="nav nav-tabs nav-justified mb-3" role="tablist" style="flex-wrap: wrap;">
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link active" data-bs-toggle="tab" href="#leadTableContent" role="tab"
                                         aria-selected="true" data-filter="All">
@@ -1430,6 +1239,12 @@
                                     <a class="nav-link" data-bs-toggle="tab" href="#leadTableContent" role="tab"
                                         aria-selected="false" data-filter="Open">
                                         Open
+                                    </a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#leadTableContent" role="tab"
+                                        aria-selected="false" data-filter="Estimate Given">
+                                        <span style="white-space: nowrap;">Estimate Given</span>
                                     </a>
                                 </li>
                                 <li class="nav-item" role="presentation">
@@ -1500,6 +1315,7 @@
                                                             <a class="dropdown-toggle badge bg-warning px-3 py-2" href="#" role="button" id="statusBtn1" data-bs-toggle="dropdown" aria-expanded="false">Open</a>
                                                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="statusBtn1" style="min-width: 150px; max-height: 200px; overflow-y: auto;">
                                                                 <li><a class="dropdown-item change-status" href="#" data-new="Open">Open</a></li>
+                                                                <li><a class="dropdown-item change-status" href="#" data-new="Estimate Given">Estimate Given</a></li>
                                                                 <li><a class="dropdown-item change-status" href="#" data-new="Booked">Booked</a></li>
                                                                 <li><a class="dropdown-item change-status" href="#" data-new="Scheduled">Scheduled</a></li>
                                                                 <li><a class="dropdown-item change-status text-danger" href="#" data-new="Not Interested">Declined</a></li>
@@ -1511,8 +1327,9 @@
                                                     <td>Crystal Studio<br><small class="text-muted">New Delhi</small></td>
                                                     <td>
                                                         <div class="d-flex gap-2 align-items-center justify-content-center">
-                                                            <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#followupVishal"><i class="ri-eye-line"></i></button>
-                                                            <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#leadFormModal"><i class="ri-edit-line"></i></button>
+                                                            <button class="btn btn-sm btn-outline-success" onclick="window.location.href='estimate.html?lead=1'" title="Generate Estimate"><i class="ri-file-list-3-line"></i></button>
+                                                            <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#followupVishal" title="View Details"><i class="ri-eye-line"></i></button>
+                                                            <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#leadFormModal" title="Edit Lead"><i class="ri-edit-line"></i></button>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -1535,6 +1352,7 @@
                                                             <a class="dropdown-toggle badge bg-warning px-3 py-2" href="#" role="button" id="statusBtn2" data-bs-toggle="dropdown" aria-expanded="false">Open</a>
                                                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="statusBtn2" style="min-width: 150px; max-height: 200px; overflow-y: auto;">
                                                                 <li><a class="dropdown-item change-status" href="#" data-new="Open">Open</a></li>
+                                                                <li><a class="dropdown-item change-status" href="#" data-new="Estimate Given">Estimate Given</a></li>
                                                                 <li><a class="dropdown-item change-status" href="#" data-new="Booked">Booked</a></li>
                                                                 <li><a class="dropdown-item change-status" href="#" data-new="Scheduled">Scheduled</a></li>
                                                                 <li><a class="dropdown-item change-status text-danger" href="#" data-new="Not Interested">Declined</a></li>
@@ -1546,6 +1364,9 @@
                                                     <td>Titanium Studio<br><small class="text-muted">Mumbai</small></td>
                                                     <td class="text-center">
                                                         <div class="d-flex gap-2 justify-content-center">
+                                                            <button class="btn btn-sm btn-outline-success" onclick="window.location.href='estimate.html?lead=2'" title="Generate Estimate">
+                                                                <i class="ri-file-list-3-line"></i>
+                                                            </button>
                                                             <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#followupPriya" title="View">
                                                                 <i class="ri-eye-line"></i>
                                                             </button>
@@ -1574,6 +1395,7 @@
                                                             <a class="dropdown-toggle badge bg-success px-3 py-2" href="#" role="button" id="statusBtn3" data-bs-toggle="dropdown" aria-expanded="false">Booked</a>
                                                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="statusBtn3" style="min-width: 150px; max-height: 200px; overflow-y: auto;">
                                                                 <li><a class="dropdown-item change-status" href="#" data-new="Open">Open</a></li>
+                                                                <li><a class="dropdown-item change-status" href="#" data-new="Estimate Given">Estimate Given</a></li>
                                                                 <li><a class="dropdown-item change-status" href="#" data-new="Booked">Booked</a></li>
                                                                 <li><a class="dropdown-item change-status" href="#" data-new="Scheduled">Scheduled</a></li>
                                                                 <li><a class="dropdown-item change-status text-danger" href="#" data-new="Not Interested">Declined</a></li>
@@ -1585,6 +1407,9 @@
                                                     <td>Prime Studio<br><small class="text-muted">Bangalore</small></td>
                                                     <td class="text-center">
                                                         <div class="d-flex gap-2 justify-content-center">
+                                                            <button class="btn btn-sm btn-outline-success" onclick="window.location.href='estimate.html?lead=3'" title="Generate Estimate">
+                                                                <i class="ri-file-list-3-line"></i>
+                                                            </button>
                                                             <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#followupRavi" title="View">
                                                                 <i class="ri-eye-line"></i>
                                                             </button>
@@ -2046,6 +1871,7 @@
                                     All: rows.length,
                                     Hot: rows.filter(r => r.dataset.hot === 'true').length,
                                     Open: rows.filter(r => r.dataset.status === 'Open').length,
+                                    'Estimate Given': rows.filter(r => r.dataset.status === 'Estimate Given').length,
                                     FollowupToday: 0, // static rows don't include dynamic date check
                                     Scheduled: rows.filter(r => r.dataset.status === 'Scheduled').length,
                                     'Not Interested': rows.filter(r => r.dataset.status === 'Not Interested').length,
@@ -2056,6 +1882,7 @@
                                     All: 'bg-dark',
                                     Hot: 'bg-primary',
                                     Open: 'bg-warning',
+                                    'Estimate Given': 'bg-primary',
                                     FollowupToday: 'bg-primary',
                                     Scheduled: 'bg-info',
                                     'Not Interested': 'bg-danger',
@@ -2119,12 +1946,34 @@
                                     btn.className = 'dropdown-toggle badge px-3 py-2';
                                     switch (newStatus) {
                                         case 'Open': btn.classList.add('bg-warning'); break;
+                                        case 'Estimate Given': btn.classList.add('bg-primary'); break;
                                         case 'Booked': btn.classList.add('bg-success'); break;
                                         case 'Not Interested': btn.classList.add('bg-danger'); break;
                                         case 'Scheduled': btn.classList.add('bg-info'); break;
                                         default: btn.classList.add('bg-secondary');
                                     }
                                 }
+                                
+                                // Update the status badge in the corresponding Follow-up History modal
+                                const viewButton = row.querySelector('[data-bs-target^="#followup"]');
+                                if (viewButton) {
+                                    const modalId = viewButton.getAttribute('data-bs-target').substring(1);
+                                    const statusBadge = document.getElementById('statusBadge-' + modalId);
+                                    if (statusBadge) {
+                                        statusBadge.textContent = newStatus;
+                                        // Update badge color
+                                        statusBadge.className = 'ms-2 badge';
+                                        switch (newStatus) {
+                                            case 'Open': statusBadge.classList.add('bg-warning'); break;
+                                            case 'Estimate Given': statusBadge.classList.add('bg-primary'); break;
+                                            case 'Booked': statusBadge.classList.add('bg-success'); break;
+                                            case 'Not Interested': statusBadge.classList.add('bg-danger'); break;
+                                            case 'Scheduled': statusBadge.classList.add('bg-info'); break;
+                                            default: statusBadge.classList.add('bg-secondary');
+                                        }
+                                    }
+                                }
+                                
                                 computeCounts();
                             });
 
