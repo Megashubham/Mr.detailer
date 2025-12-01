@@ -960,193 +960,157 @@
 
                     <div id="two-column-menu">
                     </div>
-                    <ul class="navbar-nav" id="navbar-nav">
-                        <li class="menu-title"><span data-key="t-menu">Menu</span></li>
+<!-- Sidebar Navigation -->
+    <ul class="navbar-nav" id="navbar-nav">
+        <li class="menu-title"><span data-key="t-menu">Menu</span></li>
 
-                        <!-- Side-Bar DashBoard Menu -->
+        <!-- CRM -->
+        <li class="nav-item">
+            <a class="nav-link menu-link" href="#sidebarCRM" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarCRM">
+                <i class="ri-team-fill"></i>
+                <span data-key="t-crm">CRM</span>
+            </a>
+            <div class="collapse menu-dropdown" id="sidebarCRM">
+                <ul class="nav nav-sm flex-column">
+                    <li class="nav-item">
+                        <a href="Leads.html" class="nav-link" data-key="Leads">Leads</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="Customer.html" class="nav-link" data-key="Customer">Customer</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
 
-                        <!-- <li class="nav-item">
-                            <a class="nav-link menu-link" href="#sidebarDashboards" data-bs-toggle="collapse"
-                                role="button" aria-expanded="false" aria-controls="sidebarDashboards">
-                                <i class="mdi mdi-speedometer"></i> <span data-key="t-dashboards">Dashboards</span>
-                            </a>
-                            <div class="collapse menu-dropdown" id="sidebarDashboards">
-                                <ul class="nav nav-sm flex-column">
-                                    <li class="nav-item">
-                                        <a href="dashboard.html" class="nav-link" data-key="t-dashboards">Dashboard </a>
-                                    </li>
+        <!-- Booking -->
+        <li class="nav-item">
+            <a class="nav-link menu-link" href="#sidebarBooking" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarBooking">
+                <i class="ri-bookmark-fill"></i>
+                <span data-key="t-booking">Booking</span>
+            </a>
+            <div class="collapse menu-dropdown" id="sidebarBooking">
+                <ul class="nav nav-sm flex-column">
+                    <li class="nav-item">
+                        <a href="CreateBooking.html" class="nav-link" data-key="CreateBooking">Booking</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="AllBooking.html" class="nav-link" data-key="AllBooking">All Booking</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
 
-                                </ul>
-                            </div>
-                        </li> -->
+        <!-- Maintenance -->
+        <li class="nav-item">
+            <a class="nav-link menu-link" href="#sidebarMaintenance" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarMaintenance">
+                <i class="ri-tools-fill"></i>
+                <span data-key="t-maintenance">Maintenance</span>
+            </a>
+            <div class="collapse menu-dropdown" id="sidebarMaintenance">
+                <ul class="nav nav-sm flex-column">
+                    <li class="nav-item">
+                        <a href="Upcoming.html" class="nav-link" data-key="Upcoming">Upcoming</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="Scheduled.html" class="nav-link" data-key="Scheduled">Scheduled</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
 
+        <!-- Inventory -->
+        <li class="nav-item">
+            <a class="nav-link menu-link" href="#sidebarInventory" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarInventory">
+                <i class="bx bxs-box"></i>
+                <span data-key="t-inventory">Inventory</span>
+            </a>
+            <div class="collapse menu-dropdown" id="sidebarInventory">
+                <ul class="nav nav-sm flex-column">
+                    <li class="nav-item">
+                        <a href="Inventory_Type.html" class="nav-link" data-key="Inventory_Type">Inventory Type</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="Manage_Inventory.html" class="nav-link" data-key="Manage_Inventory">Manage Inventory</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="Entry.html" class="nav-link" data-key="Entry">Daily Entries</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
 
-                        <!-- Settings -->
-                        <li class="nav-item">
-                            <a class="nav-link menu-link" href="#sidebarSettings" data-bs-toggle="collapse"
-                                role="button" aria-expanded="false" aria-controls="sidebarSettings">
-                                <i class="ri-settings-5-fill"></i>
-                                <span data-key="t-Settings">Settings</span>
-                            </a>
+        <!-- Accounts -->
+        <li class="nav-item">
+            <a class="nav-link menu-link" href="#sidebarAccounts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarAccounts">
+                <i class="ri-account-circle-fill"></i>
+                <span data-key="t-accounts">Accounts</span>
+            </a>
+            <div class="collapse menu-dropdown" id="sidebarAccounts">
+                <ul class="nav nav-sm flex-column">
+                    <li class="nav-item">
+                        <a href="Purchase.html" class="nav-link" data-key="Purchase">Purchase</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="Expenses.html" class="nav-link" data-key="Expenses">Expenses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="Sales.html" class="nav-link" data-key="Sales">Sales</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="Statement.html" class="nav-link" data-key="Statement">Statement</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
 
-                            <div class="collapse menu-dropdown" id="sidebarSettings">
-                                <ul class="nav nav-sm flex-column">
+        <!-- Insights -->
+        <li class="nav-item">
+            <a class="nav-link menu-link" href="#sidebarInsights" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarInsights">
+                <i class="ri-bar-chart-2-fill"></i>
+                <span data-key="t-insights">Insights</span>
+            </a>
+            <div class="collapse menu-dropdown" id="sidebarInsights">
+                <ul class="nav nav-sm flex-column">
+                    <li class="nav-item">
+                        <a href="SalesInsights.html" class="nav-link" data-key="SalesInsights">Sales</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="MaintenanceInsights.html" class="nav-link" data-key="MaintenanceInsights">Maintenance</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="ExpensesInsights.html" class="nav-link" data-key="ExpensesInsights">Expenses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="LeadsInsights.html" class="nav-link" data-key="LeadsInsights">Leads</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
 
-                                    <!-- Teams -->
-                                    <li class="nav-item">
-                                        <a href="Teams.html" class="nav-link" data-key="Teams">Teams</a>
-                                    </li>
-
-                                    <!-- Services under Settings -->
-                                    <li class="nav-item">
-                                        <a href="Services.html" class="nav-link" data-key="Services">Services</a>
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </li>
-
-
-                        <!-- CRM -->
-                        <li class="nav-item">
-                            <a class="nav-link menu-link" href="#sidebarCRM" data-bs-toggle="collapse" role="button"
-                                aria-expanded="false" aria-controls="sidebarCRM">
-                                <i class="ri-team-fill"></i>
-                                <span data-key="t-Settings">CRM</span>
-                            </a>
-
-                            <div class="collapse menu-dropdown" id="sidebarCRM">
-                                <ul class="nav nav-sm flex-column">
-
-                                    <!-- Teams -->
-                                    <li class="nav-item">
-                                        <a href="Leads.html" class="nav-link" data-key="Leads">Leads</a>
-                                    </li>
-
-                                    <!-- Services under Settings -->
-                                    <li class="nav-item">
-                                        <a href="Customer.html" class="nav-link" data-key="Customer">Customer</a>
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </li>
-
-                        <!-- Booking -->
-                        <li class="nav-item">
-                            <a class="nav-link menu-link" href="#sidebarBooking" data-bs-toggle="collapse" role="button"
-                                aria-expanded="false" aria-controls="sidebarBooking">
-                                <i class=" ri-bookmark-fill"></i>
-                                <span data-key="t-Booking">Booking</span>
-                            </a>
-
-                            <div class="collapse menu-dropdown" id="sidebarBooking">
-                                <ul class="nav nav-sm flex-column">
-
-                                    <!-- CreateBooking -->
-                                    <li class="nav-item">
-                                        <a href="CreateBooking.html" class="nav-link" data-key="CreateBooking">Create Booking</a>
-                                    </li>
-
-                                    <!-- Services under Settings -->
-                                    <li class="nav-item">
-                                        <a href="AllBooking.html" class="nav-link" data-key="AllBooking">All Booking</a>
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </li>
-
-                        <!-- MAINTENANCE -->
-                        <li class="nav-item">
-                            <a class="nav-link menu-link" href="#sidebarMaintenance" data-bs-toggle="collapse" role="button"
-                                aria-expanded="false" aria-controls="sidebarMaintenance">
-                                <i class="ri-tools-fill"></i>
-                                <span data-key="t-Maintenance">Maintenance</span>
-                            </a>
-
-                            <div class="collapse menu-dropdown" id="sidebarMaintenance">
-                                <ul class="nav nav-sm flex-column">
-
-                                    <!-- CreateBooking -->
-                                    <li class="nav-item">
-                                        <a href="Upcoming.html" class="nav-link" data-key="Upcoming">Upcoming</a>
-                                    </li>
-
-                                    <!-- Services under Settings -->
-                                    <li class="nav-item">
-                                        <a href="Scheduled.html" class="nav-link" data-key="Scheduled">Scheduled</a>
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </li>
-
-                        <!-- Accounts -->
-                        <li class="nav-item">
-                            <a class="nav-link menu-link" href="#sidebarAccounts" data-bs-toggle="collapse"
-                                role="button" aria-expanded="false" aria-controls="sidebarAccounts">
-                                <i class="ri-account-circle-fill"></i>
-                                <span data-key="t-Accounts">Accounts</span>
-                            </a>
-
-                            <div class="collapse menu-dropdown" id="sidebarAccounts">
-                                <ul class="nav nav-sm flex-column">
-
-                                    <!-- Purchase -->
-                                    <li class="nav-item">
-                                        <a href="Purchase.html" class="nav-link" data-key="Upcoming">Purchase</a>
-                                    </li>
-
-                                    <!-- Expenses -->
-                                    <li class="nav-item">
-                                        <a href="Expenses.html" class="nav-link" data-key="Scheduled">Expenses</a>
-                                    </li>
-
-                                    <!-- Sales -->
-                                    <li class="nav-item">
-                                        <a href="Sales.html" class="nav-link" data-key="Scheduled">Sales</a>
-                                    </li>
-
-                                    <!-- Statement -->
-                                    <li class="nav-item">
-                                        <a href="Statement.html" class="nav-link" data-key="Scheduled">Statement</a>
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </li>
-
-                        <!-- Inventory -->
-                        <li class="nav-item">
-                            <a class="nav-link menu-link" href="#sidebarInventory" data-bs-toggle="collapse"
-                                role="button" aria-expanded="false" aria-controls="sidebarInventory">
-                                <i class="bx bxs-box"></i>
-                                <span data-key="t-Accounts">Inventory</span>
-                            </a>
-
-                            <div class="collapse menu-dropdown" id="sidebarInventory">
-                                <ul class="nav nav-sm flex-column">
-
-                                    <li class="nav-item">
-                                        <a href="Inventory_Type.html" class="nav-link" data-key="Inventory_Type">Inventory Type</a>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a href="Manage_Inventory.html" class="nav-link" data-key="Manage_Inventory">Manage Inventory</a>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a href="Entry.html" class="nav-link" data-key="Entry">All Entry</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-
-
-
-
-                    </ul>
+        <!-- Settings -->
+        <li class="nav-item">
+            <a class="nav-link menu-link" href="#sidebarSettings" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarSettings">
+                <i class="ri-settings-5-fill"></i>
+                <span data-key="t-settings">Settings</span>
+            </a>
+            <div class="collapse menu-dropdown" id="sidebarSettings">
+                <ul class="nav nav-sm flex-column">
+                    <li class="nav-item">
+                        <a href="Teams.html" class="nav-link" data-key="Teams">Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="Services.html" class="nav-link" data-key="Services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="GlobalSettings.html" class="nav-link" data-key="GlobalSettings">Global Settings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="ActivityLog.html" class="nav-link" data-key="ActivityLog">Activity Log</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+    </ul>
                 </div>
             </div>
             <!-- Sidebar -->
@@ -1283,45 +1247,47 @@
                         <div class="card-body">
 
                             <div class="table-responsive">
-                                <table class="table align-middle table-list">
+                                <table class="table table-striped align-middle table-hover">
                                     <thead class="table-light">
                                         <tr>
-                                            <th>S.No.</th>
+                                            <th class="text-center">S.No.</th>
                                             <th>Treatment Type</th>
                                             <th>Treatment</th>
-                                            <th>Free Maintenance</th>
-                                            <th>Fee</th>
-                                            <th>Action</th>
+                                            <th class="text-center">Free Maintenance</th>
+                                            <th class="text-center">Fee</th>
+                                            <th class="text-center">Status</th>
+                                            <th class="text-center">Action</th>
                                         </tr>
                                     </thead>
 
                                     <tbody>
 
                                         <tr>
-                                            <td>1.</td>
+                                            <td class="text-center">1.</td>
                                             <td>PPF</td>
                                             <td>
-                                                ABC PPF <br>
+                                                <strong>ABC PPF</strong> <br>
                                                 <small class="text-muted">(5 Year Warranty)</small>
                                             </td>
-                                            <td>
-                                                4 <br>
+                                            <td class="text-center">
+                                                <span class="badge bg-primary">4</span> <br>
                                                 <small class="text-muted">(every 6 Months)</small>
                                             </td>
-                                            <td>₹ 90,000/-</td>
-                                            <td>
-                                                <div class="d-flex align-items-center gap-2">
-
-                                                    <!-- Edit icon -->
+                                            <td class="text-center">
+                                                <span class="fw-semibold">₹90,000</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="badge bg-success">Active</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <div class="d-flex gap-2 justify-content-center">
                                                     <button class="btn btn-sm btn-outline-secondary"
-                                                        data-bs-toggle="modal" data-bs-target="#leadFormModal"><i
-                                                            class="ri-edit-line"></i></button>
-                                                    <!-- Switch -->
-                                                    <div class="form-check form-switch m-0">
-                                                        <input type="checkbox" class="form-check-input"
-                                                            id="customSwitchsizemd">
+                                                        data-bs-toggle="modal" data-bs-target="#leadFormModal" title="Edit">
+                                                        <i class="ri-edit-line"></i>
+                                                    </button>
+                                                    <div class="form-check form-switch d-flex align-items-center">
+                                                        <input type="checkbox" class="form-check-input" id="customSwitchsizemd" checked>
                                                     </div>
-
                                                 </div>
                                             </td>
 
@@ -1329,28 +1295,30 @@
                                         </tr>
 
                                         <tr>
-                                            <td>2.</td>
+                                            <td class="text-center">2.</td>
                                             <td>Ceramic Coating</td>
                                             <td>
-                                                XYZ Ceramic Coating <br>
+                                                <strong>XYZ Ceramic Coating</strong> <br>
                                                 <small class="text-muted">(3 Year Warranty)</small>
                                             </td>
-                                            <td>
-                                                6 <br>
+                                            <td class="text-center">
+                                                <span class="badge bg-primary">6</span> <br>
                                                 <small class="text-muted">(every 6 Months)</small>
                                             </td>
-                                            <td>₹ 80,000/-</td>
-                                            <td>
-                                                <div class="d-flex align-items-center gap-2">
-
-                                                    <!-- Edit icon -->
+                                            <td class="text-center">
+                                                <span class="fw-semibold">₹80,000</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="badge bg-success">Active</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <div class="d-flex gap-2 justify-content-center">
                                                     <button class="btn btn-sm btn-outline-secondary"
-                                                        data-bs-toggle="modal" data-bs-target="#leadFormModal"><i
-                                                            class="ri-edit-line"></i></button>
-                                                    <!-- Switch -->
-                                                    <div class="form-check form-switch m-0">
-                                                        <input type="checkbox" class="form-check-input"
-                                                            id="customSwitchsizemd">
+                                                        data-bs-toggle="modal" data-bs-target="#leadFormModal" title="Edit">
+                                                        <i class="ri-edit-line"></i>
+                                                    </button>
+                                                    <div class="form-check form-switch d-flex align-items-center">
+                                                        <input type="checkbox" class="form-check-input" id="customSwitchsizemd2" checked>
                                                     </div>
 
                                                 </div>
@@ -1358,59 +1326,61 @@
                                         </tr>
 
                                         <tr>
-                                            <td>3.</td>
+                                            <td class="text-center">3.</td>
                                             <td>Detailing</td>
                                             <td>
-                                                VIP Pro Detail <br>
+                                                <strong>VIP Pro Detail</strong> <br>
                                                 <small class="text-muted">(2 Year Warranty)</small>
                                             </td>
-                                            <td>
-                                                2 <br>
+                                            <td class="text-center">
+                                                <span class="badge bg-primary">2</span> <br>
                                                 <small class="text-muted">(every 12 Months)</small>
                                             </td>
-                                            <td>₹ 50,000/-</td>
-                                            <td>
-                                                <div class="d-flex align-items-center gap-2">
-
-                                                    <!-- Edit icon -->
+                                            <td class="text-center">
+                                                <span class="fw-semibold">₹50,000</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="badge bg-success">Active</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <div class="d-flex gap-2 justify-content-center">
                                                     <button class="btn btn-sm btn-outline-secondary"
-                                                        data-bs-toggle="modal" data-bs-target="#leadFormModal"><i
-                                                            class="ri-edit-line"></i></button>
-                                                    <!-- Switch -->
-                                                    <div class="form-check form-switch m-0">
-                                                        <input type="checkbox" class="form-check-input"
-                                                            id="customSwitchsizemd">
+                                                        data-bs-toggle="modal" data-bs-target="#leadFormModal" title="Edit">
+                                                        <i class="ri-edit-line"></i>
+                                                    </button>
+                                                    <div class="form-check form-switch d-flex align-items-center">
+                                                        <input type="checkbox" class="form-check-input" id="customSwitchsizemd3">
                                                     </div>
-
                                                 </div>
                                             </td>
                                         </tr>
 
                                         <tr>
-                                            <td>4.</td>
+                                            <td class="text-center">4.</td>
                                             <td>Wash & Care</td>
                                             <td>
-                                                FYK Shine Pack <br>
+                                                <strong>FYK Shine Pack</strong> <br>
                                                 <small class="text-muted">(1 Year Warranty)</small>
                                             </td>
-                                            <td>
-                                                3 <br>
+                                            <td class="text-center">
+                                                <span class="badge bg-primary">3</span> <br>
                                                 <small class="text-muted">(every 4 Months)</small>
                                             </td>
-                                            <td>₹ 20,000/-</td>
-                                            <td>
-                                                <div class="d-flex align-items-center gap-2">
-
-                                                    <!-- Edit icon -->
+                                            <td class="text-center">
+                                                <span class="fw-semibold">₹20,000</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="badge bg-success">Active</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <div class="d-flex gap-2 justify-content-center">
                                                     <button class="btn btn-sm btn-outline-secondary"
-                                                        data-bs-toggle="modal" data-bs-target="#leadFormModal"><i
-                                                            class="ri-edit-line"></i></button>
-                                                    <!-- Switch -->
-                                                    <div class="form-check form-switch m-0">
-                                                        <input type="checkbox" class="form-check-input"
-                                                            id="customSwitchsizemd">
+                                                        data-bs-toggle="modal" data-bs-target="#leadFormModal" title="Edit">
+                                                        <i class="ri-edit-line"></i>
+                                                    </button>
+                                                    <div class="form-check form-switch d-flex align-items-center">
+                                                        <input type="checkbox" class="form-check-input" id="customSwitchsizemd4">
                                                     </div>
-
                                                 </div>
                                             </td>
                                         </tr>
