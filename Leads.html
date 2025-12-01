@@ -53,7 +53,9 @@
 
         /* Fix dropdown positioning in tables */
         .table-responsive {
-            overflow: visible !important;
+            overflow-x: auto !important;
+            overflow-y: visible;
+            -webkit-overflow-scrolling: touch;
         }
         
         .status-cell .dropdown {
@@ -69,6 +71,189 @@
         /* Alternative: if table is inside card, ensure card doesn't clip */
         .card-body {
             overflow: visible;
+        }
+
+        /* Responsive Styles for Leads Table */
+        
+        /* Mobile devices (up to 576px) */
+        @media (max-width: 576px) {
+            /* Make table scrollable horizontally */
+            .table-responsive {
+                display: block;
+                width: 100%;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            /* Set minimum width for table to enable horizontal scroll */
+            .table {
+                min-width: 1000px;
+                font-size: 12px;
+            }
+            
+            .table thead th {
+                font-size: 11px;
+                padding: 8px 6px;
+                white-space: nowrap;
+            }
+            
+            .table tbody td {
+                padding: 8px 6px;
+                white-space: nowrap;
+            }
+            
+            /* Make status badges smaller */
+            .badge {
+                font-size: 10px;
+                padding: 4px 6px !important;
+            }
+            
+            /* Action buttons - smaller */
+            .action-cell .btn {
+                font-size: 10px;
+                padding: 4px 6px;
+            }
+            
+            /* Nav tabs - scrollable */
+            .nav-tabs {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                overflow-y: hidden;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: thin;
+            }
+            
+            .nav-tabs .nav-link {
+                white-space: nowrap;
+                font-size: 12px;
+                padding: 8px 12px;
+            }
+            
+            /* Dropdown menus */
+            .dropdown-menu {
+                font-size: 12px;
+                min-width: 120px !important;
+            }
+            
+            /* Card header */
+            .card-header h4 {
+                font-size: 16px;
+            }
+            
+            /* Add Lead button */
+            .btn-primary {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+        
+        /* Tablet devices (577px to 768px) */
+        @media (min-width: 577px) and (max-width: 768px) {
+            .table-responsive {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .table {
+                min-width: 900px;
+                font-size: 13px;
+            }
+            
+            .table thead th,
+            .table tbody td {
+                padding: 10px 8px;
+            }
+            
+            .nav-tabs .nav-link {
+                font-size: 13px;
+                padding: 10px 15px;
+            }
+            
+            .badge {
+                font-size: 11px;
+            }
+            
+            .action-cell .btn {
+                font-size: 12px;
+                padding: 5px 8px;
+            }
+        }
+        
+        /* Small laptops (769px to 992px) */
+        @media (min-width: 769px) and (max-width: 992px) {
+            .table {
+                font-size: 14px;
+            }
+            
+            .nav-tabs .nav-link {
+                font-size: 14px;
+                padding: 10px 16px;
+            }
+        }
+        
+        /* Large screens (993px and above) */
+        @media (min-width: 993px) {
+            .table thead th,
+            .table tbody td {
+                padding: 12px 10px;
+            }
+        }
+        
+        /* Fix for dropdown in responsive table on mobile */
+        @media (max-width: 768px) {
+            .status-cell .dropdown-menu {
+                position: fixed !important;
+                z-index: 1060;
+                transform: translateX(-50%);
+                left: 50% !important;
+            }
+        }
+        
+        /* Better scrollbar styling for mobile */
+        @media (max-width: 768px) {
+            .table-responsive::-webkit-scrollbar {
+                height: 8px;
+            }
+            
+            .table-responsive::-webkit-scrollbar-track {
+                background: #f1f1f1;
+                border-radius: 10px;
+            }
+            
+            .table-responsive::-webkit-scrollbar-thumb {
+                background: #888;
+                border-radius: 10px;
+            }
+            
+            .table-responsive::-webkit-scrollbar-thumb:hover {
+                background: #555;
+            }
+        }
+        
+        /* Modal responsive fixes */
+        @media (max-width: 576px) {
+            .modal-dialog {
+                margin: 10px;
+                max-width: calc(100% - 20px);
+            }
+            
+            .modal-body {
+                padding: 15px;
+            }
+            
+            .modal-title {
+                font-size: 16px;
+            }
+            
+            .modal .form-label {
+                font-size: 13px;
+            }
+            
+            .modal .form-control,
+            .modal .form-select {
+                font-size: 13px;
+                padding: 6px 10px;
+            }
         }
     </style>
 
