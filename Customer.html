@@ -34,6 +34,29 @@
             white-space: nowrap;
         }
     </style>
+
+    <!-- Custom Logo Styles -->
+    <style>
+        .mr-detailer-text {
+            font-family: 'Brush Script MT', 'Lucida Handwriting', 'Comic Sans MS', cursive;
+            font-size: 28px;
+            font-weight: bold;
+            font-style: italic;
+            color: #000;
+            margin: 0;
+            padding: 5px 10px;
+            white-space: nowrap;
+        }
+        
+        .logo-light .mr-detailer-text {
+            color: #fff;
+        }
+        
+        .logo-sm .mr-detailer-text {
+            font-size: 22px;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -49,19 +72,19 @@
                         <div class="navbar-brand-box horizontal-logo">
                             <a href="index.html" class="logo logo-dark">
                                 <span class="logo-sm">
-                                    <img src="assets/images/logo-sm.png" alt="" height="22">
+                                    <span class="mr-detailer-text">Mr. detailer</span>
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="assets/images/logo-dark.png" alt="" height="17">
+                                    <span class="mr-detailer-text">Mr. detailer</span>
                                 </span>
                             </a>
 
                             <a href="index.html" class="logo logo-light">
                                 <span class="logo-sm">
-                                    <img src="assets/images/logo-sm.png" alt="" height="22">
+                                    <span class="mr-detailer-text">Mr. detailer</span>
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="assets/images/logo-light.png" alt="" height="17">
+                                    <span class="mr-detailer-text">Mr. detailer</span>
                                 </span>
                             </a>
                         </div>
@@ -937,19 +960,19 @@
                 <!-- Dark Logo-->
                 <a href="index.html" class="logo logo-dark">
                     <span class="logo-sm">
-                        <img src="assets/images/logo-sm.png" alt="" height="22">
+                        <span class="mr-detailer-text">Mr. detailer</span>
                     </span>
                     <span class="logo-lg">
-                        <img src="assets/images/logo-dark.png" alt="" height="17">
+                        <span class="mr-detailer-text">Mr. detailer</span>
                     </span>
                 </a>
                 <!-- Light Logo-->
                 <a href="index.html" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="assets/images/logo-sm.png" alt="" height="22">
+                        <span class="mr-detailer-text">Mr. detailer</span>
                     </span>
                     <span class="logo-lg">
-                        <img src="assets/images/logo-light.png" alt="" height="17">
+                        <span class="mr-detailer-text">Mr. detailer</span>
                     </span>
                 </a>
                 <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover"
@@ -968,6 +991,14 @@
 <!-- Sidebar Navigation -->
     <ul class="navbar-nav" id="navbar-nav">
         <li class="menu-title"><span data-key="t-menu">Menu</span></li>
+
+        <!-- Dashboard -->
+        <li class="nav-item">
+            <a class="nav-link menu-link" href="index.html">
+                <i class="ri-dashboard-fill"></i>
+                <span data-key="t-dashboard">Dashboard</span>
+            </a>
+        </li>
 
         <!-- CRM -->
         <li class="nav-item">

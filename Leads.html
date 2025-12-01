@@ -29,6 +29,49 @@
     <link href="assets/css/custom.min.css" rel="stylesheet" type="text/css" />
 
 
+
+    <!-- Custom Logo Styles -->
+    <style>
+        .mr-detailer-text {
+            font-family: 'Brush Script MT', 'Lucida Handwriting', 'Comic Sans MS', cursive;
+            font-size: 28px;
+            font-weight: bold;
+            font-style: italic;
+            color: #000;
+            margin: 0;
+            padding: 5px 10px;
+            white-space: nowrap;
+        }
+        
+        .logo-light .mr-detailer-text {
+            color: #fff;
+        }
+        
+        .logo-sm .mr-detailer-text {
+            font-size: 22px;
+        }
+
+        /* Fix dropdown positioning in tables */
+        .table-responsive {
+            overflow: visible !important;
+        }
+        
+        .status-cell .dropdown {
+            position: static;
+        }
+        
+        .status-cell .dropdown-menu {
+            position: absolute !important;
+            z-index: 1050;
+            margin-top: 0.125rem;
+        }
+        
+        /* Alternative: if table is inside card, ensure card doesn't clip */
+        .card-body {
+            overflow: visible;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -44,19 +87,19 @@
                         <div class="navbar-brand-box horizontal-logo">
                             <a href="index.html" class="logo logo-dark">
                                 <span class="logo-sm">
-                                    <img src="assets/images/logo-sm.png" alt="" height="22">
+                                    <span class="mr-detailer-text">Mr. detailer</span>
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="assets/images/logo-dark.png" alt="" height="17">
+                                    <span class="mr-detailer-text">Mr. detailer</span>
                                 </span>
                             </a>
 
                             <a href="index.html" class="logo logo-light">
                                 <span class="logo-sm">
-                                    <img src="assets/images/logo-sm.png" alt="" height="22">
+                                    <span class="mr-detailer-text">Mr. detailer</span>
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="assets/images/logo-light.png" alt="" height="17">
+                                    <span class="mr-detailer-text">Mr. detailer</span>
                                 </span>
                             </a>
                         </div>
@@ -932,19 +975,19 @@
                 <!-- Dark Logo-->
                 <a href="index.html" class="logo logo-dark">
                     <span class="logo-sm">
-                        <img src="assets/images/logo-sm.png" alt="" height="22">
+                        <span class="mr-detailer-text">Mr. detailer</span>
                     </span>
                     <span class="logo-lg">
-                        <img src="assets/images/logo-dark.png" alt="" height="17">
+                        <span class="mr-detailer-text">Mr. detailer</span>
                     </span>
                 </a>
                 <!-- Light Logo-->
                 <a href="index.html" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="assets/images/logo-sm.png" alt="" height="22">
+                        <span class="mr-detailer-text">Mr. detailer</span>
                     </span>
                     <span class="logo-lg">
-                        <img src="assets/images/logo-light.png" alt="" height="17">
+                        <span class="mr-detailer-text">Mr. detailer</span>
                     </span>
                 </a>
                 <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover"
@@ -963,6 +1006,14 @@
 <!-- Sidebar Navigation -->
     <ul class="navbar-nav" id="navbar-nav">
         <li class="menu-title"><span data-key="t-menu">Menu</span></li>
+
+        <!-- Dashboard -->
+        <li class="nav-item">
+            <a class="nav-link menu-link" href="index.html">
+                <i class="ri-dashboard-fill"></i>
+                <span data-key="t-dashboard">Dashboard</span>
+            </a>
+        </li>
 
         <!-- CRM -->
         <li class="nav-item">
@@ -1245,7 +1296,7 @@
                                             </thead>
                                             <tbody id="leadsBody">
                                                 <!-- Static rows to avoid heavy JS rendering. Add or remove rows here. -->
-                                                <tr data-status="Fresh" data-hot="true">
+                                                <tr data-status="Open" data-hot="true">
                                                     <td class="text-center">1.</td>
                                                     <td class="text-center">
                                                         <input type="checkbox" id="hot-1" class="star-checkbox d-none" checked>
@@ -1261,7 +1312,7 @@
                                                     <td>PPF</td>
                                                     <td class="status-cell text-center">
                                                         <div class="dropdown d-inline-block">
-                                                            <a class="dropdown-toggle badge bg-secondary px-3 py-2" href="#" role="button" id="statusBtn1" data-bs-toggle="dropdown" aria-expanded="false">Fresh</a>
+                                                            <a class="dropdown-toggle badge bg-warning px-3 py-2" href="#" role="button" id="statusBtn1" data-bs-toggle="dropdown" aria-expanded="false">Open</a>
                                                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="statusBtn1" style="min-width: 150px; max-height: 200px; overflow-y: auto;">
                                                                 <li><a class="dropdown-item change-status" href="#" data-new="Open">Open</a></li>
                                                                 <li><a class="dropdown-item change-status" href="#" data-new="Booked">Booked</a></li>
@@ -1371,7 +1422,7 @@
                             <div class="modal-dialog modal-lg modal-dialog-scrollable">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">Follow-up History — Vishal <span class="ms-2 badge bg-secondary" id="statusBadge-followupVishal">Fresh</span></h5>
+                                        <h5 class="modal-title">Follow-up History — Vishal <span class="ms-2 badge bg-warning" id="statusBadge-followupVishal">Open</span></h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                     </div>
                                     <div class="modal-body">
@@ -1384,7 +1435,7 @@
                                                     <tr><th>#</th><th>Date</th><th>Remark</th><th>Status</th><th>Next Follow Up</th></tr>
                                                 </thead>
                                                 <tbody class="followup-body">
-                                                    <tr><td>1</td><td>01-Nov-2025</td><td>Lead Added</td><td>Fresh</td><td>-</td></tr>
+                                                    <tr><td>1</td><td>01-Nov-2025</td><td>Lead Added</td><td>Open</td><td>-</td></tr>
                                                     <tr><td>2</td><td>02-Nov-2025</td><td>He will think and discuss</td><td>Open</td><td>20-Nov-2025</td></tr>
                                                 </tbody>
                                             </table>
@@ -1676,7 +1727,7 @@
                                             </div>
 
                                             <!-- Hidden auto-status -->
-                                            <input type="hidden" name="status" value="fresh">
+                                            <input type="hidden" name="status" value="open">
                                         </div>
 
                                     </div>
@@ -1808,7 +1859,6 @@
                                 const rows = Array.from(tbody.querySelectorAll('tr'));
                                 const counts = {
                                     All: rows.length,
-                                    Fresh: rows.filter(r => r.dataset.status === 'Fresh').length,
                                     Hot: rows.filter(r => r.dataset.hot === 'true').length,
                                     Open: rows.filter(r => r.dataset.status === 'Open').length,
                                     FollowupToday: 0, // static rows don't include dynamic date check
@@ -1819,7 +1869,6 @@
                                 // color mapping for tab badges (match status colors)
                                 const tabColorMap = {
                                     All: 'bg-dark',
-                                    Fresh: 'bg-primary', // Fresh -> blue (primary)
                                     Hot: 'bg-primary',
                                     Open: 'bg-warning',
                                     FollowupToday: 'bg-primary',
@@ -1884,7 +1933,6 @@
                                     // reset classes to badge-like anchor
                                     btn.className = 'dropdown-toggle badge px-3 py-2';
                                     switch (newStatus) {
-                                        case 'Fresh': btn.classList.add('bg-secondary'); break;
                                         case 'Open': btn.classList.add('bg-warning'); break;
                                         case 'Booked': btn.classList.add('bg-success'); break;
                                         case 'Not Interested': btn.classList.add('bg-danger'); break;
