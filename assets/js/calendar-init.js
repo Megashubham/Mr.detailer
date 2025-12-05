@@ -42,8 +42,8 @@
 
         calendar = new FullCalendar.Calendar(calendarEl, {
             timeZone: 'local',
-            editable: true,
-            droppable: true,
+            editable: false,
+            droppable: false,
             selectable: true,
             initialView: 'dayGridMonth',
             themeSystem: 'bootstrap5',
@@ -61,9 +61,6 @@
             },
             dateClick: function(info) {
                 openNewEventModal(info.date);
-            },
-            eventDrop: function(info) {
-                console.log('Event dropped:', info.event.title);
             }
         });
 
@@ -330,20 +327,7 @@
             });
         }
 
-        // Make external events draggable
-        const draggableEl = document.getElementById('external-events');
-        if (draggableEl && typeof FullCalendar.Draggable !== 'undefined') {
-            new FullCalendar.Draggable(draggableEl, {
-                itemSelector: '.external-event',
-                eventData: function(eventEl) {
-                    return {
-                        title: eventEl.innerText.trim(),
-                        className: eventEl.getAttribute('data-class'),
-                        create: true
-                    };
-                }
-            });
-        }
+        // External events drag and drop is disabled
     });
 
     // Expose update function globally
